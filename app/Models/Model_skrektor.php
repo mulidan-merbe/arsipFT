@@ -9,9 +9,22 @@ class Model_skrektor extends Model
     public function tampil()
     {
         return $this->db->table('datas d')
-        // ->select('d.Id, d.Nomor_surat, d.Tentang, d.Berkas, a.Status, a.Nama')
-        // ->join('datas_anggota a', 'a.Id_datas = d.Id', 'left')
+        ->select('d.Id, d.Nomor_surat, d.Tentang, d.Berkas, a.Status, a.Nama,  COUNT(a.Id_datas) AS total')
+        ->join('datas_anggota a', 'a.Id_datas = d.Id', 'left')
+        ->groupBy('d.Id')
         ->orderBy('d.Id', 'DESC')
+        ->get()
+        ->getResultArray();
+
+        
+    }
+
+    public function cek_Id()
+    {
+        return $this->db->table('datas')
+        ->select('Id')
+        ->limit('1')
+        ->orderBy('Id', 'DESC')
         ->get()
         ->getResultArray();
     }
@@ -25,9 +38,25 @@ class Model_skrektor extends Model
         ->getResultArray();
     }
 
+    public function detail2($Id)
+    {
+        return $this->db->table('datas d')
+        ->where('d.Id', $Id)
+        ->get()
+        ->getResultArray();
+    }
+
     public function tambah($data)
     {
-        $this->db->table('datas')->insert($data);
+        $result = $this->db->table('datas')->insert($data);
+        return $this->db->insertId();
+    }
+
+    public function insert_dosen($data1)
+    {
+        $this->db->transStart();
+        $this->db->table('datas_anggota')->insertBatch($data1);
+        $this->db->transComplete();
     }
 
     public function ubah($data)

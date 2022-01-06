@@ -15,6 +15,7 @@ class Skrektor extends BaseController
         $data = array(
             'title' => 'Surat Keputusan Rektor',
             'skrektor' => $this->Model_skrektor->tampil(),
+            'id'        => $this->Model_skrektor->cek_Id(),
             // 'ubah'  => $this->Model_masuk->ubah(),
             'isi'   => 'SKRektor/index'
         );
@@ -39,12 +40,54 @@ class Skrektor extends BaseController
        $data = array(
            'Nomor_surat'        => $this->request->getPost('Nomor_surat'),
            'Tentang'            => $this->request->getPost('Tentang'),
-           'Berkas'     => $this->request->getPost('Berkas'),
-           'Tanggal'          => date('Y-m-d')
+           'Berkas'             => $this->request->getPost('Berkas'),
+           'Tanggal'             => date('Y-m-d')
         );
         $this->Model_skrektor->tambah($data);
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkkan');
         return redirect()->to(base_url('skrektor'));
+    }
+
+    public function insert()
+	{
+        
+		$data = array(
+            'Nomor_surat'    => $this->request->getPost('Nomor_surat'),
+            'Tentang'        => $this->request->getPost('Tentang'),
+            'Berkas'         => $this->request->getPost('Berkas'),
+            'Tanggal'        => date('Y-m-d')
+		);
+
+        $result = $this->Model_skrektor->tambah($data);
+		$Status = $this->request->getPost('Status');
+        $Nama = $this->request->getPost('Nama');
+
+        // $result = array();
+		foreach($Nama as $row){
+			$data1 = array(
+				  'Id_datas' => $result,
+                  'Status'  => $Status,
+				  'Nama' => $Nama
+				);
+            
+            $this->Model_skrektor->insert_dosen($data1);
+		}
+        // $this->Model_skrektor->insert_dosen($data1);
+        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkkan');
+        return redirect()->to(base_url('skrektor'));
+	}
+
+    public function tambahAnggota($Id)
+    {
+        
+        $data = array(
+            'title' => 'Surat Keputusan Rektor',
+            'detail' => $this->Model_skrektor->detail2($Id),
+            // 'tugas_anggota' => $this->Model_tugas_anggota->tampil(),
+            'isi'   => 'SKRektor/tambahAnggota'
+        );
+        // dd($data['detail']);
+        return view('layout/wrapper', $data);
     }
 
     public function ubah($Id)
@@ -52,8 +95,8 @@ class Skrektor extends BaseController
         $data = array(
             'Id'            => $Id,
             'Nomor_surat'        => $this->request->getPost('Nomor_surat'),
-           'Tentang'            => $this->request->getPost('Tentang'),
-           'Berkas'     => $this->request->getPost('Berkas'),
+            'Tentang'            => $this->request->getPost('Tentang'),
+            'Berkas'     => $this->request->getPost('Berkas'),
            'Tanggal'          => date('Y-m-d')
          );
          $this->Model_skrektor->ubah($data);

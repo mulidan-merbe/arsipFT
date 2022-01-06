@@ -64,9 +64,10 @@
                     <td><?= $value['Tentang'] ?></td>
                     <td><?= $value['Berkas'] ?></td>
                     <td>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-tambah-Anggota<?= $value['Id']?>"><i class="fa fa-plus" ></i></button>
-                        <a class="btn btn-sm btn-default" href="<?= base_url('skrektor/detail/'.$value['Id'])?>">Lihat</a>
+                   <div class="btn-group">
+                       <!-- <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-tt<?= $value['Id']?>"><i class="fa fa-plus" ></i><?= $value['Id']?></button>  -->
+                        <a class="btn btn-sm btn-primary" href="<?= base_url('skrektor/tambahAnggota/'.$value['Id'])?>"><i class="fa fa-plus" ></i></a>
+                        <a class="btn btn-sm btn-default" href="<?= base_url('skrektor/detail/'.$value['Id'])?>"><?= $value['total'] ?></a>
                       </div></td>
                     <!-- <td><button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-lihat<?= $value['Id']?>"><i class="fa fa-trash" ></i></button></td> -->
                     <td class="text-center"> 
@@ -133,7 +134,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <?php echo form_open('skrektor/tambah') ?>
+              <?php echo form_open('skrektor/insert') ?>
              
                   <div class="form-group">
                     <label for="NomorSK">Nomor Surat</label>
@@ -147,8 +148,18 @@
                     <label for="NomorSK">Berkas</label>
                     <input type="text" name="Berkas" class="form-control" required>
                   </div>
+                  <hr>
+                  <div class="row">
+                  <table class="table" id="dynamic_field">  
+                        <tr>  
+                          <td><input type="text" name="Status[]" placeholder="Status" class="form-control name_list" /></td>
+                          <td><input type="text" name="Nama[]" placeholder="Dosen" class="form-control name_list" /></td>  
+                          <td><button type="button" name="add" id="add" class="btn btn-success">Tambah</button></td>  
+                        </tr>  
+                  </table> 
+                  </div>
             </div>
-            <div class="modal-footer justify-content-between">
+            <div class="modal-footer justify-content-end">
               <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
               <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
@@ -162,7 +173,7 @@
 
       <!-- Modal Tambah Anggota  -->
       <?php foreach($skrektor as $key => $value )  { ?>
-<div class="modal fade" id="modal-tambah-Anggota<?= $value['Id']?>">
+<div class="modal fade" id="modal-tt<?= $value['Id']?>">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
@@ -206,32 +217,20 @@
       </div> 
       <?php } ?>
 
-     
+    
        <!-- Modal Ubah -->
        <?php foreach($skrektor as $key => $value )  { ?>
    <div class="modal fade" id="modal-ubah<?= $value['Id']?>">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Ubah Surat Keputusan Rektor</h4>
+              <h4 class="modal-title">Ubah Surat Masuk</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <?php echo form_open('skrektor/ubah/'.$value['Id'] ) ?>
-              <div class="form-group">
-                    <label for="NomorSK">Nomor Surat</label>
-                    <input  name="Nomor_surat" class="form-control" value="<?= $value['Nomor_surat'] ?>">
-                  </div>
-                  <div class="form-group">
-                    <label for="NomorSK">Tentang</label>
-                    <textarea name="Tentang" class="form-control" id="" cols="30" rows="10"><?= $value['Tentang'] ?></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="NomorSK">Berkas</label>
-                    <input type="text" name="Berkas" class="form-control" value="<?= $value['Berkas'] ?>">
-                  </div>
+              <?php echo form_open('masuk/ubah/'.$value['Id'] ) ?>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
@@ -244,3 +243,29 @@
         <!-- /.modal-dialog -->
       </div> 
       <?php } ?>
+
+      
+        <!-- Modal Hapus -->
+        <?php foreach($skrektor as $key => $value )  { ?>
+      <div class="modal fade" id="modal-hapus<?= $value['Id']?>">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Hapus Surat Masuk</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Apakah Anda Ingin Menghapus Data?
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
+              <a href="<?= base_url('skrektor/hapus/'. $value['Id']) ?>" type="submit" class="btn btn-primary">Hapus</a>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>   
+      <?php } ?>   

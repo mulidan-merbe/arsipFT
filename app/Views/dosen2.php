@@ -22,74 +22,7 @@
       <section class="content">
       <div class="container-fluid">
       <div class="row">
-        <div class="col-md-4">
-        <div class="card card-primary" style="min-height: 650px;">
-              <div class="card-header">
-                <h3 class="card-title">Filter Data</h3>
-                <!-- <div class="card-tools">
-                
-                </div> -->
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-              <div id="accordion">
-
-              <div class="card">
-                <div class="card-header">
-                  <a class="card-link" data-toggle="collapse" href="#collapseOne">
-                  PROGRAM STUDI
-                  </a>
-                </div>
-                <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                  <div class="card-body">
-                  <?php
-                                  foreach($prodi as $key => $value )  { ?>
-                              <div class="list-group list-group-flush checkbox-list-group">
-                                <div class="list-group-item prodi"><h6><label><input type="checkbox" value="<?= $value['Id_prodi']?>"><span class="list-group-item-text" ><i class="fa fa-fw"></i><?= $value['prodi']?></span></label></h6></div> 
-                              </div>
-                              <?php } ?>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card">
-                <div class="card-header">
-                  <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-                    SERTIFIKAT
-                  </a>
-                </div>
-                <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                  <div class="card-body">
-                  <?php
-                                  foreach($sertifikat as $key => $value )  { ?>
-                              <div class="list-group list-group-flush checkbox-list-group">
-                                <div class="list-group-item prodi"><h6><label><input type="checkbox" value="<?= $value['Id_sertifikat']?>"><span class="list-group-item-text" ><i class="fa fa-fw"></i><?= $value['Sertifikat']?></span></label></h6></div> 
-                              </div>
-                              <?php } ?>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card">
-                <div class="card-header">
-                  <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-                    Collapsible Group Item #3
-                  </a>
-                </div>
-                <div id="collapseThree" class="collapse" data-parent="#accordion">
-                  <div class="card-body">
-                    Lorem ipsum..
-                  </div>
-                </div>
-              </div>
-
-              </div>
-               
-              </div>
-            </div>
-
-        </div>
-        <div class="col-md-8">
+        <div class="col-md-12">
         <div class="card card-primary" style="min-height: 650px;">
               <div class="card-header">
                 <h3 class="card-title">Data <?= $title ?></h3>
@@ -105,29 +38,29 @@
                 echo session()->getFlashdata('pesan');
                 echo '</div>';
             } ?>
-            <div class="">
+            <div class="mb-4">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
                   Tambah
                 </button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambahsertifikat">
-                  Tambah Sertifikat
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-carisertifikat">
+                  Tampilkan Berdasarkan Sertifikat
                 </button>
             </div>
-                <table id="example1" class="table table-bordered table-striped">
+                <table id="example2" class="table table-bordered table-striped mt-2">
                   <thead>
                   <tr>
                   <th class="col-1 text-center">No</th>
                     <th class="col-5 text-center">Nama</th>
                     <th class=" text-center">NIP</th>
-                    <th class=" text-center">JK</th>
-                    <th class=" text-center col-md-5">Agama</th>
-                    <th class=" text-center">Golongan</th>
-                    <th class=" text-center">Jabatan</th>
-                    <th class=" text-center">NIDN</th>
-                    <th class=" text-center">Jenjang</th>
-                    <th class=" text-center">Prodi</th>
+                    <!-- <th class=" text-center">JK</th> -->
+                    <!-- <th class=" text-center col-md-5">Agama</th> -->
+                    <!-- <th class=" text-center">Golongan</th> -->
+                    <!-- <th class=" text-center">Jabatan</th> -->
+                    <!-- <th class=" text-center">NIDN</th> -->
+                    <!-- <th class=" text-center">Jenjang</th> -->
+                    <th class="col-3 text-center">Prodi</th>
                     <th class=" text-center">Sertifikat</th>
-                    <th class="col-3 text-center">Aksi</th>
+                    <th class="col-2 text-center">Aksi</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -140,17 +73,22 @@
                     <td class="text-center"><?= $no++ ?></td>
                     <td><?= $value['Nama'] ?></td>
                     <td><?= $value['NIP'] ?></td>
-                    <td><?= $value['JK'] ?></td>
-                    <td><?= $value['Agama'] ?></td>
-                    <td><?= $value['golongan'] ?></td>
-                    <td><?= $value['Jab'] ?></td>
-                    <td><?= $value['NIDN'] ?></td>
-                    <td><?= $value['Jnj'] ?></td>
+                    <!-- <td><?= $value['JK'] ?></td> -->
+                    <!-- <td><?= $value['Agama'] ?></td> -->
+                    <!-- <td><?= $value['golongan'] ?></td> -->
+                    <!-- <td><?= $value['Jab'] ?></td> -->
+                    <!-- <td><?= $value['NIDN'] ?></td> -->
+                    <!-- <td><?= $value['Jnj'] ?></td> -->
                     <td><?= $value['prodi'] ?></td>
-                     <td><?= $value['prodi'] ?></td>
+                    <td class="text-center"> <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-tambahsertifikat<?= $value['Id_dosen']?>"><i class="fa fa-plus" ></i></button>
+                        <a href="<?= base_url('') ?>/dosen/detailSertifikat/<?= $value['NIP']?>" class="btn btn-sm btn-info" ><i class="fa fa-eye" ></i></a>
+                    </div>
+                    </td>
                     <td class="text-center"> 
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-ubah<?= $value['Id_dosen']?>"></button>
+                        <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal-detail<?= $value['Id_dosen']?>"><i class="fas fa-eye"></i></button>
+                        <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-ubah<?= $value['Id_dosen']?>"><i class="fas fa-edit"></i></button>
                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-hapus<?= $value['Id_dosen']?>"><i class="fa fa-trash" ></i></button>
                     </div>
                     </td>
@@ -173,7 +111,43 @@
      
 
 
-   <!-- Modal Tambah Dosen -->
+   <!-- Modal Cari Sertifikat -->
+   <div class="modal fade" id="modal-carisertifikat">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Cari Sertifikat Dosen</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+             
+              <form method="get" action="">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <label>Filter Berdasarkan</label><br>
+                        <select name="filter" id="filter" class="form-control">
+                        <option value="" >Pilih Sertifikat</option>
+                        <?php foreach($sertifikat as $data) { ?>
+                            <option value="<?= $data['Id_sertifikat'] ?>" ><?= $data['Sertifikat'] ?></option>
+                        <?php } ?>
+                        </select>
+                        <button type="submit" class="btn btn-primary mt-4 ">Cari</button>
+                      </div>
+                     
+                    </div>
+                  </form>
+            </div>
+           
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div> 
+
+
+       <!-- Modal Tambah Dosen -->
    <div class="modal fade" id="modal-tambah">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -263,6 +237,75 @@
         </div>
         <!-- /.modal-dialog -->
       </div> 
+
+
+
+      <?php foreach($dosen as $key => $value )  { ?>
+       <!-- Modal Detail Dosen -->
+   <div class="modal fade" id="modal-detail<?= $value['Id_dosen']?>">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Detail Data Dosen</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+             <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="">Nama</label>
+                    <input name="Nama" class="form-control" value="<?= $value['Nama'] ?>" readonly>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="">NIP</label>
+                    <input name="NIP" class="form-control" id="" value="<?= $value['NIP'] ?>" readonly>
+                  </div>
+                  </div>
+                  <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="">Jenis Kelamin</label>
+                    <input name="Jab" class="form-control" id="" value="<?= $value['JK'] ?>" readonly>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="">Agama</label>
+                    <input name="Jnj" class="form-control" id="" value="<?= $value['Agama'] ?>" readonly>
+                  </div>
+                  </div>
+                  <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="">Golongan</label>
+                    <input name="Jab" class="form-control" id="" value="<?= $value['golongan'] ?>" readonly>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="">Jabatan</label>
+                    <input name="Jab" class="form-control" id="" value="<?= $value['Jab'] ?>" readonly>
+                  </div>
+                  </div>
+                  <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="">NIDN</label>
+                    <input name="NIDN" class="form-control" id="" value="<?= $value['NIDN'] ?>" readonly>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="">Jenjang</label>
+                    <input name="Jnj" class="form-control" id="" value="<?= $value['Jnj'] ?>" readonly>
+                  </div>
+                  </div>
+                  <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="">Prodi</label>
+                    <input name="Jnj" class="form-control" id="" value="<?= $value['prodi'] ?>" readonly>
+                  </div>
+                  </div>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div> 
+      <?php } ?>
+
 
            <!-- Modal Ubah -->
            <?php foreach($dosen as $key => $value )  { ?>
@@ -384,9 +427,9 @@
       <?php } ?>   
 
 
-
+      <?php foreach($dosen as $key => $value )  { ?>
        <!-- Modal Tambah Sertifikat -->
-   <div class="modal fade" id="modal-tambahsertifikat">
+   <div class="modal fade" id="modal-tambahsertifikat<?= $value['Id_dosen']?>">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -396,14 +439,15 @@
               </button>
             </div>
             <div class="modal-body">
-              <?php echo form_open('dosen/tambahsertifikat') ?>
+              <?php echo form_open('dosen/tambahSertifikat') ?>
                   <div class="form-group ">
                     <label for="">Nama</label>
-                    <input name="Nama" class="form-control" placeholder="Nama" required>
+                    <input name="Nama" class="form-control" value="<?= $value['Nama'] ?>"  readonly>
+                    <input type="hidden" name="Nama" class="form-control" value="<?= $value['NIP'] ?>">
                   </div>
                   <div class="form-group">
-                    <label for="Prodi">Sertifikat</label>
-                    <select name="Id_prodi" id="Prodi" class="form-control "> 
+                    <label for="Sertifikat">Sertifikat</label>
+                    <select name="Id_sertifikat" id="Sertifikat" class="form-control "> 
                         <option value="" >Pilih Sertifikat</option>
                         <?php foreach($sertifikat as $data) { ?>
                             <option value="<?= $data['Id_sertifikat'] ?>" ><?= $data['Sertifikat'] ?></option>
@@ -412,11 +456,15 @@
                   </div>
                   <div class="form-group ">
                     <label for="">Nomor Sertifikat</label>
-                    <input name="NIP" class="form-control" id="" placeholder="Nomor Sertifikat" required>
+                    <input name="Nomor_sertifikat" class="form-control" id="" placeholder="Nomor Sertifikat" required>
+                  </div>
+                  <div class="form-group ">
+                    <label for="">Keterangan</label>
+                    <input name="Keterangan" class="form-control" id="" placeholder="Keterangan Sertifikat" >
                   </div>
                   <div class="form-group ">
                     <label for="">Berkas</label>
-                    <input type="file" name="NIP" class="form-control" required>
+                    <input type="file" name="NIP" class="form-control" >
                   </div>
             </div>
             <div class="modal-footer justify-content-between">
@@ -429,3 +477,4 @@
         </div>
         <!-- /.modal-dialog -->
       </div> 
+      <?php } ?>     
