@@ -12,6 +12,22 @@ class Dosen extends BaseController
     }
     public function index()
     {
+        $data = array(
+            'title' => 'Dosen Fakultas Teknik',
+            'prodi' => $this->Model_dosen->tampil_prodi(),
+            'count' => $this->Model_dosen->get_count(),
+            // 'isi'   => 'dosen/index'
+        );
+
+       
+        // dd($data['count']);
+        return view('dosen/index', $data);
+
+        
+    }
+
+    public function data()
+    {
         if (isset($_GET['filter']) && !empty($_GET['filter'])) {
 			$filter = $_GET['filter'];
 
@@ -22,12 +38,13 @@ class Dosen extends BaseController
                     'dosen' => $this->Model_dosen->lihatSertifikat($Id_sertifikat),
                     'prodi' => $this->Model_dosen->tampil_prodi(),
                     'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
+                    'detailSertifikat'  => $this->Model_dosen->detailSertifikat2(),
                     'gol' => $this->Model_dosen->tampil_gol(),
                     // 'detailSertifikat '  => $this->Model_dosen->detailSertifikat(),
                     // 'ubah'  => $this->Model_kategori->ubah(),
-                    'isi'   => 'filter_sertifikat'
+                    
                 );
-				
+                return view('filter_sertifikat', $data);
 			} elseif ($filter == '2') {
 				$Id_sertifikat = $_GET['filter'];
 				$data = array(
@@ -35,11 +52,13 @@ class Dosen extends BaseController
                     'dosen' => $this->Model_dosen->lihatSertifikat($Id_sertifikat),
                     'prodi' => $this->Model_dosen->tampil_prodi(),
                     'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
+                    'detailSertifikat'  => $this->Model_dosen->detailSertifikat2(),
                     'gol' => $this->Model_dosen->tampil_gol(),
                     // 'detailSertifikat '  => $this->Model_dosen->detailSertifikat(),
                     // 'ubah'  => $this->Model_kategori->ubah(),
-                    'isi'   => 'filter_sertifikat'
+                    
                 );
+                return view('filter_sertifikat', $data);
 			} elseif ($filter == '3') {
 				$Id_sertifikat = $_GET['filter'];
 				$data = array(
@@ -47,11 +66,13 @@ class Dosen extends BaseController
                     'dosen' => $this->Model_dosen->lihatSertifikat($Id_sertifikat),
                     'prodi' => $this->Model_dosen->tampil_prodi(),
                     'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
+                    'detailSertifikat'  => $this->Model_dosen->detailSertifikat2(),
                     'gol' => $this->Model_dosen->tampil_gol(),
                     // 'detailSertifikat '  => $this->Model_dosen->detailSertifikat(),
                     // 'ubah'  => $this->Model_kategori->ubah(),
-                    'isi'   => 'filter_sertifikat'
+                    
                 );
+                return view('filter_sertifikat', $data);
 			} elseif ($filter == '4') {
 				$Id_sertifikat = $_GET['filter'];
 				$data = array(
@@ -59,11 +80,13 @@ class Dosen extends BaseController
                     'dosen' => $this->Model_dosen->lihatSertifikat($Id_sertifikat),
                     'prodi' => $this->Model_dosen->tampil_prodi(),
                     'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
+                    'detailSertifikat'  => $this->Model_dosen->detailSertifikat2(),
                     'gol' => $this->Model_dosen->tampil_gol(),
                     // 'detailSertifikat '  => $this->Model_dosen->detailSertifikat(),
                     // 'ubah'  => $this->Model_kategori->ubah(),
-                    'isi'   => 'filter_sertifikat'
+                    
                 );
+                return view('filter_sertifikat', $data);
 			} elseif ($filter == '5') {
 				$Id_sertifikat = $_GET['filter'];
 				$data = array(
@@ -71,11 +94,13 @@ class Dosen extends BaseController
                     'dosen' => $this->Model_dosen->lihatSertifikat($Id_sertifikat),
                     'prodi' => $this->Model_dosen->tampil_prodi(),
                     'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
+                    'detailSertifikat'  => $this->Model_dosen->detailSertifikat2(),
                     'gol' => $this->Model_dosen->tampil_gol(),
                     // 'detailSertifikat '  => $this->Model_dosen->detailSertifikat(),
                     // 'ubah'  => $this->Model_kategori->ubah(),
-                    'isi'   => 'filter_sertifikat'
+                    
                 );
+                return view('filter_sertifikat', $data);
 			} elseif ($filter == '6') {
 				$Id_sertifikat = $_GET['filter'];
 				$data = array(
@@ -83,11 +108,13 @@ class Dosen extends BaseController
                     'dosen' => $this->Model_dosen->lihatSertifikat($Id_sertifikat),
                     'prodi' => $this->Model_dosen->tampil_prodi(),
                     'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
+                    'detailSertifikat'  => $this->Model_dosen->detailSertifikat2(),
                     'gol' => $this->Model_dosen->tampil_gol(),
                     // 'detailSertifikat '  => $this->Model_dosen->detailSertifikat(),
                     // 'ubah'  => $this->Model_kategori->ubah(),
-                    'isi'   => 'filter_sertifikat'
+                    
                 );
+                return view('filter_sertifikat', $data);
 			} elseif ($filter == '7') {
 				$Id_sertifikat = $_GET['filter'];
 				$data = array(
@@ -95,11 +122,13 @@ class Dosen extends BaseController
                     'dosen' => $this->Model_dosen->lihatSertifikat($Id_sertifikat),
                     'prodi' => $this->Model_dosen->tampil_prodi(),
                     'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
+                    'detailSertifikat'  => $this->Model_dosen->detailSertifikat2(),
                     'gol' => $this->Model_dosen->tampil_gol(),
                     // 'detailSertifikat '  => $this->Model_dosen->detailSertifikat(),
                     // 'ubah'  => $this->Model_kategori->ubah(),
-                    'isi'   => 'filter_sertifikat'
+                    
                 );
+                return view('filter_sertifikat', $data);
 			} elseif ($filter == '8') {
 				$Id_sertifikat = $_GET['filter'];
 				$data = array(
@@ -107,28 +136,50 @@ class Dosen extends BaseController
                     'dosen' => $this->Model_dosen->lihatSertifikat($Id_sertifikat),
                     'prodi' => $this->Model_dosen->tampil_prodi(),
                     'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
+                    'detailSertifikat'  => $this->Model_dosen->detailSertifikat2(),
                     'gol' => $this->Model_dosen->tampil_gol(),
                     // 'detailSertifikat '  => $this->Model_dosen->detailSertifikat(),
                     // 'ubah'  => $this->Model_kategori->ubah(),
-                    'isi'   => 'filter_sertifikat'
+                    
                 );
+                return view('filter_sertifikat', $data);
 			}
 		} else {
             $data = array(
-                'title' => 'Dosen',
+                'title' => 'Dosen Fakultas Teknik',
                 'dosen' => $this->Model_dosen->tampil(),
                 'prodi' => $this->Model_dosen->tampil_prodi(),
                 'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
+                // 'detailSertifikat'  => $this->Model_dosen->detailSertifikat(),
                 'gol' => $this->Model_dosen->tampil_gol(),
                 // 'detailSertifikat '  => $this->Model_dosen->detailSertifikat(),
                 // 'ubah'  => $this->Model_kategori->ubah(),
                 'isi'   => 'dosen2'
             );
+            return view('dosen2', $data);
 		}
 
-       
-        // dd($data['dosen']);
-        return view('layout/wrapper', $data);
+    
+
+   
+    // dd($data['count']);
+   
+    }
+
+    public function lihat($Id_prodi)
+    {
+        $data = array(
+            'title' => 'Dosen Fakultas Teknik',
+            'dosen' => $this->Model_dosen->tampilbyProdi($Id_prodi),
+            'prodi' => $this->Model_dosen->tampil_prodi(),
+            'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
+            // 'detailSertifikat'  => $this->Model_dosen->detailSertifikat(),
+            'gol' => $this->Model_dosen->tampil_gol(),
+            // 'detailSertifikat '  => $this->Model_dosen->detailSertifikat(),
+            // 'ubah'  => $this->Model_kategori->ubah(),
+            'isi'   => 'dosen2'
+        );
+        return view('dosen2', $data);
     }
 
     public function tambah()
@@ -163,7 +214,7 @@ class Dosen extends BaseController
         // dd($data);
         $this->Model_dosen->tambahSertifikat($data);
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkkan');
-        return redirect()->to(base_url('dosen'));
+        return redirect()->to(base_url('dosen/data'));
     }
 
     public function detailSertifikat($NIP)
@@ -209,7 +260,7 @@ class Dosen extends BaseController
                 'label'  => 'Berkas',
                 'rules'  => 'uploaded[Berkas]|max_size[Berkas, 5000]|ext_in[Berkas, jpg,jpeg,png,doc,docx,pdf]',
                 'errors' => [
-                    'uploaded' => '{field} Wajid Di isi',
+                    'uploaded'  => '{field} Wajid Di isi',
                     'max_size'  => 'Ukuran {field} Max 5000Kb',
                     'ext_in'    => 'Format {field} Wajib PNG',
                 ]

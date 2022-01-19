@@ -1,3 +1,6 @@
+<?= $this->include('layout/head') ?>
+<?= $this->include('layout/header') ?>
+<?= $this->include('layout/nav') ?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -84,4 +87,58 @@
     </div>
     <!-- /.content -->
   </div>
-     
+  <?= $this->include('layout/footer') ?> 
+
+  
+  <?php foreach($detailSertifikat as $key => $value )  { ?>
+       <!-- Modal Tambah Sertifikat -->
+   <div class="modal fade" id="modal-ubah<?= $value['NIP']?>">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Ubah Data Sertifikat</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              
+              <form action="<?php echo base_url('dosen/ubahSertifikat/'. $value['NIP']);?>" method="post" enctype="multipart/form-data">
+                  <div class="form-group ">
+                    <label for="">Nama</label>
+                    <input name="Nama" class="form-control" value="<?= $value['Nama'] ?>"  readonly>
+                    <input type="hidden" name="Nama" class="form-control" value="<?= $value['NIP'] ?>">
+                  </div>
+                  <div class="form-group">
+                    <label for="Sertifikat">Sertifikat</label>
+                    <select name="Id_sertifikat" id="Sertifikat" class="form-control "> 
+                        <option value="<?= $value['Id_sertifikat'] ?>" ><?= $value['Sertifikat'] ?></option>
+                        <?php foreach($sertifikat as $data) { ?>
+                            <option value="<?= $data['Id_sertifikat'] ?>" ><?= $data['Sertifikat'] ?></option>
+                        <?php } ?>
+                    </select>
+                  </div>
+                  <div class="form-group ">
+                    <label for="">Nomor Sertifikat</label>
+                    <input name="Nomor_sertifikat" class="form-control" id="" value="<?= $value['Nomor_sertifikat'] ?>" required>
+                  </div>
+                  <div class="form-group ">
+                    <label for="">Keterangan</label>
+                    <input name="Keterangan" class="form-control" id="" value="<?= $value['Keterangan'] ?>" >
+                  </div>
+                  <div class="form-group ">
+                    <label for="">Berkas</label>
+                    <input type="file" name="Berkas" class="form-control" >
+                  </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
+              <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+                        </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div> 
+      <?php } ?>     

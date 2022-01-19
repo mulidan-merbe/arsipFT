@@ -19,12 +19,12 @@
             <a href="<?= base_url('department')?>" class="nav-link">Department</a>
           </li> -->
           <li class="nav-item">
-            <a href="<?= base_url('dosen')?>" class="nav-link">Dosen</a>
+            <a href="<?= base_url('dosen')?>" class="nav-link">MASTER DATA</a>
           </li>
           <?php } ?>
           <?php if (session()->get('Level') != 2) { ?>
           <li class="nav-item dropdown">
-            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Surat</a>
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">MASTER SURAT</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <li><a href="<?= base_url('masuk')?>" class="dropdown-item">Surat Masuk</a></li>
               <li><a href="<?= base_url('tugas')?>" class="dropdown-item">Surat Tugas</a></li>

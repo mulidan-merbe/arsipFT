@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2021 at 10:07 AM
+-- Generation Time: Jan 17, 2022 at 08:36 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -177,7 +177,8 @@ INSERT INTO `datas` (`Id`, `Nomor_surat`, `Tentang`, `Berkas`, `Tanggal`) VALUES
 (1, '3354/UN22/KP/2021', 'PERUBAHAN ATAS KEPUTUSAN REKTOR NOMOR 3186/UN22/KP/2021 TENTANG PANITIA PERSIAPAN PROGRAM PENDIDIKAN PROFESI ARSITEK (PPAr) FAKULTAS TEKNIK UNIVERSITAS TANJUNGPURA', '0', '2021-12-07'),
 (2, '1964/UN22/PG/2021', 'TIM REVIEWER INTERNAL PENELITIAN DAN PENGABDIAN MASYARAKAT UNIVERSITAS TANJUNGPURA TAHUN 2021', 'A', '2021-12-07'),
 (3, '3185/UN22/KP/2021', 'TIM TASK FORCE PERSIAPAN PENDIRIAN PROGRAM STUDI DOKTOR (S3) TEKNIK ELEKTRO FAKULTAS TEKNIK UNIVERSITAS TANJUNGPURA', '-', '2021-12-07'),
-(5, '1553/UN22/KP/2021', 'ASESOR PENILAIAN BEBAN KERJA  DOSEN DI LINGKUNGAN UNIVERSITAS TANJUNGPURA TAHUN 2021', '-', '2021-12-08');
+(5, '1553/UN22/KP/2021', 'ASESOR PENILAIAN BEBAN KERJA  DOSEN DI LINGKUNGAN UNIVERSITAS TANJUNGPURA TAHUN 2021', '-', '2021-12-08'),
+(45, 'asd', 'asd', 'asd', '2021-12-19');
 
 -- --------------------------------------------------------
 
@@ -198,7 +199,11 @@ CREATE TABLE `datas_anggota` (
 
 INSERT INTO `datas_anggota` (`Id_datas_anggota`, `Id_datas`, `Status`, `Nama`) VALUES
 (1, 1, 'Penanggung Jawab Umum', 'Prof. Dr. Garuda Wiko, S.H., M.Si., FCBArb (Rektor)'),
-(2, 1, 'Pengarah', 'Dr. Ir. H. Radian, M.S. (Wakil Rektor Bid. Akademik)');
+(2, 1, 'Pengarah', 'Dr. Ir. H. Radian, M.S. (Wakil Rektor Bid. Akademik)'),
+(3, 2, '2', '2'),
+(4, 2, '1', '1'),
+(5, 16, '1', '1'),
+(6, 30, 'w', 'w');
 
 -- --------------------------------------------------------
 
@@ -262,7 +267,7 @@ CREATE TABLE `dosen` (
   `Agama` varchar(50) NOT NULL,
   `Gol` int(11) NOT NULL,
   `Jab` varchar(50) NOT NULL,
-  `NIDN` int(20) NOT NULL,
+  `NIDN` varchar(50) NOT NULL,
   `Jnj` varchar(50) NOT NULL,
   `Id_prodi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -272,29 +277,172 @@ CREATE TABLE `dosen` (
 --
 
 INSERT INTO `dosen` (`Id_dosen`, `Nama`, `NIP`, `JK`, `Agama`, `Gol`, `Jab`, `NIDN`, `Jnj`, `Id_prodi`) VALUES
-(1, 'Ir.Elvira, M.T., Ph.D., IPM', '196707141993031002', 'L', 'Islam', 6, 'LK', 14076701, 'S3', 1),
-(2, 'Dr.rer.nat. Ir. R. M. Rustamaji, M.T., IPU.       ', '196801161994031003', 'L', 'Islam ', 5, 'LK', 16016802, 'S3', 1),
-(3, 'Dr.-Ing. Ir. Eka Priadi., M.T.                    ', '196303241990031002', 'L', 'Islam', 5, 'LK', 24036303, 'S3', 1),
-(4, 'Dr. Nurhayati, S.T., M.T.                        ', '197101041998022001', 'P', 'Islam', 5, 'LK', 4017101, 'S3', 1),
-(5, 'Dr.-Ing. Ir. Slamet Widodo, M.T., IPM.            ', '196712231992031002', 'L', 'Islam', 5, 'LK', 23126704, 'S3', 1),
-(6, 'Dr. Ir. Kartini, M.T., IPU, ASEAN Eng.            ', '195812151988102001', 'P', 'Islam', 7, 'LK', 15125806, 'S3', 13),
-(7, 'Ir. Yoke Lestyowati, M.T., IPM.                   ', '196304231989032002', 'P', 'Islam', 7, 'LK', 23046303, 'S2', 13),
-(8, 'Ir. M. Indrayadi, M.T., IPM.                      ', '195708251984031001', 'L', 'Islam', 6, 'LK', 25085707, 'S2', 13),
-(9, 'Ir. Komala Erwan, M.T., IPM.', '195805101984031003', 'L', 'Islam', 6, 'LK', 10055808, 'S2', 13),
-(10, ' Ir. Akhmadali, M.Sc.                             ', '195807031988101001', 'L', 'Islam', 6, 'LK', 3075802, 'S2', 13),
-(11, 'Prof. Dr. Hj. Henny Herawati, S.T., M.T,. IPM.    ', '197201311996012001', 'P', 'Islam', 6, 'GB', 31017201, 'S3', 13),
-(12, 'Ir. Faisal, M.T.                                  ', '196207271992021001', 'L', 'Islam', 5, 'LK', 27076213, 'S2', 13),
-(13, 'Ir. Safaruddin M. Nuh, M.T.                       ', '196506091992021001', 'L', 'Islam', 5, 'LK', 9066505, 'S2', 13),
-(14, 'Erwin Sutandar, S.T., M.T.                        ', '197209301997021002', 'L', 'Islam', 5, 'LK', 30097201, 'S2', 13),
-(15, 'Ferry Juniardi, ST., M.T.                        ', '197506171999031003', 'L', 'Islam', 5, 'LK', 17067508, 'S2', 13),
-(16, 'Ir. Aprianto, M.T.                                ', '195804151987031002', 'L', 'Islam', 5, 'LK', 15045803, 'S2', 13),
-(17, 'Dr. Stefanus B. Soeryamassoeka, S.T., M.T.', '197212262000031001', 'L', 'Katolik', 6, 'LK', 26127202, 'S3', 13),
-(18, 'M.Yusuf, ST., M.T., IPM.      ', '197005201998021001', 'L', 'Islam', 6, 'LK', 20057001, 'S2', 13),
-(19, 'Eti Sulandari, ST, MT                 ', '197107201998022001', 'P', 'Islam', 5, 'LK', 20077101, 'S2', 13),
-(20, 'Siti Mayuni, M.T.', '196805181993032002', 'P', 'Islam', 5, 'LK', 18056805, 'S2', 13),
-(21, 'Heri Azwansyah, S.T., M.T.              ', '197311302000121001', 'L', 'Islam', 5, 'LK', 30117301, 'S2', 13),
-(22, 'Sumiyattinah, S.T., M.T., IPM.                    ', '197111031997022001', 'P', 'Islam', 5, 'LK', 3117102, 'S2', 13),
-(23, 'Herwani, ST, MT', '197107261998021001', 'L', 'Islam', 4, 'L', 26077101, 'S2', 13);
+(1, 'Ir.Elvira, M.T., Ph.D., IPM', '196707141993031002', 'Laki-laki', 'Islam', 6, 'LK', '0014076701', 'S3', 1),
+(2, 'Dr.rer.nat. Ir. R. M. Rustamaji, M.T., IPU.       ', '196801161994031003', 'Laki-laki', 'Islam', 5, 'LK', '0016016802', 'S3', 1),
+(3, 'Dr.-Ing. Ir. Eka Priadi., M.T.                    ', '196303241990031002', 'Laki-laki', 'Islam', 5, 'LK', '0024036303', 'S3', 1),
+(4, 'Dr. Nurhayati, S.T., M.T.                        ', '197101041998022001', 'Perempuan', 'Islam', 5, 'LK', '0004017101', 'S3', 1),
+(5, 'Dr.-Ing. Ir. Slamet Widodo, M.T., IPM.            ', '196712231992031002', 'Laki-laki', 'Islam', 5, 'LK', '0023126704', 'S3', 1),
+(6, 'Dr. Ir. Kartini, M.T., IPU, ASEAN Eng.            ', '195812151988102001', 'Perempuan', 'Islam', 7, 'LK', '0015125806', 'S3', 13),
+(7, 'Ir. Yoke Lestyowati, M.T., IPM.                   ', '196304231989032002', 'Perempuan', 'Islam', 7, 'LK', '0023046303', 'S2', 13),
+(8, 'Ir. M. Indrayadi, M.T., IPM.                      ', '195708251984031001', 'Laki-laki', 'Islam', 6, 'LK', '0025085707', 'S2', 13),
+(9, 'Ir. Komala Erwan, M.T., IPM.', '195805101984031003', 'Laki-laki', 'Islam', 6, 'LK', '0010055808', 'S2', 13),
+(10, ' Ir. Akhmadali, M.Sc.                             ', '195807031988101001', 'Laki-laki', 'Islam', 5, 'LK', '0003075802', 'S2', 13),
+(11, 'Prof. Dr. Hj. Henny Herawati, S.T., M.T,. IPM.    ', '197201311996012001', 'Perempuan', 'Islam', 6, 'GB', '0031017201', 'S3', 13),
+(12, 'Ir. Faisal, M.T.                                  ', '196207271992021001', 'Laki-laki', 'Islam', 5, 'LK', '0027076213', 'S2', 13),
+(13, 'Ir. Safaruddin M. Nuh, M.T.                       ', '196506091992021001', 'Laki-laki', 'Islam', 5, 'LK', '0009066505', 'S2', 13),
+(14, 'Erwin Sutandar, S.T., M.T.                        ', '197209301997021002', 'Laki-laki', 'Islam', 5, 'LK', '0030097201', 'S2', 13),
+(15, 'Ferry Juniardi, ST., M.T.                        ', '197506171999031003', 'Laki-laki', 'Islam', 5, 'LK', '0017067508', 'S2', 13),
+(16, 'Ir. Aprianto, M.T.                                ', '195804151987031002', 'Laki-laki', 'Islam', 5, 'LK', '0015045803', 'S2', 13),
+(17, 'Dr. Stefanus B. Soeryamassoeka, S.T., M.T.', '197212262000031001', 'Laki-laki', 'Katolik', 6, 'LK', '0026127202', 'S3', 13),
+(18, 'M.Yusuf, ST., M.T., IPM.      ', '197005201998021001', 'Laki-laki', 'Islam', 6, 'LK', '0020057001', 'S2', 13),
+(19, 'Eti Sulandari, ST, MT                 ', '197107201998022001', 'Laki-laki', 'Islam', 5, 'LK', '0020077101', 'S2', 13),
+(20, 'Ir. Siti Mayuni, M.T.', '196805181993032002', 'Perempuan', 'Islam', 5, 'LK', '0018056805', 'S2', 13),
+(21, 'Heri Azwansyah, S.T., M.T.              ', '197311302000121001', 'Laki-laki', 'Islam', 5, 'LK', '0030117301', 'S2', 13),
+(22, 'Sumiyattinah, S.T., M.T., IPM.                    ', '197111031997022001', 'Perempuan', 'Islam', 5, 'LK', '0003117102', 'S2', 13),
+(23, 'Herwani, ST, MT', '197107261998021001', 'Laki-laki', 'Islam', 4, 'L', '0026077101', 'S2', 13),
+(24, 'Ir. H. Rafie, M.Sc, IPM.', '196508021990031004', 'Laki-laki', 'Islam', 3, 'L', '0002086504', 'S2', 13),
+(25, 'Umar, ST, MT, IPM.                                ', '197101031996011001', 'Laki-laki', 'Islam', 4, 'L', '0003017101', 'S2', 13),
+(26, 'Gatot Setya Budi, S.T., M.T.', '197211242000121002', 'Laki-laki', 'Islam', 4, 'L', '0024117204', 'S2', 13),
+(27, 'S. Nurlaily Kadarini, S.T., M.T.', '197409221999032001', 'Perempuan', 'Islam', 4, 'L', '22097402', 'S2', 13),
+(28, 'Vivi Bachtiar, S.T., M.T. IPM.', '197001051997022003', 'Perempuan', 'Islam', 8, 'LK', '0005017004', 'S2', 13),
+(29, 'Dr. Elsa Tri Mukti, S.T., M.T.', '197305232000032001', 'Perempuan', 'Islam', 4, 'L', '0023057304', 'S3', 13),
+(30, 'Cek Putra Handalan, S.T., M.T.', '197105121998021001', 'Laki-laki', 'Islam', 3, 'L', '0012057106', 'S2', 13),
+(31, 'Danang Gunarto, S.T., M.T., IPM.', '197506182000121001', 'Laki-laki', 'Islam', 3, 'L', '0018067502', 'S2', 13),
+(32, 'Eko Yulianto, ST, MT.', '197107071998021001', 'Laki-laki', 'Islam', 3, 'L', '0017077102', 'S2', 13),
+(33, 'Dr. Said, ST, MT.      ', '197201092005011004', 'Laki-laki', 'Islam', 3, 'L', '0009017207', 'S3', 13),
+(34, 'Lusiana, ST, MT', '197402271999032001', 'Perempuan', 'Islam', 3, 'L', '0027027401', 'S2', 13),
+(35, 'Ir. Ahmad Faisal, DEA', '196405051989031002', 'Laki-laki', 'Islam', 1, 'AA', '0005056405', 'S2', 13),
+(36, 'Iqnasius Apui, ST, MT. ', '196908181997021001', 'Laki-laki', 'Katolik', 3, 'L', '0018086901', 'S2', 13),
+(37, 'Dr.techn. Zairin Zain, ST, MT', '197606162005011001', 'Laki-laki', 'Islam', 4, 'LK', '0016067606', 'S3', 3),
+(38, 'Emilya Kalsum, ST, MT, IPM', '197207261998022001', 'Perempuan', 'Islam', 4, 'L', '0026077202', 'S2', 3),
+(39, 'Ir. Rudiyono, MT', '195708111986031002', 'Laki-laki', 'Islam', 4, 'L', '0011085706', 'S2', 3),
+(40, 'Irwin Ramsyah, ST, MT', '197203101999031003', 'Laki-laki', 'Islam', 3, 'L', '0010037201', 'S2', 3),
+(41, 'Valentinus Pebriano, ST, MT ', '197002251999031001', 'Laki-laki', 'Katolik', 3, 'L', '0025027003', 'S2', 3),
+(42, 'M.Nurhamsyah, ST, M.Sc', '198003062002121003', 'Laki-laki', 'Islam', 3, 'L', '0006038001', 'S2', 3),
+(43, 'Dr. Uray Ferry Andi, ST, MT', '197405302000031001', 'Laki-laki', 'Islam', 3, 'L', '0030057401', 'S3', 3),
+(44, 'Yudi Purnomo, ST, MT', '19770524200212004', 'Laki-laki', 'Islam', 3, 'L', '0024057701', 'S2', 3),
+(45, 'Bontor Jumaylinda br. Gultom, ST, MT', '198105222008122003', 'Perempuan', 'Kristen', 4, 'L', '0022058105', 'S2', 3),
+(46, 'Muhamad Ridha Alhamdani, ST, M.Sc', '197906022002121004', 'Laki-laki', 'Islam', 2, 'AA', '0002067901', 'S2', 3),
+(47, 'Jawas Dwijo Putro, ST, M.Sc', '198007052008121003', 'Laki-laki', 'Islam', 2, 'AA', '0005078006', 'S2', 3),
+(48, 'Ivan Gunawan, ST, M.Sc', '198308132010121004', 'Laki-laki', 'Islam', 2, 'AA', '0013088303', 'S2', 3),
+(49, 'Tri Wibowo Caesariadi, ST, MT', '197601062002121010', 'Laki-laki', 'Islam', 2, 'AA', '0006017601', 'S2', 3),
+(50, 'Lestari, ST, MT', '198401142008012002', 'Perempuan', 'Islam', 3, 'L', '0014018401', 'S2', 3),
+(51, 'Affrilyno, ST, M.Sc', '197504052008011014', 'Laki-laki', 'Islam', 2, 'AA', '0005047507', 'S2', 3),
+(52, 'Hamdil Khaliesh, ST, MT', '198412262008011003', 'Laki-laki', 'Islam', 2, 'AA', '0026128401', 'S2', 3),
+(53, 'Dr. Syaiful Muazir, ST, MT', '198108172008011012', 'Laki-laki', 'Islam', 3, 'L', '0017088103', 'S3', 3),
+(54, 'Dr. Arifin, ST, M.Eng.Sc  ', '197210281998031005', 'Laki-laki', 'Islam', 5, 'LK', '0004017101', 'S3', 4),
+(55, 'Dr. Rizki Purnaini, ST, MT', '197207231998022001', 'Perempuan', 'Islam', 4, 'L', '0023077202', 'S3', 4),
+(56, 'Dr. Aji Ali Akbar, M.Si', '197711112006041001', 'Laki-laki', 'Islam', 4, 'L', '0011117705', 'S3', 4),
+(57, 'Isna Apriani, ST, M.Si', '197704152005012001', 'Perempuan', 'Islam', 3, 'L', '0015047706', 'S2', 4),
+(58, 'Kiki Prio Utomo, ST, M.Sc', '197505192006041001', 'Laki-laki', 'Islam', 2, 'AA', '0019057505', 'S2', 4),
+(59, 'Dr. Winardi, ST, MT', '197404232005011002', 'Laki-laki', 'Islam', 2, 'L', '0023047403', 'S3', 4),
+(60, 'Dr. Robby Irsan, ST, M.Si ', '198306112008011005', 'Laki-laki', 'Islam', 3, 'L', '0011068301', 'S3', 4),
+(61, 'Laili Fitria, S.T., M.T.', '198602212014042001', 'Perempuan', 'Islam', 2, 'L', '0021028601', 'S2', 4),
+(62, 'Dian Rahayu Jati, ST, M.Si', '197802052008122002', 'Perempuan', 'Katolik', 3, 'L', '0005027801', 'S2', 4),
+(63, 'Yulisa Fitrianingsih, ST, MT  ', '198307122008012008', 'Perempuan', 'Islam', 2, 'AA', '0012078301', 'S2', 4),
+(64, 'Ulli Kadaria Asmin, ST, MT', '198810192015042001', 'Perempuan', 'Islam', 2, 'AA', '0019108802', 'S2', 4),
+(65, 'Suci Pramadita, ST, MT', '198904082015042003', 'Perempuan', 'Islam', 2, 'TP', '0008048902', 'S2', 4),
+(66, 'Aini Sulastri, S.Si, M.Si', '198502022019032013', 'Perempuan', 'Islam', 2, 'TP', '0002028506', 'S2', 4),
+(67, 'Govira Christiadora Asbanu,S.Pd.Si.,M.Sc', '198902182019032013', 'Perempuan', 'Katolik', 2, 'TP', '0018028904', 'S2', 4),
+(68, 'Jumiati, S.Si, M.Si', '198406222019032015', 'Perempuan', 'Islam', 2, 'TP', '0022068409', 'S2', 4),
+(69, 'Putranty Widha Nugraheni, S.Pd., M.Si.', '199102162020122010', 'Perempuan', 'Islam', 2, 'CPNS', '-', 'S2', 4),
+(70, 'Dr. Ir. Gst. Zulkifli Mulki, DEA', '195802151985031002', 'Laki-laki', 'Islam', 4, 'L', '0015025802', 'S3', 5),
+(71, 'Mira Sophia Lubis, ST, MT', '197206022000122001', 'Perempuan', 'Islam', 3, 'L', '0002067205', 'S2', 5),
+(72, 'Dr. Erni Yuniarti, ST, M.Si', '197807032008012016', 'Perempuan', 'Islam', 2, 'AA', '0003077805', 'S3', 5),
+(73, 'Firsta R. Hernovianty, ST, MT', '198711022014042001', 'Perempuan', 'Islam', 2, 'AA', '0002118701', 'S2', 5),
+(74, 'Nana Novita Pratiwi, ST, M.Eng', '198611022014042001', 'Perempuan', 'Islam', 2, 'AA', '0002118603', 'S2', 5),
+(75, 'Agustiah Wulandari, ST, MT', '198908172014042001', 'Perempuan', 'Islam', 2, 'AA', '0017088901', 'S2', 5),
+(76, 'Dr. Ely Nurhidayati, ST, MT', '198502182019032009', 'Perempuan', 'Islam', 2, 'TP', '0018028505', 'S3', 5),
+(77, 'Dr. Ir. Johnny MTS, M.Sc', '195710081986031001', 'Laki-laki', 'Kristen', 7, 'LK', '0008105707', 'S3', 6),
+(78, 'Dr.Eng Mochammad Meddy Danial, S.T, M.T., IPM.', '197105012000121001', 'Laki-laki', 'Islam', 5, 'LK', '0001057103', 'S3', 6),
+(79, 'Aryanto, ST, MT', '197301082000121002', 'Laki-laki', 'Islam', 4, 'L', '0008017301', 'S2', 6),
+(80, 'Arfena Deah Lestari, ST, M.Eng', '199005082015042003', 'Perempuan', 'Islam', 2, 'AA', '0008059001', 'S2', 6),
+(81, 'Riyanny Pratiwi, ST, MT', '197511031999032001', 'Perempuan', 'Islam', 3, 'L', '0003117502', 'S2', 6),
+(82, 'Asep Supriyadi, ST, MT', '197503011999031002', 'Laki-laki', 'Islam', 2, 'AA', '0001037503', 'S2', 6),
+(83, 'Budhi Purwoko, ST, MT', '197206052000031002', 'Laki-laki', 'Islam', 3, 'L', '0005067201', 'S2', 7),
+(84, 'Ir. Azwa Nirmala, MT ', '196804291993032004', 'Perempuan', 'Islam', 5, 'LK', '0029046811', 'S2', 7),
+(85, 'Ir. Syahrudin, MT', '196809081997021001', 'Laki-laki', 'Islam', 5, 'LK', '0008096806', 'S2', 7),
+(86, 'M. Khalid Syafrianto, ST, MT', '198112072014041001', 'Laki-laki', 'Islam', 2, 'AA', '0007128105', 'S2', 7),
+(87, 'Hendri Sutrisno, ST, MT', '198901302019031006', 'Laki-laki', 'Islam', 2, 'TP', '0030018901', 'S2', 7),
+(88, 'Fitriana Meilasari, S.Si, MT', '198805302019032014', 'Perempuan', 'Islam', 2, 'TP', '0030058803', 'S2', 7),
+(89, 'Septami Setiawati, S.Si, M.Sc, MCSM', '199309162019032022', 'Perempuan', 'Islam', 2, 'TP', '0016099302', 'S2', 7),
+(90, 'Wahdaniah Mukhtar, ST, M.Eng', '199106302019032026', 'Perempuan', 'Islam', 2, 'TP', '0030069102', 'S2', 7),
+(91, 'Ricka Aprillia, ST, MT', '199004092019032018', 'Perempuan', 'Islam', 2, 'TP', '1109049001', 'S2', 7),
+(92, 'Dr. Murad, M.S., M.T.', '196311071989031001', 'Laki-laki', 'Islam', 7, 'LK', ' 0007116308', 'S3', 7),
+(93, 'Prof. Dr. Eng. Ir. Ismail Yusuf, M.T. ', '196503181991031011', 'Laki-laki', 'Islam', 8, 'GB', '0018036502', 'S3', 2),
+(94, 'Ir. Rudy Gianto, M.T., Ph.D  ', '196703271992031004', 'Laki-laki', 'Kristen', 5, 'LK', '0027036707', 'S3', 2),
+(95, 'Dr. Purwoharjono, S.T., M.T., IPM.', '197201021998021001', 'Laki-laki', 'Islam', 5, 'LK', '0002017209', 'S3', 2),
+(96, 'Dr. Ir. Bomo Wibowo Sanjaya, S.T., M.T., IPM.', '197404011999031003', 'Laki-laki', 'Islam', 4, 'L', '0001047409', 'S3', 2),
+(97, 'Dr. Redi Ratiandi Yacoub, S.T., M.T.', '197101031997021002', 'Laki-laki', 'Islam', 4, 'L', '0003017107', 'S3', 2),
+(98, 'Prof. Dr. Eng. Ir. Rudi Kurnianto, S.T., M.T., IPM', '196705271995011001', 'Laki-laki', 'Islam', 8, 'GB', '0027056719', 'S3', 2),
+(99, 'Dr. Ir. H. M. Iqbal Arsyad, M.T., IPM', '196609071992031002', 'Laki-laki', 'Islam', 7, 'LK', '0007096605', 'S3', 8),
+(100, 'Dr. Eng. Ferry Hadary, S.T., M.Eng., IPM', '197102281995121001', 'Laki-laki', 'Islam', 5, 'LK', '0028027104', 'S3', 8),
+(101, 'Prof. Dr.-Ing. Seno Darmawan Panjaitan, S.T., M.T.', '197507162000121001', 'Laki-laki', 'Katolik', 6, 'GB', '0016077504', 'S3', 8),
+(102, 'H. Ir. Fitri Imansyah S.T.,M.T., IPU, ASEAN Eng.', '196912271997021001', 'Laki-laki', 'Islam', 7, 'LK', '0027126903', 'S2', 8),
+(103, 'Ir. Junaidi, M.Sc., IPM.', '195908281986021001', 'Laki-laki', 'Islam', 6, 'LK', '0028085919', 'S2', 8),
+(104, 'Syaifurrahman, S.T., M.T.', '197009211995121001', 'Laki-laki', 'Islam', 5, 'LK', '0021097005', 'S2', 8),
+(105, 'Muhammad Saleh, S.T., M.T., IPM.', '196706161994121001', 'Laki-laki', 'Islam', 5, 'LK', '0016066709', 'S2', 8),
+(106, 'Ir. Danial, M.T., IPM. ', '196202121992031002', 'Laki-laki', 'Islam', 5, 'LK', '0012026216', 'S2', 8),
+(107, 'F. Trias Pontia Wigyarianto , S.T., M.T., IPM., AS', '197510012000031001', 'Laki-laki', 'Katolik', 5, 'LK', '0001107506', 'S2', 8),
+(108, 'Managam Rajagukguk, ST, M.T., IPM.', '197211162000031001', 'Laki-laki', 'Kristen', 5, 'LK', '0016117205', 'S2', 8),
+(109, 'Ir. Neilcy Tjahjamooniarsih, S.T., M.T., IPM. ', '196909191995122001', 'Perempuan', 'Islam', 5, 'LK', '0019096906', 'S2', 8),
+(110, 'Jannus Marpaung, S.T., M.T.', '197307211997021001', 'Laki-laki', 'Kristen', 4, 'L', '0021077303', 'S2', 8),
+(111, 'Dr. Dedy Suryadi, S.T., M.T.', '196812031995121001', 'Laki-laki', 'Islam', 4, 'L', '0003126807', 'S3', 8),
+(112, 'Hendro Priyatman, S.T., M.T.      ', '196806011995031003', 'Laki-laki', 'Islam', 4, 'L', '0001066812', 'S2', 8),
+(113, 'Hilda, S.T., M.T., IPM., ASEAN Eng.', '196907091995012001', 'Perempuan', 'Islam', 4, 'L', '0009076911', 'S2', 8),
+(114, 'Elang Derdian Marindani, S.T., M.T.', '197203011998021001', 'Laki-laki', 'Islam', 3, 'L', '0001037211', 'S2', 8),
+(115, 'Drs. Ade Elbani, M.T.', '196305221995021001', 'Laki-laki', 'Islam', 5, 'LK', '0022056306', 'S2', 8),
+(116, 'Ir. Kho Hie Khwee, M.T.', '196505261992021001', 'Laki-laki', 'Katolik', 6, 'LK', '0026056505', 'S2', 8),
+(117, 'Zainal Abidin, ST, M.Eng.', '198605072019031008', 'Laki-laki', 'Islam', 2, 'TP', '0007058607', 'S2', 8),
+(118, 'Fitriah, S.T., M.T.', '198606122019032014', 'Perempuan', 'Islam', 2, 'TP', '0012018606', 'S2', 8),
+(119, 'Abqori Aula, S.T., M.Sc.', '198505052019031008', 'Laki-laki', 'Islam', 2, 'TP', '0005058508', 'S2', 8),
+(120, 'Eka Kusumawardhani, S.T., M.T.', ' 199308282020122017', 'Perempuan', 'Islam', 2, 'CPNS', '0028089304', 'S2', 8),
+(121, 'Leonardus Sandy Ade Putra, S.T., M.T.', '199410072020121003', 'Laki-laki', 'Katolik', 2, 'CPNS', '1107109401', 'S2', 8),
+(122, 'Dr. Herry  Sujaini, S.T., M.T.', '196806291997021001', 'Laki-laki', 'Islam', 5, 'LK', '0029066805', 'S3', 9),
+(123, 'Dr. Arif Bijaksana Putra Negara, S.T., M.T. ', '197208081998021002', 'Laki-laki', 'Islam', 4, 'L', '0008087204', 'S3', 9),
+(124, 'Helfi Nasution, S.Kom, M.Cs.', '197104291998021002', 'Laki-laki', 'Islam', 5, 'LK', '0029047106', 'S2', 9),
+(125, 'Dr. Yus Sholva, S.T., M.T.', '197410192003121002', 'Laki-laki', 'Islam', 5, 'LK', '0019107402', 'S3', 9),
+(126, 'H. Hengky Anra, S.T., M.Kom. ', '197503251999031005', 'Laki-laki', 'Islam', 3, 'L', '0025037501', 'S2', 9),
+(127, 'Heri Priyanto, S.T., M.T.', '197504122003121001', 'Laki-laki', 'Islam', 3, 'L', '0012047503', 'S2', 9),
+(128, 'Tursina, S.T., M.Cs.', '197801152002122003', 'Perempuan', 'Islam', 3, 'L', '0015017803', 'S2', 9),
+(129, 'Dr. Eva Faja Ripanti, S.Kom., MMSI., Ph.D.', '197803192008012014', 'Perempuan', 'Islam', 3, 'L', '0019037806', 'S3', 9),
+(130, 'Novi Safriadi, S.T., M.T.', '198411032008011003', 'Laki-laki', 'Islam', 3, 'L', '0003118401', 'S2', 9),
+(131, 'Muhammad Azhar Irwansyah, S.T., M.Eng.', '198506062008121002', 'Laki-laki', 'Islam', 3, 'L', '0006068501', 'S2', 9),
+(132, 'Rudy Dwi Nyoto, S.T., M.Eng.', '197803302005011002', 'Laki-laki', 'Kristen', 2, 'AA', '0030037806', 'S2', 9),
+(133, 'Yulianti, S.Kom., MMSI.', '197210162008012005', 'Perempuan', 'Islam', 2, 'AA', '0016107201', 'S2', 9),
+(134, 'Anggi Srimurdianti Sukamto, S.T., M.T.', '198604302012122002', 'Perempuan', 'Islam', 2, 'AA', '0030048602', 'S2', 9),
+(135, 'Helen Sastypratiwi, S.T., M. Eng.', '198601172012122004', 'Perempuan', 'Islam', 2, 'AA', '0017018601', 'S2', 9),
+(136, 'Anggi Perwitasari, S.T., M.T.', '198908192019032012', 'Perempuan', 'Islam', 2, 'TP', '0019088905', 'S2', 9),
+(137, 'Enda Esyudha Pratama, S.T., M.T.', '198810182019031006', 'Laki-laki', 'Islam', 2, 'TP', '0018108807', 'S2', 9),
+(138, 'Morteza Muthahhari, S.Kom., M.T.I.', '198607092019031008', 'Laki-laki', 'Islam', 2, 'TP', '0009078604', 'S2', 9),
+(139, 'Haried Novriando, S.Kom., M.Eng.', '198611132020121005', 'Laki-laki', 'Islam', 2, 'CPNS', '0013118607', 'S2', 9),
+(140, 'Rina Septiriana, S.T., M.Cs.', '198709232020122001', 'Perempuan', 'Islam', 2, 'CPNS', '-', 'S2', 9),
+(141, 'Dr.Eng. Mohammad  Sofitra, S.T., M.T., IPM.', '197406161999031003', 'Laki-laki', 'Islam', 4, 'L', '0016067403', 'S3', 10),
+(142, 'Silvia Uslianti, ST., M.T.', '197208311998022001', 'Perempuan', 'Islam', 5, 'LK', '0031087203', 'S2', 10),
+(143, 'Riadi Budiman, S.T.,M.T., M.Pd', '197201311998021001', 'Laki-laki', 'Islam', 4, 'L', '0031017206', 'S2', 10),
+(144, 'Hafzoh Batubara, ST, M.Sc', '196812101998022002', 'Perempuan', 'Islam', 4, 'L', '0010126811', 'S2', 10),
+(145, 'Ivan Sujana, S.T., M.T., IPM.', '197012301999031002', 'Laki-laki', 'Islam', 3, 'L', '0030127007', 'S2', 10),
+(146, 'Tri Wahyudi, S.T., M.T.', '198105292010121002', 'Laki-laki', 'Islam', 3, 'L', '0029058104', 'S2', 10),
+(147, 'Dr. Ir. Yopa Eka Prawatya, S.T., M.Eng., IPM.', '198504082010121009', 'Laki-laki', 'Islam', 3, 'L', '0008048502', 'S3', 10),
+(148, 'Dedi Wijayanto, S.T., M.T.', '197908082008011005', 'Laki-laki', 'Islam', 2, 'AA', '0008087903', 'S2', 10),
+(149, 'Noveicalistus H Djanggu, S.T., M.T.', '198311022008011002', 'Laki-laki', 'Katolik', 2, 'AA', '0002118301', 'S2', 10),
+(150, 'Febri Prima, S.T., M.Eng.', '199002282019031006', 'Laki-laki', 'Islam', 2, 'TP', '0028029005', 'S2', 10),
+(151, 'Pepy Anggela, S.T., M.T.', '198802262019032015', 'Perempuan', 'Islam', 2, 'TP', '0026028805', 'S2', 10),
+(152, 'Ratih Rahmawati, S.T., M.T,', '198805092019032014', 'Perempuan', 'Islam', 2, 'TP', '0009058804', 'S2', 10),
+(153, 'Ayong Hiendro, S.T., M.T.', '196911011997021001', 'Laki-laki', 'Islam', 5, 'LK', '0001116905', 'S2', 11),
+(154, 'Yandri, S.T., M.T.', '196903291999031001', 'Laki-laki', 'Islam', 4, 'L', '0029036902', 'S2', 11),
+(155, 'Ir. Muhammad Taufiqurrahman, S.T., M.T., IPM.', '198206032014041001', 'Laki-laki', 'Islam', 2, 'AA', '1103068203', 'S2', 12),
+(156, 'Eddy Kurniawan, S.T., M.Sc.', '198412262015041001', 'Laki-laki', 'Islam', 2, 'AA', '0026128403', 'S2', 11),
+(157, 'Gita Suryani Lubis, S.T., M.T.', '199009232019032021', 'Perempuan', 'Katolik', 2, 'TP', '0023099006', 'S2', 11),
+(158, 'Romario Aldrian Wicaksono, S.T., M.Eng.', '199407152019031010', 'Laki-laki', 'Islam', 2, 'TP', '0015079401', 'S2', 11),
+(159, 'Dr. Ir. Usman A. Gani, S.T., M.T., IPM.', '197002161995011001', 'Laki-laki', 'Islam', 5, 'LK', '0016027006', 'S3', 12),
+(160, 'Syahrul Khairi, S. Si., M. Eng.', '198406232014041001', 'Laki-laki', 'Islam', 2, 'AA', '0023068402', 'S2', 12),
+(161, 'Sri Rezeki, S.Si., M.Sc.', '198504012015042002', 'Perempuan', 'Islam', 2, 'AA', '0001048503', 'S2', 12),
+(162, 'Rinjani Ratih Rakasiwi, S.T., M.T.', '199001042015042002', 'Perempuan', 'Islam', 2, 'AA', '0004019002', 'S2', 12),
+(163, 'Wivina Diah Ivontianti, S.S.i., M.Eng.', '198907282019032020', 'Perempuan', 'Katolik', 2, 'TP', '0028078906', 'S2', 12),
+(164, 'Marcelina, S.T., M.Sc.', '198601162019032011', 'Perempuan', 'Islam', 2, 'TP', '0016018603', 'S2', 12),
+(165, 'Eva Pramuni Oktaviani Sitanggang, S.T., M.Eng.', '199007102019032023', 'Perempuan', 'Kristen', 2, 'TP', '0010079005', 'S2', 12),
+(166, 'Lalak Tarbiyatun Nasyin Maleiva, S.Si., M.Eng.', '199304112020122018', 'Perempuan', 'Islam', 2, 'CPNS', '-', 'S2', 12);
 
 -- --------------------------------------------------------
 
@@ -725,6 +873,155 @@ INSERT INTO `prodi` (`Id_prodi`, `prodi`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sertifikat`
+--
+
+CREATE TABLE `sertifikat` (
+  `Id_sertifikat` int(11) NOT NULL,
+  `Sertifikat` varchar(255) NOT NULL,
+  `Keterangan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sertifikat`
+--
+
+INSERT INTO `sertifikat` (`Id_sertifikat`, `Sertifikat`, `Keterangan`) VALUES
+(1, 'PPI', 'SERTIFIKAT PPI\r\n\r\n'),
+(2, 'IPP\r\n', ''),
+(3, 'IPM\r\n', ''),
+(4, 'IPU\r\n', ''),
+(5, 'AFEO\r\n\r\n', ''),
+(6, 'ACPE\r\n\r\n', ''),
+(7, 'SERTIFIKAT KOMPETENSI\r\n\r\n', ''),
+(8, 'SERTIFIKAT KETERANGAN AHLI	\r\n	\r\n', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sertifikat_dosen`
+--
+
+CREATE TABLE `sertifikat_dosen` (
+  `Id_serdos` int(11) NOT NULL,
+  `NIP` varchar(50) NOT NULL,
+  `Id_sertifikat` int(11) NOT NULL,
+  `Nomor_sertifikat` text NOT NULL,
+  `Keterangan` text NOT NULL,
+  `Berkas` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sertifikat_dosen`
+--
+
+INSERT INTO `sertifikat_dosen` (`Id_serdos`, `NIP`, `Id_sertifikat`, `Nomor_sertifikat`, `Keterangan`, `Berkas`) VALUES
+(1, '195812151988102001', 1, '210/A.08/FTI-PPI-UMI.2021', '', '210/A.08/FTI-PPI-UMI.2021'),
+(2, '195812151988102001', 4, '3-15-00-000066-00', '', '3-15-00-000066-00'),
+(3, '195812151988102001', 6, 'ACPE-04344/ID ', '', 'ACPE-04344/ID '),
+(4, '195812151988102001', 8, '0540-1/14/BSA-HATHI/01/2021', '', '0540-1/14/BSA-HATHI/01/2021'),
+(5, '195812151988102001', 5, '√', '', '√'),
+(6, '195805101984031003', 3, '2-15-00-001078-00', '', '2-15-00-001078-00'),
+(7, '195805101984031003', 5, '√', '', '√'),
+(8, '195805101984031003', 6, '√', '', '√'),
+(9, '195708251984031001', 3, '√', '', '√'),
+(10, '195708251984031001', 6, '√', '', '√'),
+(11, '196801161994031003', 4, '3-15-00-000090-00', '', '3-15-00-000090-00'),
+(12, '197201311996012001', 0, '2-15-00-002083-00', '', '2-15-00-002083-00'),
+(13, '197201311996012001', 7, '8549.2351.0007.424.2021', '', '8549.2351.0007.424.2021'),
+(14, '197201311996012001', 7, '280/SER/CWS/XII/2021', '', '280/SER/CWS/XII/2021'),
+(15, '197201311996012001', 7, 'IPI (Institut Penulis Indonesia', '', 'IPI (Institut Penulis Indonesia'),
+(16, '197201311996012001', 8, 'Metodologi Pelatihan', '', 'Metodologi Pelatihan'),
+(17, '197201311996012001', 8, 'Metodologi Pelatihan', '', 'Metodologi Pelatihan'),
+(18, '197201311996012001', 8, 'Pelatihan Berbasis Kompetensi Penyuntingan Substantif', '', 'Pelatihan Berbasis Kompetensi Penyuntingan Substantif'),
+(19, '196707141993031002', 3, '2-15-00-001083-00', '', '2-15-00-001083-00'),
+(20, '196707141993031002', 8, '1.2.201.1.025.09.1940235', '', '1.2.201.1.025.09.1940235'),
+(21, '196712231992031002', 3, '2-15-00-001081-00', '', '2-15-00-001081-00'),
+(22, '197005201998021001', 3, '2-15-00-001084-00', '', '2-15-00-001084-00'),
+(23, '197101031996011001', 3, '2-15-00-001082-00', '', '2-15-00-001082-00'),
+(24, '196508021990031004', 3, '√', '', '√'),
+(25, '197506182000121001', 3, '2-15-00-001246-00', '', '2-15-00-001246-00'),
+(26, '196805181993032002', 1, '√', '', '√'),
+(27, '196805181993032002', 3, '√', '', '√'),
+(28, '197111031997022001', 3, '2-15-00-002085-00', '', '2-15-00-002085-00'),
+(29, '196304231989032002', 3, '2-15-00-002086-01', '', '2-15-00-002086-01'),
+(30, '197001051997022003', 3, '2-15-00-002081-00', '', '2-15-00-002081-00'),
+(31, '197409221999032001', 3, '2-15-00-012250-01', '', '2-15-00-012250-01'),
+(32, '197212262000031001', 3, '2-15-00-002195-00', '', '2-15-00-002195-00'),
+(33, '196912271997021001', 4, '3-02-00-000088-00', '', '3-02-00-000088-00'),
+(34, '196912271997021001', 5, '√', '', '√'),
+(35, '197404011999031003', 1, '√', '', '√'),
+(36, '197404011999031003', 3, '2-02-00-000808-00', '', '2-02-00-000808-00'),
+(37, '197404011999031003', 5, '√', '', '√'),
+(38, '197510012000031001', 3, '2-02-00-000801-00', '', '2-02-00-000801-00'),
+(39, '197510012000031001', 5, '√', '', '√'),
+(40, '196907091995012001', 3, '2-02-00-000813-00', '', '2-02-00-000813-00'),
+(41, '196907091995012001', 5, 'AE-10858', '', 'AE-10858'),
+(42, '196907091995012001', 8, '1.4.406.2.150.11.1942926', '', '1.4.406.2.150.11.1942926'),
+(43, '196202121992031002', 3, '2-02-00-000802-00', '', '2-02-00-000802-00'),
+(44, '196202121992031002', 8, '1.401.2.150.11.1942176', '', '1.401.2.150.11.1942176'),
+(45, '196705271995011001', 3, '2-02-00-000805-00', '', '2-02-00-000805-00'),
+(46, '197201021998021001', 1, '√', '', '√'),
+(47, '197201021998021001', 3, '2-02-00-000806-00', '', '2-02-00-000806-00'),
+(48, '197201021998021001', 8, '1.401.2.150.11.1942600', '', '1.401.2.150.11.1942600'),
+(49, '196609071992031002', 3, '2-02-00-000807-00', '-', '2-02-00-000807-00'),
+(50, '195908281986021001', 3, '2-02-00-000811-00', '', '2-02-00-000811-00'),
+(51, '196609071992031002', 8, '1.401.2.150.11.1942174', 'Ahli Teknik Tenaga Listrik - Madya', '1.401.2.150.11.1942174'),
+(52, '195908281986021001', 8, '1.401.2.150.11.1942178', 'Ahli Teknik Tenaga Listrik - Madya', '1.401.2.150.11.1942178'),
+(53, '197211162000031001', 3, '2-02-00-000812-00', '', '2-02-00-000812-00'),
+(54, '197211162000031001', 8, '1.6.603.2.150.11.1944082', 'Ahli K3 Kontruksi - Madya', '1.6.603.2.150.11.1944082'),
+(55, '196706161994121001', 3, '2-02-00-000815-00', '', '2-02-00-000815-00'),
+(56, '196706161994121001', 8, '1.4.405.2.150.11.1942931', 'Ahli Teknik Elektronika Dan Telekomunikasi Dalam Gedung - Madya', '1.4.405.2.150.11.1942931'),
+(57, '196909191995122001', 3, '2-02-00-000816-00', '', '2-02-00-000816-00'),
+(58, '196909191995122001', 8, '021101702587902', 'Ahli Pengadaan Nasional', '021101702587902'),
+(59, '197507162000121001', 3, '√', '', '√'),
+(60, '197507162000121001', 8, '1.4.405.2.150.11.1942929', 'Ahli Teknik Elektronika Dan Telekomunikasi Dalam Gedung - Madya', '1.4.405.2.150.11.1942929'),
+(61, '196812031995121001', 8, '1.4.405.2.150.11.1942925', 'Ahli Teknik Elektronika Dan Telekomunikasi Dalam Gedung - Madya', '1.4.405.2.150.11.1942925'),
+(62, '196305221995021001', 3, '2-02-00-001492-00', '', '2-02-00-001492-00'),
+(63, '196305221995021001', 8, '1.4.405.2.150.11.1942930', 'Ahli Teknik Elektronika Dan Telekomunikasi Dalam Gedung - Madya', '1.4.405.2.150.11.1942930'),
+(64, '196305221995021001', 8, '011/IEL.23/IATKI/XI/2021', 'Ikatan Ahli Teknik Ketenagalistrikan Indonesia', '011/IEL.23/IATKI/XI/2021'),
+(65, '197203011998021001', 8, '1.4.405.2.150.11.1943155', 'Ahli Teknik Elektronika Dan Telekomunikasi Dalam Gedung - Madya', '1.4.405.2.150.11.1943155'),
+(66, '197307211997021001', 8, '1.4.405.2.150.11.1943158', 'Ahli Teknik Elektronika Dan Telekomunikasi Dalam Gedung - Madya', '1.4.405.2.150.11.1943158'),
+(67, '197009211995121001', 8, '1.4.405.2.150.11.1943157', 'Ahli Teknik Elektronika Dan Telekomunikasi Dalam Gedung - Madya', '1.4.405.2.150.11.1943157'),
+(68, '197307211997021001', 3, '√', '', '√'),
+(69, '197009211995121001', 3, '√', '', '√'),
+(70, '196505261992021001', 3, '√', '', '√'),
+(71, '197102281995121001', 3, '2-02-00-001488-00', '', '2-02-00-001488-00'),
+(72, '197207261998022001', 3, '√', '', '√'),
+(73, '196806291997021001', 7, '62029.2511.4669.2020', 'System Analyst', '62029.2511.4669.2020'),
+(74, '196806291997021001', 7, '62019.2514.4449.2020', 'Programmer', '62019.2514.4449.2020'),
+(75, '197208081998021002', 7, '62029.2511.4665.2020', 'System Analyst', '62029.2511.4665.2020'),
+(76, '197104291998021002', 7, '0174/LSV-INF/II/2020', 'System Analyst', '0174/LSV-INF/II/2020'),
+(77, '197104291998021002', 0, '62019.2514.4446.2020', 'Programmer', '62019.2514.4446.2020'),
+(78, '197503251999031005', 7, '62029.2511.4659.2020', 'System Analyst', '62029.2511.4659.2020'),
+(79, '197504122003121001', 7, '62029.2511.4669.2020', 'System Analyst', '62029.2511.4669.2020'),
+(80, '197504122003121001', 7, '62019.2514.4440.2020', 'Programmer', '62019.2514.4440.2020'),
+(81, '197801152002122003', 7, '62029.2511.4656.2020', 'System Analyst', '62029.2511.4656.2020'),
+(82, '197801152002122003', 7, '62019.2514.4444.2020', 'Programmer', '62019.2514.4444.2020'),
+(83, '198411032008011003', 7, '62029.2511.4672.2020', 'System Analyst', '62029.2511.4672.2020'),
+(84, '198411032008011003', 7, '62019.2514.4443.2020', 'Programmer', '62019.2514.4443.2020'),
+(85, '197803302005011002', 7, '62029.2511.4661.2020', 'System Analyst', '62029.2511.4661.2020'),
+(86, '197803302005011002', 7, '62019.2514.4448.2020', 'Programmer', '62019.2514.4448.2020'),
+(87, '197210162008012005', 7, '62029.2511.4671.2020', 'System Analyst', '62029.2511.4671.2020'),
+(88, '197210162008012005', 7, '62019.2514.4442.2020', 'Programmer', '62019.2514.4442.2020'),
+(89, '198604302012122002', 7, '62029.2511.4670.2020', 'System Analyst', '62029.2511.4670.2020'),
+(90, '198604302012122002', 7, '62019.2514.4441.2020', 'Programmer', '62019.2514.4441.2020'),
+(91, '198504082010121009', 1, '√', '', '√'),
+(92, '198504082010121009', 3, '2-02-00-000816-00', '', '2-02-00-000816-00'),
+(93, '197406161999031003', 3, '√', '', '√'),
+(94, '197012301999031002', 3, '2-07-00-000562-00', '', '2-07-00-000562-00'),
+(95, '197105012000121001', 3, '√', '', '√'),
+(96, '196804291993032004', 3, '√', '', '√'),
+(97, '197002161995011001', 1, '√', '', '√'),
+(98, '197002161995011001', 3, '2-02-00-000810-00\n', '', '√'),
+(99, '196911011997021001', 3, '2-02-00-001486-00', '', '2-02-00-001486-00'),
+(100, '196911011997021001', 8, '1.4.401.2.150.11.1942602', 'Ahli Teknik Tenaga Listrik - Madya', '1.4.401.2.150.11.1942602'),
+(101, '198206032014041001', 1, '239022020040348', '', '239022020040348'),
+(102, '198206032014041001', 3, '2-02-00-001501-01', '', '2-02-00-001501-01');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `surat_keputusan`
 --
 
@@ -741,7 +1038,8 @@ CREATE TABLE `surat_keputusan` (
 --
 
 INSERT INTO `surat_keputusan` (`Id_sk`, `Nomor_sk`, `Tanggal_sk`, `Tentang`, `Tanggal`) VALUES
-(3, '12345', '2021-11-20', 'surat keputusan', '2021-11-26');
+(3, '12345', '2021-11-20', 'surat keputusan', '2021-11-26'),
+(4, 'f', '2022-01-06', 'ff', '2022-01-03');
 
 -- --------------------------------------------------------
 
@@ -990,6 +1288,18 @@ ALTER TABLE `prodi`
   ADD PRIMARY KEY (`Id_prodi`);
 
 --
+-- Indexes for table `sertifikat`
+--
+ALTER TABLE `sertifikat`
+  ADD PRIMARY KEY (`Id_sertifikat`);
+
+--
+-- Indexes for table `sertifikat_dosen`
+--
+ALTER TABLE `sertifikat_dosen`
+  ADD PRIMARY KEY (`Id_serdos`);
+
+--
 -- Indexes for table `surat_keputusan`
 --
 ALTER TABLE `surat_keputusan`
@@ -1071,13 +1381,13 @@ ALTER TABLE `auth_tokens`
 -- AUTO_INCREMENT for table `datas`
 --
 ALTER TABLE `datas`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `datas_anggota`
 --
 ALTER TABLE `datas_anggota`
-  MODIFY `Id_datas_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id_datas_anggota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `dep`
@@ -1095,7 +1405,7 @@ ALTER TABLE `disposisi`
 -- AUTO_INCREMENT for table `dosen`
 --
 ALTER TABLE `dosen`
-  MODIFY `Id_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `Id_dosen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 
 --
 -- AUTO_INCREMENT for table `golongan`
@@ -1128,10 +1438,22 @@ ALTER TABLE `prodi`
   MODIFY `Id_prodi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `sertifikat`
+--
+ALTER TABLE `sertifikat`
+  MODIFY `Id_sertifikat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `sertifikat_dosen`
+--
+ALTER TABLE `sertifikat_dosen`
+  MODIFY `Id_serdos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+
+--
 -- AUTO_INCREMENT for table `surat_keputusan`
 --
 ALTER TABLE `surat_keputusan`
-  MODIFY `Id_sk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id_sk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tugas`

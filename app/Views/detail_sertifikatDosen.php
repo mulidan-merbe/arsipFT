@@ -43,7 +43,7 @@
              <?php if($validation->getError('Berkas')) {?>
                         <div id="validationServer03Feedback" class="invalid-feedback">
                         <?= $error = $validation->getError('Berkas'); ?>
-                        </div>
+                        </div>  
                      <?php }?>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
@@ -72,7 +72,7 @@
                     <td><?= $value['Berkas'] ?></td>
                     <td class="col-1 text-center"> 
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-ubah<?= $value['NIP']?>"><i class="fas fa-edit"></i></button>
+                        <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-ubah<?= $value['NIP']?>"><i class="fa fa-edit"></i></button>
                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-hapus<?= $value['NIP']?>"><i class="fa fa-trash" ></i></button>
                     </div>
                     </td>

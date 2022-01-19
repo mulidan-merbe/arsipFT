@@ -70,10 +70,24 @@
                     <td><?= $value['Ringkasan'] ?></td>
                     <td><?= $value['Tanggal_terima'] ?></td>
                     <td><?php if($value['Status']) { ?><span class="badge badge-success"><?= $value['Tujuan'] ?></span><span class="badge badge-warning"><?= $value['Department'] ?></span> <?php } else { ?> <span class="badge badge-warning"><?= $value['Tujuan'] ?></span><?php } ?></td>
-                    <td class="text-center"> 
+                    <td class="text-center">
+                      <div class="btn-group">
+                      <button type="button" class="btn btn-success">Action</button>
+                      <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                        <span class="sr-only">Toggle Dropdown</span>
+                      </button>
+                      <div class="dropdown-menu" role="menu">
+                        <a class="dropdown-item" href="#">Lihat</a>
+                        <a class="dropdown-item" href="#">Ubah</a>
+                        <a class="dropdown-item" href="#">Hapus</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                      </div>
+                    </div> 
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-lihat<?= $value['Id_masuk']?>"><i class="fa fa-trash "></i></button>
-                        <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-ubah<?= $value['Id_masuk']?>"></button>
+
+                        <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal-lihat<?= $value['Id_masuk']?>"><i class="fas fa-eye"></i></button>
+                        <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-ubah<?= $value['Id_masuk']?>"><i class="fas fa-edit"></i></button>
                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-hapus<?= $value['Id_masuk']?>"><i class="fa fa-trash" ></i></button>
                     </div>
                     </td>

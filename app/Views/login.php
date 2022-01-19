@@ -23,7 +23,7 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Silahkan Login</p>
+      <p class="login-box-msg">Silahkan Login testt</p>
         <?php
         $errors = session()->getFlashdata('errors');
         if(!empty($errors)){ ?>

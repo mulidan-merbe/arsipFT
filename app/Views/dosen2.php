@@ -1,3 +1,7 @@
+<?= $this->include('layout/head') ?>
+<?= $this->include('layout/header') ?>
+<?= $this->include('layout/nav') ?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -25,7 +29,7 @@
         <div class="col-md-12">
         <div class="card card-primary" style="min-height: 650px;">
               <div class="card-header">
-                <h3 class="card-title">Data <?= $title ?></h3>
+                <h3 class="card-title">Data <?= $title ?> </h3>
                 <!-- <div class="card-tools">
                 
                 </div> -->
@@ -109,7 +113,7 @@
     <!-- /.content -->
   </div>
      
-
+  <?= $this->include('layout/footer') ?> 
 
    <!-- Modal Cari Sertifikat -->
    <div class="modal fade" id="modal-carisertifikat">
@@ -173,8 +177,8 @@
                   <div class="form-group col-md-6">
                     <label for="">Jenis Kelamin</label>
                     <div class="radio">
-                    <label><input type="radio" name="JK" value="L" checked> Laki-laki</label>
-                    <label><input type="radio" name="JK"  value="P" > Perempuan</label>
+                    <label><input type="radio" name="JK" value="Laki-laki" checked> Laki-laki</label>
+                    <label><input type="radio" name="JK"  value="Perempuan" > Perempuan</label>
                     </div>
                   </div>
                   <div class="form-group col-md-6">
@@ -334,7 +338,8 @@
                   <div class="form-group col-md-6">
                     <label for="">Jenis Kelamin</label>
                     <div class="radio">
-                    <label><input type="radio" name="JK" value="L" checked> Laki-laki</label>
+                    <label><input type="radio" name="JK" value="<?= $value['JK'] ?>" checked> <?= $value['JK']  ?></label>
+                    <label><input type="radio" name="JK" value="L" > Laki-laki</label>
                     <label><input type="radio" name="JK"  value="P" > Perempuan</label>
                     </div>
                   </div>
