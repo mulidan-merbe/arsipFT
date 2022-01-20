@@ -27,50 +27,49 @@
       <div class="container-fluid">
         
       <div class="btn-group">
-      <a type="button2" class="btn btn-info  <?php $uri = service('uri'); if ($uri->getSegment(1) == "dosen") {
+        <a type="button2" class="btn btn-info " href="<?= base_url('dosen') ?>">Data Dosen</a>
+        <a type="button2" class="btn btn-info <?php $uri = service('uri'); if ($uri->getSegment(2) == "sertifikat") {
                                                     echo "active";
-                                                  } ?>" href="<?= base_url('dosen') ?>">Data Dosen</a>
-        <a type="button2" class="btn btn-info" href="<?= base_url('dosen/sertifikat') ?>">Sertifikat</a>
+                                                  } ?>" href="<?= base_url('dosen/sertifikat') ?>">Sertifikat</a>
      </div>
       <div class="row mt-2">
         <div class="col-md-12">
         <div class="card " style="min-height: 650px;">
               <div class="card-header">
-                <h3 class="card-title">Data <?= $title ?> </h3>
+                <h3 class="card-title">Data Sertifikat <?= $title ?> </h3>
                 <!-- <div class="card-tools">
                 
                 </div> -->
               </div>
               <!-- /.card-header -->
-              <?php foreach($prodi  as $key => $value){
-                $nama[] = $value['prodi'];
+              <?php foreach($sertifikat  as $key => $value){
+                $nama[] = $value['Sertifikat'];
                 }
               // echo json_encode($nama);
               ?>
              <?php foreach($count  as $key => $value){
-                $totaldosen[] = $value['total'];
+                $totalsertifikat[] = $value['total'];
               }
             // echo json_encode($nama);
-            ?>
+            ?>  
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-5">
-                  <b>Jumlah Dosen Fakultas Teknik </b>
+                  <b>Jumlah Sertifikat Dosen Fakultas Teknik </b>
                     <table class="table table-bordered mt-2">
                     <thead>
                       <tr>
                         <th class="col-1 text-center">No</th>
-                        <th class="col-5 text-center">Program Studi</th>
+                        <th class="col-5 text-center">Sertifikat</th>
                         <th class="col-1 text-center">Jumlah</th>
                       </tr>
                       </thead>
                       <tbody>
-                     
-                       <?php  $no = 1; foreach($count  as $key => $value){ ?>
+                      <?php  $no = 1; foreach($count  as $key => $value){ ?>
                       <tr>
                         <td class="text-center"><?= $no++ ?>.</td>
-                        <td><?= $value['prodi'] ?></td>
-                        <td class="text-center"> <a href="<?= base_url('') ?>/dosen/prodi/<?= $value['Id_prodi'] ?>"><?= $value['total'] ?></a></td>
+                        <td><?= $value['Sertifikat'] ?></td>
+                        <td class="text-center"> <a href="<?= base_url('') ?>/dosen/lihatSertifikat/<?= $value['Id_sertifikat'] ?>"><?= $value['total'] ?></a></td>
                       </tr>
                       <?php } ?>
                         </table>
@@ -78,11 +77,12 @@
                   <div class="col-md-7">
                   <div class="row">
                     <div class="col-4">
+                      
                         <div class="small-box bg-info">
-                        <div class="inner"> 
+                        <div class="inner">
                           <h3><?= $countId[0]['total'] ?></h3>
 
-                          <p>Total Dosen</p>
+                          <p>Total Sertifikat</p>
                         </div>
                         <div class="icon">
                           <i class="ion ion-stats-bars"></i>
@@ -91,7 +91,7 @@
                       </div>
                     </div>
                   </div>
-                  <canvas id="myChart" class="mt-2"  height="200"></canvas>     
+                  <canvas id="sertifikat" class="mt-2"  height="200"></canvas>     
                   
                 </div>
                   </div>
@@ -113,15 +113,15 @@
   <?= $this->include('layout/footer') ?> 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-     
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
+   
+var ctx = document.getElementById('sertifikat').getContext('2d');
+var sertifikat = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: <?php echo json_encode($nama); ?>,
         datasets: [{
-            label: 'Jumlah Dosen',
-            data: <?php echo json_encode($totaldosen); ?>,
+            label: 'Jumlah Sertifikat',
+            data: <?php echo json_encode($totalsertifikat); ?>,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

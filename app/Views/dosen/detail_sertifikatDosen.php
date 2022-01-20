@@ -26,11 +26,10 @@
       <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-        <div class="card card-primary" style="min-height: 650px;">
+        <div class="card " style="min-height: 650px;">
               <div class="card-header">
-                
-                <h3 class="card-title">Data Berdasarkan Sertifikat <span class="badge badge-success"><?= $title ?></span>
-                
+                <h3 class="card-title">Detail <?= $title ?>
+               
             </h3>
             <button  type="button" class="btn btn-sm btn-warning float-right" onclick="javascript:history.back()"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
                 <!-- <div class="card-tools">
@@ -39,7 +38,17 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-
+              <?php if (session()->getFlashdata('pesangagal')){
+                echo '<div class="alert alert-danger alert-dismissible">';
+                echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Sukses!</h5>';
+                echo session()->getFlashdata('pesangagal');
+                echo '</div>';
+            } ?>
+             <?php if($validation->getError('Berkas')) {?>
+                        <div id="validationServer03Feedback" class="invalid-feedback">
+                        <?= $error = $validation->getError('Berkas'); ?>
+                        </div>  
+                     <?php }?>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -57,7 +66,7 @@
                   <?php
                     $no = 1;
                     
-                    foreach($dosen as $key => $value )  { ?>
+                    foreach($detailSertifikat as $key => $value )  { ?>
                   <tr>
                     <td class="text-center"><?= $no++ ?></td>
                     <td><?= $value['Nama'] ?></td>
@@ -67,7 +76,7 @@
                     <td><?= $value['Berkas'] ?></td>
                     <td class="col-1 text-center"> 
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-ubah<?= $value['NIP']?>"><i class="fas fa-edit"></i></button>
+                        <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-ubah<?= $value['NIP']?>"><i class="fa fa-edit"></i></button>
                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-hapus<?= $value['NIP']?>"><i class="fa fa-trash" ></i></button>
                     </div>
                     </td>
@@ -87,9 +96,8 @@
     </div>
     <!-- /.content -->
   </div>
+     
   <?= $this->include('layout/footer') ?> 
-
-  
   <?php foreach($detailSertifikat as $key => $value )  { ?>
        <!-- Modal Tambah Sertifikat -->
    <div class="modal fade" id="modal-ubah<?= $value['NIP']?>">

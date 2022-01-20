@@ -25,15 +25,22 @@
       <div class="container">
       <section class="content">
       <div class="container-fluid">
-      <div class="row">
+      <div class="btn-group">
+      <a type="button2" class="btn btn-info  <?php $uri = service('uri'); if ($uri->getSegment(1) == "dosen") {
+                                                    echo "active";
+                                                  } ?>" href="<?= base_url('dosen') ?>">Data Dosen</a>
+        <a type="button2" class="btn btn-info" href="<?= base_url('dosen/sertifikat') ?>">Sertifikat</a>
+     </div>
+      <div class="row mt-2">
         <div class="col-md-12">
-        <div class="card card-primary" style="min-height: 650px;">
+        <div class="card " style="min-height: 650px;">
               <div class="card-header">
                 <h3 class="card-title">Data <?= $title ?> </h3>
                 <!-- <div class="card-tools">
                 
                 </div> -->
               </div>
+              
               <!-- /.card-header -->
               <div class="card-body">
               <?php if (session()->getFlashdata('pesan')){
@@ -46,9 +53,9 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
             <i class="fas fa-plus"></i> Tambah
                 </button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-carisertifikat">
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-carisertifikat">
                   Tampilkan Berdasarkan Sertifikat
-                </button>
+                </button> -->
             </div>
                 <table id="example2" class="table table-bordered table-striped mt-2">
                   <thead>

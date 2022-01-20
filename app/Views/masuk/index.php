@@ -71,7 +71,7 @@
                     <td><?= $value['Tanggal_terima'] ?></td>
                     <td><?php if($value['Status']) { ?><span class="badge badge-success"><?= $value['Tujuan'] ?></span><span class="badge badge-warning"><?= $value['Department'] ?></span> <?php } else { ?> <span class="badge badge-warning"><?= $value['Tujuan'] ?></span><?php } ?></td>
                     <td class="text-center">
-                      <div class="btn-group">
+                      <!-- <div class="btn-group">
                       <button type="button" class="btn btn-success">Action</button>
                       <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
                         <span class="sr-only">Toggle Dropdown</span>
@@ -83,7 +83,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Separated link</a>
                       </div>
-                    </div> 
+                    </div>  -->
                     <div class="btn-group">
 
                         <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal-lihat<?= $value['Id_masuk']?>"><i class="fas fa-eye"></i></button>
