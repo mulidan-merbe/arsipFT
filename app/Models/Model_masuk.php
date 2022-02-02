@@ -8,14 +8,17 @@ class Model_masuk extends Model
 {
     public function tampil()
     {
-        return $this->db->table('masuk')
-        ->join('disposisi', 'disposisi.Id_masuk = masuk.Id_masuk', 'left' )
-        ->join('tujuan', 'tujuan.Id_tujuan = masuk.Id_tujuan', 'left')
-        ->join('dep', 'dep.Id_dep = disposisi.Id_dep', 'left')
-        ->orderBy('masuk.Id_masuk', 'DESC')
+        return $this->db->table('masuk m')
+        ->select('m.Id_masuk, m.Asal_surat, m.Nomor_surat, m.Tanggal_surat, m.Tanggal_terima, m.Ringkasan, m.Status,t.Id_tujuan, t.Tujuan, d.Department')
+        ->join('disposisi', 'disposisi.Id_masuk = m.Id_masuk', 'left' )
+        ->join('tujuan t', 't.Id_tujuan = m.Id_tujuan', 'left')
+        ->join('dep d', 'd.Id_dep = disposisi.Id_dep', 'left')
+        ->orderBy('m.Id_masuk', 'DESC')
         ->get()
         ->getResultArray();
     }
+
+    // public function tujuan()
 
     public function tambah($data)
     {

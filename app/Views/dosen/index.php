@@ -152,7 +152,8 @@ var myChart = new Chart(ctx, {
                 'rgba(255, 159, 64, 1)',
                 'rgba(255, 99, 132, 1)',
             ],
-            borderWidth: 2
+            borderWidth: 2,
+            color: 24
         }]
     },
     options: {
@@ -164,8 +165,16 @@ var myChart = new Chart(ctx, {
                 }
             }]
         },
-        
-        
+        plugins: {
+            legend: {
+                labels: {
+                    // This more specific font property overrides the global property
+                    font: {
+                        size: 14
+                    }
+                }
+            }
+        }
     }
 });
 </script>

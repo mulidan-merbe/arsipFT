@@ -32,7 +32,7 @@
             <?php echo form_open_multipart('user/tambah_data'); ?>
                 <div class="form-group">
                     <label for="Nama">Nama</label>
-                    <input name="Nama" class="form-control <?= ($validation->getError('Nama')) ? 'is-invalid' : ''; ?>" id="Nama" placeholder="Nama" value="<?= old('Nama') ?>">
+                    <input name="Nama" class="form-control <?= ($validation->hasError('Nama')) ? 'is-invalid' : ''; ?>" id="Nama" placeholder="Nama" value="<?= old('Nama') ?>">
                     <?php if($validation->getError('Nama')) {?>
                         <div id="validationServer03Feedback" class="invalid-feedback">
                         <?= $error = $validation->getError('Nama'); ?>

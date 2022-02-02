@@ -86,8 +86,11 @@ class Model_dosen extends Model
     public function tampil_sertifikatDosen()
     {
         return $this->db->table('sertifikat_dosen s')
-        ->join('dosen', 's.NIP = dosen.NIP', 'left')
+        ->select(' DISTINCT(s.NIP), COUNT(s.NIP) AS total, d.Nama, p.prodi')
+        ->join('dosen d', 's.NIP = d.NIP', 'left')
+        ->join('prodi p', 'p.Id_prodi = d.Id_prodi', 'left')
         ->join('sertifikat', 'sertifikat.Id_sertifikat = s.Id_sertifikat', 'left')
+        ->groupBy('s.NIP')
         ->get()
         ->getResultArray();
     }

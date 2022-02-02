@@ -232,11 +232,12 @@
               </button>
             </div>
             <div class="modal-body">
-              <?php echo form_open('masuk/ubah/'.$value['Id_masuk'] ) ?>
+            <?php echo form_open('masuk/ubah/'.$value['Id_masuk']) ?>
              
                   <div class="form-group">
                     <label for="NomorSK">Tanggal Surat</label>
                     <input type="date" name="Tanggal_surat" class="form-control" id="inputDate" value="<?= $value['Tanggal_surat']?>">
+                    <input type="text" name="Id_masuk" class="form-control"  value="<?= $value['Id_masuk']?>">
                   </div>
                   <div class="form-group">
                     <label for="NomorSK">Nomor Surat</label>

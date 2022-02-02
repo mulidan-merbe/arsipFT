@@ -52,6 +52,8 @@ class Masuk extends BaseController
            'Ringkasan'          => $this->request->getPost('Ringkasan'),
            'Id_tujuan'          => $this->request->getPost('Id_tujuan')
          );
+
+        //  dd($data[Id_masuk]);
          $this->Model_masuk->ubah($data);
          session()->setFlashdata('pesan', 'Data Berhasil Diubah');
          return redirect()->to(base_url('masuk'));

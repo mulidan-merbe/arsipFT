@@ -27,9 +27,7 @@
                                                   } ?>">MASTER DATA</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <li><a href="<?= base_url('dosen')?>" class="dropdown-item">DATA DOSEN</a></li>
-              <li><a href="<?= base_url('tugas')?>" class="dropdown-item">Surat Tugas</a></li>
-              <li><a href="<?= base_url('sk')?>" class="dropdown-item">Surat Keputusan</a></li>
-              <li><a href="<?= base_url('skrektor')?>" class="dropdown-item">Surat Keputusan Rektor</a></li>
+              <li><a href="<?= base_url('dosen')?>" class="dropdown-item">DATA TENDIK</a></li>
             </ul>
           </li>
           <?php } ?>

@@ -8,12 +8,12 @@ class Dosen extends BaseController
 {
     public function __construct(){
         $this->Model_dosen = new Model_dosen();
-        helper('form');
+        helper(['form','url']);
     }
     public function index()
     {
         $data = array(
-            'title' => 'Dosen Fakultas Teknik',
+            'title' => 'Dosen',
             'prodi' => $this->Model_dosen->tampil_prodi(),
             'count' => $this->Model_dosen->count_dosen(),
             'countId' => $this->Model_dosen->count_Iddosen(),
@@ -25,7 +25,7 @@ class Dosen extends BaseController
         return view('dosen/index', $data);
 
         
-    }
+    } 
 
     public function data()
     {
@@ -147,7 +147,7 @@ class Dosen extends BaseController
 		// 	}
 		// } else {
         //     $data = array(
-        //         'title' => 'Dosen Fakultas Teknik',
+        //         'title' => 'Dosen',
         //         'dosen' => $this->Model_dosen->tampil(),
         //         'prodi' => $this->Model_dosen->tampil_prodi(),
         //         'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
@@ -161,7 +161,7 @@ class Dosen extends BaseController
 		// }
 
         $data = array(
-            'title' => 'Dosen Fakultas Teknik',
+            'title' => 'Dosen',
             'dosen' => $this->Model_dosen->tampil(),
             'prodi' => $this->Model_dosen->tampil_prodi(),
             'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
@@ -182,8 +182,8 @@ class Dosen extends BaseController
     public function prodi($Id_prodi)
     {
         $data = array(
-            'title' => 'Dosen Fakultas Teknik',
-            'dosen' => $this->Model_dosen->tampilbyProdi($Id_prodi),
+            'title' => 'Dosen',
+            'dosen' => $this->Model_dosen->tampilbyProdi($Id_prodi) ,
             'prodi' => $this->Model_dosen->tampil_prodi(),
             'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
             // 'detailSertifikat'  => $this->Model_dosen->detailSertifikat(),
@@ -217,7 +217,7 @@ class Dosen extends BaseController
     public function sertifikat()
     {
         $data = array(
-            'title' => 'Dosen Fakultas Teknik',
+            'title' => 'Dosen',
             'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
             'count' => $this->Model_dosen->count_sertifikat(),
             'countId' => $this->Model_dosen->count_Idsertifikat(),
@@ -232,11 +232,14 @@ class Dosen extends BaseController
     public function dataSertifikat()
     {
         $data = array(
-            'title' => 'Dosen Fakultas Teknik',
-            'sertifikat' => $this->Model_dosen->tampil_sertifikatDosen(),
+            'title' => 'Dosen',
+            'dosen' => $this->Model_dosen->tampil_sertifikatDosen(),
+            'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
+            'detailSertifikat'  => $this->Model_dosen->detailSertifikat2(),
             // 'isi'   => 'dosen/index'
         );
-        return view('dosen/tampil_sertifikat', $data);
+        // dd($data['dosen']);
+        return view('dosen/data_sertifikat', $data);
     }
 
     public function tambahSertifikat()
@@ -258,7 +261,7 @@ class Dosen extends BaseController
     public function lihatSertifikat($Id_sertifikat)
     {
         $data = array(
-            'title' => 'Dosen Fakultas Teknik',
+            'title' => 'Dosen',
             'dosen' => $this->Model_dosen->lihatSertifikat($Id_sertifikat),
             'prodi' => $this->Model_dosen->tampil_prodi(),
             'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
@@ -302,7 +305,89 @@ class Dosen extends BaseController
         
         $this->Model_dosen->ubah($data);
         session()->setFlashdata('pesan', 'Data Berhasil Diubah');
-        return redirect()->to(base_url('dosen'));
+        return redirect()->to(base_url('dosen/data'));
+    }
+
+    public function tambah_sertifikat()
+    {
+        // session();
+        $data = array(
+            'title' => 'Dosen',
+            // 'dosen' => $this->Model_dosen->lihatSertifikat($Id_sertifikat),
+            'prodi' => $this->Model_dosen->tampil_prodi(),
+            'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
+            'detailSertifikat'  => $this->Model_dosen->detailSertifikat2(),
+            'gol' => $this->Model_dosen->tampil_gol(),
+            'validation' => \Config\Services::validation()
+        );
+
+       
+        // dd($data['count']);
+        return view('dosen/tambah_sertifikat', $data);
+    }
+
+    public function simpan_sertifikat()
+    {
+        
+        // dd($this->request->getVar());
+        if(!$this->validate([
+            
+            'NIP' => [
+                'label'  => 'NIP',
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => '{field} Wajid Di isi',
+                ],
+            ],
+            'Id_sertifikat' => [
+                'label'  => 'Sertifikat',
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => '{field} Wajid Di isi',
+                ],
+            ],
+            'Nomor_sertifikat' => [
+                'label'  => 'Nomor Sertifikat',
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => '{field} Wajid Di isi',
+                ],
+            ],
+            'Keterangan' => [
+                'label'  => 'Keterangan',
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => '{field} Wajid Di isi',
+                ],
+            ],
+            'Berkas' => [
+                'label'  => 'Berkas',
+                'rules'  => 'uploaded[Berkas]|max_size[Berkas, 5000]|ext_in[Berkas, jpg,jpeg,png,pdf]',
+                'errors' => [
+                    'uploaded'  => '{field} Wajid Di isi',
+                    'max_size'  => 'Ukuran {field} Max 5000Kb',
+                    'ext_in'    => 'Format {field} Wajib PNG',
+                ]
+            ]
+            
+        ])){
+            $validation = \Config\Services::validation();
+            // dd($validation);
+            return redirect()->to(base_url('dosen/tambah_sertifikat'))->withInput();
+        } else {
+            $data = array(
+                'NIP'               => $this->request->getPost('NIP'),
+                'Id_sertifikat'     => $this->request->getPost('Id_sertifikat'),
+                'Nomor_sertifikat'  => $this->request->getPost('Nomor_sertifikat'),
+                'Keterangan'        => $this->request->getPost('Keterangan'),
+                'Berkas'            => $this->request->getPost('Berkas'),
+
+            );
+            $this->Model_user->tambah($data);
+            session()->setFlashdata('pesan', 'Data Berhasil Disimpan');
+            return redirect()->to(base_url('user'));
+        }
+    
     }
 
     public function ubahSertifikat($NIP)

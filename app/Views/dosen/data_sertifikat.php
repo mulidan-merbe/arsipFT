@@ -26,16 +26,18 @@
       <div class="container-fluid">
       <div class="btn-group">
         <a type="button2" class="btn btn-info " href="<?= base_url('dosen') ?>">Data Dosen</a>
-        <a type="button2" class="btn btn-info <?php $uri = service('uri'); if ($uri->getSegment(2) == "detailSertifikat") {
+        <a type="button2" class="btn btn-info <?php $uri = service('uri'); if ($uri->getSegment(2) == "dataSertifikat") {
                                                     echo "active";
                                                   } ?>" href="<?= base_url('dosen/sertifikat') ?>">Sertifikat</a>
      </div>
       <div class="row mt-2">
         <div class="col-md-12">
+            
         <div class="card " style="min-height: 650px;">
               <div class="card-header">
-                <h3 class="card-title">Detail <?= $title ?>
-               
+                
+                <h3 class="card-title">Data Berdasarkan Sertifikat
+                
             </h3>
             <button  type="button" class="btn btn-sm btn-warning float-right" onclick="javascript:history.back()"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
                 <!-- <div class="card-tools">
@@ -44,48 +46,36 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <?php if (session()->getFlashdata('pesangagal')){
-                echo '<div class="alert alert-danger alert-dismissible">';
-                echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Sukses!</h5>';
-                echo session()->getFlashdata('pesangagal');
-                echo '</div>';
-            } ?>
-             <?php if($validation->getError('Berkas')) {?>
-                        <div id="validationServer03Feedback" class="invalid-feedback">
-                        <?= $error = $validation->getError('Berkas'); ?>
-                        </div>  
-                     <?php }?>
+             <a href="<?= base_url() ?>/dosen/tambah_sertifikat " class="btn btn-primary">
+                 <i class="fas fa-plus"></i> Tambah
+                                                </a>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                   <th class="col-1 text-center">No</th>
-                    <th class="col-4 text-center">Nama</th>
-                    <!-- <th class=" text-center">NIP</th> -->
-                    <th class="col-2 text-center">Sertifikat</th>
-                    <!-- <th class=" text-center col-md-5">Agama</th> -->
-                    <th class="col-4 text-center">Nomor Sertifikat</th>
-                    <th class=" text-center">Berkas</th>
-                    <th class="col-1 text-center">Aksi</th>
+                    <th class="col-5 text-center">Nama</th>
+                    <th class=" text-center">NIP</th>
+                    <th class=" text-center">Prodi</th>
+                    <th class="col-1 text-center">Sertifikat</th>
                   </tr>
                   </thead>
                   <tbody>
                   <?php
                     $no = 1;
                     
-                    foreach($detailSertifikat as $key => $value )  { ?>
+                    foreach($dosen as $key => $value )  { ?>
                   <tr>
                     <td class="text-center"><?= $no++ ?></td>
                     <td><?= $value['Nama'] ?></td>
-                    <!-- <td><?= $value['NIP'] ?></td> -->
-                    <td><?= $value['Sertifikat'] ?></td>
-                    <td><?= $value['Nomor_sertifikat'] ?></td>
-                    <td><?= $value['Berkas'] ?></td>
-                    <td class="col-1 text-center"> 
+                    <td><?= $value['NIP'] ?></td>
+                    <td><?= $value['prodi'] ?></td>
+                    <td class="text-center"><a href="<?= base_url('dosen/detailSertifikat') ?>/<?= $value['NIP'] ?>" class="btn btn-outline-primary"><?= $value['total'] ?></a></td>
+                    <!-- <td class="col-1 text-center"> 
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-ubah<?= $value['NIP']?>"><i class="fa fa-edit"></i></button>
+                        <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-ubah<?= $value['NIP']?>"><i class="fas fa-edit"></i></button>
                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-hapus<?= $value['NIP']?>"><i class="fa fa-trash" ></i></button>
                     </div>
-                    </td>
+                    </td> -->
                   </tr>
                   <?php } ?>
                 </tbody>
@@ -102,8 +92,9 @@
     </div>
     <!-- /.content -->
   </div>
-     
   <?= $this->include('layout/footer') ?> 
+
+  
   <?php foreach($detailSertifikat as $key => $value )  { ?>
        <!-- Modal Tambah Sertifikat -->
    <div class="modal fade" id="modal-ubah<?= $value['NIP']?>">
