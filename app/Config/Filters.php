@@ -52,6 +52,7 @@ class Filters extends BaseConfig
                 'kategori', 'kategori/*',
                 'department', 'department/*',
                 'dosen', 'dosen/*',
+                'tendik', 'tendik/*',
                 'user', 'user/*',
                 'masuk', 'masuk/*',
                 'tugas', 'tugas/*',

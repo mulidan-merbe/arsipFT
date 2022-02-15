@@ -21,7 +21,7 @@
       <div class="container">
       <section class="content">
       <div class="container-fluid">
-      <div class="card card-primary" style="min-height: 650px;">
+      <div class="card card-primary card-outline" style="min-height: 650px;">
               <div class="card-header">
                 <h3 class="card-title">Data <?= $title ?></h3>
                 <!-- <div class="card-tools">

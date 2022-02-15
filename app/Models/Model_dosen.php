@@ -19,6 +19,22 @@ class Model_dosen extends Model
 
     }
 
+    public function tampilSelect()
+    {
+        return $this->db->table('dosen d')
+        ->orderBy('d.Id_dosen', 'ASC')
+        ->get()
+        ->getResultArray();
+    }
+
+    public function tampilSelect2($searchTerm)
+    {
+        return $this->db->table('dosen d')
+        ->like('d.Nama' ,$searchTerm)
+        ->orderBy('d.Id_dosen', 'ASC')
+        ->get()
+        ->getResultArray();
+    }
     public function tampilbyProdi($Id_prodi)
     {
         return $this->db->table('dosen d')
@@ -64,6 +80,17 @@ class Model_dosen extends Model
     {
         return $this->db->table('sertifikat_dosen d')
         ->select(' COUNT(d.Id_serdos) AS total ')
+        ->get()
+        ->getResultArray();
+    }
+
+    public function tampil_byIdsertifikat($Id_serdos)
+    {
+        return $this->db->table('sertifikat_dosen a')
+        ->select('a.Id_serdos, a.NIP, a.Berkas, d.Nama, a.Id_sertifikat, s.Sertifikat, a.Keterangan, a.Nomor_sertifikat')
+        ->join('dosen d', 'd.NIP = a.NIP')
+        ->join('sertifikat s', 's.Id_sertifikat = a.Id_sertifikat')
+        ->where('a.Id_serdos', $Id_serdos)
         ->get()
         ->getResultArray();
     }
@@ -116,9 +143,11 @@ class Model_dosen extends Model
     public function detailSertifikat($NIP)    
     {
         return $this->db->table('sertifikat_dosen s')
-        ->join('dosen', 's.NIP = dosen.NIP', 'left')
-        ->join('sertifikat', 'sertifikat.Id_sertifikat = s.Id_sertifikat', 'left')
+        ->select('s.Id_serdos, s.NIP, s.Id_sertifikat, t.Sertifikat, s.Nomor_sertifikat, s.Keterangan, s.Berkas, d.Nama, ')
+        ->join('dosen d', 's.NIP = d.NIP', 'left')
+        ->join('sertifikat t', 't.Id_sertifikat = s.Id_sertifikat', 'left')
         ->where('s.NIP', $NIP)
+        ->orderBy('s.NIP', 'DESC')
         ->get()
         ->getResultArray();
     }
@@ -148,5 +177,19 @@ class Model_dosen extends Model
         $this->db->table('dosen')
         ->where('Id_dosen', $data['Id_dosen'])
         ->update($data);
+    }
+
+    public function ubahSertifikat($data)
+    {
+        $this->db->table('sertifikat_dosen')
+        ->where('Id_serdos', $data['Id_serdos'])
+        ->update($data);
+    }
+
+    public function hapusSertifikat($data)
+    {
+        $this->db->table('sertifikat_dosen')
+        ->where('Id_serdos',  $data['Id_serdos'])
+        ->delete($data);
     }
 }

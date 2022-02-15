@@ -25,15 +25,15 @@
       <section class="content">
       <div class="container-fluid">
       <div class="btn-group">
-        <a type="button2" class="btn btn-info " href="<?= base_url('dosen') ?>">Data Dosen</a>
-        <a type="button2" class="btn btn-info <?php $uri = service('uri'); if ($uri->getSegment(2) == "dataSertifikat") {
+        <a type="button2" class="btn btn-primary " href="<?= base_url('dosen') ?>">Data Dosen</a>
+        <a type="button2" class="btn btn-primary <?php $uri = service('uri'); if ($uri->getSegment(2) == "dataSertifikat") {
                                                     echo "active";
                                                   } ?>" href="<?= base_url('dosen/sertifikat') ?>">Sertifikat</a>
      </div>
       <div class="row mt-2">
         <div class="col-md-12">
             
-        <div class="card " style="min-height: 650px;">
+        <div class="card card-primary card-outline" style="min-height: 650px;">
               <div class="card-header">
                 
                 <h3 class="card-title">Data Berdasarkan Sertifikat
@@ -46,6 +46,12 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+              <?php if (session()->getFlashdata('pesan')){
+                echo '<div class="alert alert-success alert-dismissible">';
+                echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Sukses!</h5>';
+                echo session()->getFlashdata('pesan');
+                echo '</div>';
+            } ?>
              <a href="<?= base_url() ?>/dosen/tambah_sertifikat " class="btn btn-primary">
                  <i class="fas fa-plus"></i> Tambah
                                                 </a>

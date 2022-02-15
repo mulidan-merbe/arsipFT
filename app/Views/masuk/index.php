@@ -21,7 +21,7 @@
       <div class="container">
       <section class="content">
       <div class="container-fluid">
-      <div class="card card-primary" style="min-height: 650px;">
+      <div class="card card-primary card-outline" style="min-height: 650px;">
               <div class="card-header">
                 <h3 class="card-title">Data <?= $title ?></h3>
                 <!-- <div class="card-tools">
@@ -71,19 +71,6 @@
                     <td><?= $value['Tanggal_terima'] ?></td>
                     <td><?php if($value['Status']) { ?><span class="badge badge-success"><?= $value['Tujuan'] ?></span><span class="badge badge-warning"><?= $value['Department'] ?></span> <?php } else { ?> <span class="badge badge-warning"><?= $value['Tujuan'] ?></span><?php } ?></td>
                     <td class="text-center">
-                      <!-- <div class="btn-group">
-                      <button type="button" class="btn btn-success">Action</button>
-                      <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-                        <span class="sr-only">Toggle Dropdown</span>
-                      </button>
-                      <div class="dropdown-menu" role="menu">
-                        <a class="dropdown-item" href="#">Lihat</a>
-                        <a class="dropdown-item" href="#">Ubah</a>
-                        <a class="dropdown-item" href="#">Hapus</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
-                      </div>
-                    </div>  -->
                     <div class="btn-group">
 
                         <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal-lihat<?= $value['Id_masuk']?>"><i class="fas fa-eye"></i></button>
@@ -237,7 +224,7 @@
                   <div class="form-group">
                     <label for="NomorSK">Tanggal Surat</label>
                     <input type="date" name="Tanggal_surat" class="form-control" id="inputDate" value="<?= $value['Tanggal_surat']?>">
-                    <input type="text" name="Id_masuk" class="form-control"  value="<?= $value['Id_masuk']?>">
+                    <input type="hidden" name="Id_masuk" class="form-control"  value="<?= $value['Id_masuk']?>">
                   </div>
                   <div class="form-group">
                     <label for="NomorSK">Nomor Surat</label>

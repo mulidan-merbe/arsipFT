@@ -58,11 +58,11 @@ class Skrektor extends BaseController
             'Tanggal'        => date('Y-m-d')
 		);
 
-        $result = $this->Model_skrektor->tambah($data);
+        $result[] = $this->Model_skrektor->tambah($data);
 		$Status = $this->request->getPost('Status');
         $Nama = $this->request->getPost('Nama');
 
-        // $result = array();
+        // $id = $result;
 		foreach($Nama as $row){
 			$data1 = array(
 				  'Id_datas' => $result,
@@ -70,8 +70,9 @@ class Skrektor extends BaseController
 				  'Nama' => $Nama
 				);
             
+            }
+            // dd($data1);
             $this->Model_skrektor->insert_dosen($data1);
-		}
         // $this->Model_skrektor->insert_dosen($data1);
         session()->setFlashdata('pesan', 'Data Berhasil Ditambahkkan');
         return redirect()->to(base_url('skrektor'));

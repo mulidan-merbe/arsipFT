@@ -26,14 +26,14 @@
       <section class="content">
       <div class="container-fluid">
       <div class="btn-group">
-      <a type="button2" class="btn btn-info  <?php $uri = service('uri'); if ($uri->getSegment(1) == "dosen") {
+      <a type="button2" class="btn btn-primary  <?php $uri = service('uri'); if ($uri->getSegment(1) == "dosen") {
                                                     echo "active";
                                                   } ?>" href="<?= base_url('dosen') ?>">Data Dosen</a>
-        <a type="button2" class="btn btn-info" href="<?= base_url('dosen/sertifikat') ?>">Sertifikat</a>
+        <a type="button2" class="btn btn-primary" href="<?= base_url('dosen/sertifikat') ?>">Sertifikat</a>
      </div>
       <div class="row mt-2">
         <div class="col-md-12">
-        <div class="card " style="min-height: 650px;">
+        <div class="card card-primary card-outline" style="min-height: 650px;">
               <div class="card-header">
                 <h3 class="card-title">Data <?= $title ?> </h3>
                 <!-- <div class="card-tools">
@@ -92,7 +92,7 @@
                     <!-- <td><?= $value['Jnj'] ?></td> -->
                     <td><?= $value['prodi'] ?></td>
                     <td class="text-center"> <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-tambahsertifikat<?= $value['Id_dosen']?>"><i class="fa fa-plus" ></i></button>
+                        <!-- <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-tambahsertifikat<?= $value['Id_dosen']?>"><i class="fa fa-plus" ></i></button> -->
                         <a href="<?= base_url('') ?>/dosen/detailSertifikat/<?= $value['NIP']?>" class="btn btn-sm btn-info" ><i class="fa fa-eye" ></i></a>
                     </div>
                     </td>

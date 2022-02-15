@@ -282,7 +282,7 @@ class Dosen extends BaseController
             'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
             'validation' => \Config\Services::validation(),
         );
-        // dd($data['detailSertifikat']);
+        // dd($data['detailSertifikat']);   
         return view('dosen/detail_sertifikatDosen', $data);
     }
 
@@ -308,12 +308,46 @@ class Dosen extends BaseController
         return redirect()->to(base_url('dosen/data'));
     }
 
+    public function getDosen()
+    {
+        $request = service('request');
+        $postData = $request->getPost();
+
+        $response = array();
+
+       // Read new token and assign in $response['token']
+        $response['token'] = csrf_hash();
+
+        if(!isset($postData['searchTerm'])){
+            // Fetch record
+            // $users = new Users();
+            $dosen = $this->Model_dosen->tampilSelect();
+        }else{
+            $searchTerm = $postData['searchTerm'];
+
+            // Fetch record
+            // $users = new Users();
+            $dosen = $this->Model_dosen->tampilSelect2($searchTerm);
+        } 
+
+        $data = array();
+        foreach($dosen as $user){
+            $data[] = array(
+                "NIP" => $user['NIP'],
+                "Nama" => $user['Nama'],
+            );
+        }
+
+        $response['data'] = $data;
+
+        return $this->response->setJSON($response);// session();
+    }
+
     public function tambah_sertifikat()
     {
-        // session();
         $data = array(
             'title' => 'Dosen',
-            // 'dosen' => $this->Model_dosen->lihatSertifikat($Id_sertifikat),
+            'dosen' => $this->Model_dosen->tampilSelect(),
             'prodi' => $this->Model_dosen->tampil_prodi(),
             'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
             'detailSertifikat'  => $this->Model_dosen->detailSertifikat2(),
@@ -324,6 +358,10 @@ class Dosen extends BaseController
        
         // dd($data['count']);
         return view('dosen/tambah_sertifikat', $data);
+        
+
+
+        
     }
 
     public function simpan_sertifikat()
@@ -333,101 +371,189 @@ class Dosen extends BaseController
         if(!$this->validate([
             
             'NIP' => [
-                'label'  => 'NIP',
+                'label'  => 'Nama',
                 'rules'  => 'required',
                 'errors' => [
-                    'required' => '{field} Wajid Di isi',
+                    'required' => '{field} wajid di isi',
                 ],
             ],
             'Id_sertifikat' => [
                 'label'  => 'Sertifikat',
                 'rules'  => 'required',
                 'errors' => [
-                    'required' => '{field} Wajid Di isi',
+                    'required' => '{field} wajid di isi',
                 ],
             ],
             'Nomor_sertifikat' => [
                 'label'  => 'Nomor Sertifikat',
                 'rules'  => 'required',
                 'errors' => [
-                    'required' => '{field} Wajid Di isi',
+                    'required' => '{field} wajid di isi',
                 ],
             ],
             'Keterangan' => [
                 'label'  => 'Keterangan',
                 'rules'  => 'required',
                 'errors' => [
-                    'required' => '{field} Wajid Di isi',
+                    'required' => '{field} wajid di isi',
                 ],
             ],
             'Berkas' => [
                 'label'  => 'Berkas',
-                'rules'  => 'uploaded[Berkas]|max_size[Berkas, 5000]|ext_in[Berkas, jpg,jpeg,png,pdf]',
+                'rules'  => 'max_size[Berkas, 5000]|ext_in[Berkas, jpg,jpeg,png,pdf]',
                 'errors' => [
-                    'uploaded'  => '{field} Wajid Di isi',
                     'max_size'  => 'Ukuran {field} Max 5000Kb',
-                    'ext_in'    => 'Format {field} Wajib PNG',
+                    'ext_in'    => 'Format {field} Tidak Sesuai',
                 ]
             ]
             
         ])){
-            $validation = \Config\Services::validation();
-            // dd($validation);
             return redirect()->to(base_url('dosen/tambah_sertifikat'))->withInput();
         } else {
+            $Berkas = $this->request->getFile('Berkas');
+
+            //apakah tidak ada berkas yang di upload
+            if($Berkas->getError() == 4) {
+                $namaBerkas = 'default.jpg';
+            } else {
+                //nama berkas random
+                $namaBerkas = $Berkas->getRandomName();
+                $Berkas->move('file', $namaBerkas);
+            }
+
             $data = array(
                 'NIP'               => $this->request->getPost('NIP'),
                 'Id_sertifikat'     => $this->request->getPost('Id_sertifikat'),
                 'Nomor_sertifikat'  => $this->request->getPost('Nomor_sertifikat'),
                 'Keterangan'        => $this->request->getPost('Keterangan'),
-                'Berkas'            => $this->request->getPost('Berkas'),
+                'Berkas'            => $namaBerkas,
 
             );
-            $this->Model_user->tambah($data);
+            // dd($data);
+            $this->Model_dosen->tambahSertifikat($data);
             session()->setFlashdata('pesan', 'Data Berhasil Disimpan');
-            return redirect()->to(base_url('user'));
+            return redirect()->to(base_url('dosen/dataSertifikat'));
         }
     
     }
 
-    public function ubahSertifikat($NIP)
+    public function ubahSertifikat($Id_serdos)
+    {
+        $data = array(
+            'title' => 'Dosen',
+            // 'dosen' => $this->Model_dosen->lihatSertifikat($Id_sertifikat),
+            // 'prodi' => $this->Model_dosen->tampil_prodi(),
+            'sertifikat' => $this->Model_dosen->tampil_sertifikat(),
+            'lihatbyId'  => $this->Model_dosen->tampil_byIdsertifikat($Id_serdos),
+            // 'detailSertifikat'  => $this->Model_dosen->detailSertifikat2(),
+            // 'gol' => $this->Model_dosen->tampil_gol(),
+            'validation' => \Config\Services::validation()
+        );
+
+       
+        // dd($data['lihatbyId']);
+        return view('dosen/ubah_sertifikat', $data);
+    }
+
+    public function ubahData_Sertifikat($Id_serdos)
     {
        
-        $Berkas = $this->validate([
+        if(!$this->validate([
+            
+            'NIP' => [
+                'label'  => 'Nama',
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => '{field} wajid di isi',
+                ],
+            ],
+            'Id_sertifikat' => [
+                'label'  => 'Sertifikat',
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => '{field} wajid di isi',
+                ],
+            ],
+            'Nomor_sertifikat' => [
+                'label'  => 'Nomor Sertifikat',
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => '{field} wajid di isi',
+                ],
+            ],
+            'Keterangan' => [
+                'label'  => 'Keterangan',
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => '{field} wajid di isi',
+                ],
+            ],
             'Berkas' => [
                 'label'  => 'Berkas',
-                'rules'  => 'uploaded[Berkas]|max_size[Berkas, 5000]|ext_in[Berkas, jpg,jpeg,png,doc,docx,pdf]',
+                'rules'  => 'max_size[Berkas, 5000]|ext_in[Berkas,jpg,jpeg,png,pdf]',
                 'errors' => [
-                    'uploaded'  => '{field} Wajid Di isi',
                     'max_size'  => 'Ukuran {field} Max 5000Kb',
-                    'ext_in'    => 'Format {field} Wajib PNG',
+                    'ext_in'    => 'Format {field} Tidak Sesuai',
                 ]
             ]
             
-        ]);
-    
-        if (!$Berkas) {
-            // dd($Berkas);
-            session()->setFlashdata('pesangagal', 'Data File tidak sesuai');
-            $validation = \Config\Services::validation();
-          
-            return redirect()->to(base_url('dosen/detailSertifikat/'. $NIP))->withInput()->with('validation', $validation);
+        ])){
+            return redirect()->to(base_url('dosen/ubahSertifikat/'. $Id_serdos ))->withInput();
         } else {
-            $pdfFile = $this->request->getFile('Berkas');
-            $pdfFile->move(WRITEPATH . 'uploads'. $pdfFile);
-    
-            $data = [
-                'NIP'                    => $this->request->getPost('Nama'),
-                'Id_sertifikat'          => $this->request->getPost('Id_sertifikat'),
-                'Nomor_sertifikat'       => $this->request->getPost('Nomor_sertifikat'),
-                'Keterangan'             => $this->request->getPost('Keterangan'),
-                'Berkas'                 =>  $pdfFile->getRandomName(),
- 
-            ];
+            $Berkas = $this->request->getFile('Berkas');
+            $berkasLama = $this->request->getVar('BerkasLama');
+            $NIP = $this->request->getVar('NIP');
+            if($Berkas->getError() == 4) {
+                if($berkasLama){
+                    $namaBerkas = $berkasLama;
+                } else {
+                    $namaBerkas = 'default.jpg';
+                }
+            } else {
+                //nama berkas random
+                $namaBerkas = $Berkas->getRandomName();
+                $Berkas->move('file', $namaBerkas);
+                // unlink('file/'. $berkasLama);
+            }
 
+            $data = array(
+                'Id_serdos'         => $this->request->getPost('Id_serdos'),
+                'NIP'               => $this->request->getPost('NIP'),
+                'Id_sertifikat'     => $this->request->getPost('Id_sertifikat'),
+                'Nomor_sertifikat'  => $this->request->getPost('Nomor_sertifikat'),
+                'Keterangan'        => $this->request->getPost('Keterangan'),
+                'Berkas'            => $namaBerkas,
+
+            );
+            // dd($data);
             $this->Model_dosen->ubahSertifikat($data);
             session()->setFlashdata('pesan', 'Data Berhasil Diubah');
-            return redirect()->to(base_url('dosen/detailSertifikat/'));
+            return redirect()->to(base_url('dosen/detailSertifikat/'. $NIP));
+
         }
+
+    
+    }
+
+    public function hapusSertifikat($Id_serdos)
+    {
+        // $uri = service('uri');
+        // $NIP = $uri->getSegment(3);
+        // dd($NIP);
+        // $Id_serdos = $this->request->getVar('Id_serdos');
+        $file = $this->Model_dosen->tampil_byIdsertifikat($Id_serdos);
+        // dd($file);
+        //cek jika file berkas default.jpg
+        // if( $file[0]['Berkas'] != 'default.jpg') {
+        //     unlink('file/'. $file[0]['Berkas']);    
+        // }
+        
+
+        $data = array(
+            'Id_serdos'            => $Id_serdos
+         );
+         $this->Model_dosen->hapusSertifikat($data);
+         session()->setFlashdata('pesan', 'Data Berhasil Dihapus');
+         return redirect()->to(base_url('dosen/detailSertifikat/'. $file[0]['NIP']));
     }
 }

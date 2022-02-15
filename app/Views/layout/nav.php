@@ -27,7 +27,7 @@
                                                   } ?>">MASTER DATA</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <li><a href="<?= base_url('dosen')?>" class="dropdown-item">DATA DOSEN</a></li>
-              <li><a href="<?= base_url('dosen')?>" class="dropdown-item">DATA TENDIK</a></li>
+              <li><a href="<?= base_url('tendik')?>" class="dropdown-item">DATA TENDIK</a></li>
             </ul>
           </li>
           <?php } ?>

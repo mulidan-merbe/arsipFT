@@ -26,7 +26,7 @@
       <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-        <div class="card " style="min-height: 650px;">
+        <div class="card card-primary card-outline" style="min-height: 650px;">
               <div class="card-header">
                 
                 <h3 class="card-title">Data Berdasarkan Sertifikat
