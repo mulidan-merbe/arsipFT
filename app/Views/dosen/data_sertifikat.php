@@ -39,24 +39,15 @@
                 <h3 class="card-title">Data Berdasarkan Sertifikat
                 
             </h3>
-            <button  type="button" class="btn btn-sm btn-warning float-right" onclick="javascript:history.back()"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
-                <!-- <div class="card-tools">
-                
-                </div> -->
+            <a href="<?= base_url() ?>/dosen/tambah_sertifikat " class="btn btn-primary float-right">
+                 <i class="fas fa-plus"></i> Tambah
+                                                </a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <?php if (session()->getFlashdata('pesan')){
-                echo '<div class="alert alert-success alert-dismissible">';
-                echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Sukses!</h5>';
-                echo session()->getFlashdata('pesan');
-                echo '</div>';
-            } ?>
-             <a href="<?= base_url() ?>/dosen/tambah_sertifikat " class="btn btn-primary">
-                 <i class="fas fa-plus"></i> Tambah
-                                                </a>
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
+             
+                <table id="example1" class="table table-bordered table-hover">
+                  <thead class="table-primary">
                   <tr>
                   <th class="col-1 text-center">No</th>
                     <th class="col-5 text-center">Nama</th>
@@ -153,3 +144,35 @@
         <!-- /.modal-dialog -->
       </div> 
       <?php } ?>     
+
+      <script>
+        $(function(){
+          // $.bootstrapGrowl("This is a test.");
+            <?php if(session()->has("success")) { ?>
+                $.bootstrapGrowl('<?= session("success") ?>',{
+                    type: 'success',
+                    delay: 4000,
+                });
+            <?php } ?>
+            <?php if(session()->has("info")) { ?>
+                $.bootstrapGrowl('<?= session("info") ?>',{
+                    type: 'info',
+                    delay: 4000,
+                });
+            <?php } ?>
+
+            <?php if(session()->has("error")) { ?>
+                $.bootstrapGrowl('<?= session("error") ?>',{
+                    type: 'danger',
+                    delay: 4000,
+                });
+            <?php } ?>
+
+            <?php if(session()->has("warning")) { ?>
+                $.bootstrapGrowl('<?= session("warning") ?>',{
+                    type: 'warning',
+                    delay: 4000,
+                });
+            <?php } ?>
+        });
+      </script>

@@ -60,8 +60,8 @@
                     <thead>
                       <tr>
                         <th class="col-1 text-center">No</th>
-                        <th class="col-5 text-center">Sertifikat</th>
-                        <th class="col-1 text-center">Jumlah</th>
+                        <th class="col-5 text-center">SERTIFIKAT</th>
+                        <th class="col-1 text-center">JUMLAH</th>
                       </tr>
                       </thead>
                       <tbody>

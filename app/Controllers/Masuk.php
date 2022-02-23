@@ -20,10 +20,9 @@ class Masuk extends BaseController
             'title' => 'Surat Masuk',
             'masuk' => $this->Model_masuk->tampil(),
             'tujuan' => $this->Model_tujuan->tampil(),
-            'isi'   => 'masuk/index'
         );
         // dd($data['masuk']);
-        return view('layout/wrapper', $data);
+        return view('masuk/index', $data);
     }
 
     public function tambah()

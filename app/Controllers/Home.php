@@ -11,6 +11,6 @@ class Home extends BaseController
             'title' => 'Home',
             'isi'   => 'home'
         );
-        return view('layout/wrapper', $data);
+        return view('home', $data);
     }
 }

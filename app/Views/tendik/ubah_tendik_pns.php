@@ -75,6 +75,41 @@
                 </div>
                </div>
                <div class="form-group row">
+                <label for="" class="col-md-2 offset-md-1 col-form-label text-right ">Jenis Kelamin</label>
+                <div class="col-md-4">
+                    <select name="JK" id="" class="form-control "> 
+                        <option value="<?= $value['JK'] ?>" ><?= $value['JK'] ?></option>
+                        <option value="Laki-Laki" >Laki-Laki</option>
+                        <option value="Perempuan" >Perempuan</option>
+                    </select>
+                    <?php if($validation->getError('JK')) {?>
+                        <div id="validationServer03Feedback" class="invalid-feedback">
+                        <?= $error = $validation->getError('JK'); ?>
+                        </div>
+                     <?php }?>
+                </div>
+               </div>
+               <div class="form-group row">
+                <label for="" class="col-md-2 offset-md-1 col-form-label text-right ">Jenis Kelamin</label>
+                <div class="col-md-4">
+                    <select name="Jnj_pendidikan" id="" class="form-control "> 
+                        <option value="<?= $value['Jnj_pendidikan'] ?>" ><?= $value['Jnj_pendidikan'] ?></option>
+                        <option value="SD" >SD</option>
+                        <option value="SMP" >SMP</option>
+                        <option value="SMA/SMK" >SMA/SMK</option>
+                        <option value="S1" >D3</option>
+                        <option value="S1" >S1</option>
+                        <option value="S2" >S2</option>
+                        <option value="S3" >S3</option>
+                    </select>
+                    <?php if($validation->getError('Jnj_pendidikan')) {?>
+                        <div id="validationServer03Feedback" class="invalid-feedback">
+                        <?= $error = $validation->getError('Jnj_pendidikan'); ?>
+                        </div>
+                     <?php }?>
+                </div>
+               </div>
+               <div class="form-group row">
                 <label for="" class="col-md-2 offset-md-1 col-form-label text-right ">Pangkat Gol/Ruang</label>
                 <div class="col-md-4">
                     <select name="Id_gol" id="Sertifikat" class="form-control <?= ($validation->hasError('Id_gol')) ? 'is-invalid' : ''; ?>" value="<?= old('Id_gol') ?>"> 

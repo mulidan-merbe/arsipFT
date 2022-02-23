@@ -118,6 +118,7 @@ class Model_dosen extends Model
         ->join('prodi p', 'p.Id_prodi = d.Id_prodi', 'left')
         ->join('sertifikat', 'sertifikat.Id_sertifikat = s.Id_sertifikat', 'left')
         ->groupBy('s.NIP')
+        ->orderBy('p.Id_prodi', 'ASC')
         ->get()
         ->getResultArray();
     }
@@ -125,7 +126,9 @@ class Model_dosen extends Model
     public function lihatSertifikat($Id_sertifikat)
     {
         return $this->db->table('sertifikat_dosen s')
-        ->join('dosen', 's.NIP = dosen.NIP', 'left')
+        ->select('s.Id_serdos, s.NIP, s.Nomor_sertifikat, s.Keterangan, s.Id_sertifikat, sertifikat.Sertifikat, s.Berkas, d.Nama')
+        ->join('dosen d', 's.NIP = d.NIP', 'left')
+        ->join('prodi p', 'p.Id_prodi = d.Id_prodi', 'left')
         ->join('sertifikat', 'sertifikat.Id_sertifikat = s.Id_sertifikat', 'left')
         // ->join('Golongan g', 'g.Id_gol = s.Gol', 'left')
         ->where('s.Id_sertifikat', $Id_sertifikat)

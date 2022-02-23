@@ -1,3 +1,7 @@
+<?= $this->include('layout/head') ?>
+<?= $this->include('layout/header') ?>
+<?= $this->include('layout/nav') ?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -24,76 +28,60 @@
       <div class="card card-primary card-outline" style="min-height: 650px;">
               <div class="card-header">
                 <h3 class="card-title">Data <?= $title ?></h3>
-                <!-- <div class="card-tools">
-                
-                </div> -->
+                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modal-tambah">
+                <i class="fas fa-plus"></i> Tambah
+                </button>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <?php if (session()->getFlashdata('pesan')){
-                echo '<div class="alert alert-success alert-dismissible">';
-                echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Sukses!</h5>';
-                echo session()->getFlashdata('pesan');
-                echo '</div>';
-            } ?>
-            <div class="">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
-                  Tambah
-                </button>
-            </div>
                 <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                  <th class="col-1 text-center">No</th>
-                    <th class="col-1 text-center">Asal Surat</th>
-                    <th class=" text-center">Nomor Surat</th>
-                    <th class=" text-center">Tanggal Surat</th>
-                    
-                    <th class=" text-center col-md-5">Ringkasan</th>
-                    <th class=" text-center">Tanggal Terima</th>
-                    <th class=" text-center">Disposisi</th>
-                    <th class="col-3 text-center">Aksi</th>
-                  </tr>
+                  <thead class="table-primary">
+                    <tr>
+                    <th class="col-1 text-center">No</th>
+                      <th class="col-1 text-center">ASAL SURAT</th>
+                      <th class=" text-center">NOMOR SURAT</th>
+                      <th class=" text-center">TANGGAL SURAT</th>
+                      <!-- <th class=" text-center ">Ringkasan</th> -->
+                      <th class=" text-center">TANGGAL TERIMA</th>
+                      <th class=" text-center">DISPOSISI</th>
+                      <th class="text-center">AKSI</th>
+                    </tr>
                   </thead>
                   <tbody>
                   <?php
                     $no = 1;
-                    
                     foreach($masuk as $key => $value )  { ?>
-                  <tr>
-                    
-                    <td class="text-center"><?= $no++ ?></td>
-                    <td><?= $value['Asal_surat'] ?></td>
-                    <td><?= $value['Nomor_surat'] ?></td>
-                    <td><?= $value['Tanggal_surat'] ?></td>
-                   
-                    <td><?= $value['Ringkasan'] ?></td>
-                    <td><?= $value['Tanggal_terima'] ?></td>
-                    <td><?php if($value['Status']) { ?><span class="badge badge-success"><?= $value['Tujuan'] ?></span><span class="badge badge-warning"><?= $value['Department'] ?></span> <?php } else { ?> <span class="badge badge-warning"><?= $value['Tujuan'] ?></span><?php } ?></td>
-                    <td class="text-center">
-                    <div class="btn-group">
-
-                        <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal-lihat<?= $value['Id_masuk']?>"><i class="fas fa-eye"></i></button>
-                        <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-ubah<?= $value['Id_masuk']?>"><i class="fas fa-edit"></i></button>
-                        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-hapus<?= $value['Id_masuk']?>"><i class="fa fa-trash" ></i></button>
-                    </div>
-                    </td>
-                  </tr>
+                    <tr>
+                      <td class="text-center"><?= $no++ ?>.</td>
+                      <td><?= $value['Asal_surat'] ?></td>
+                      <td><?= $value['Nomor_surat'] ?></td>
+                      <td><?= $value['Tanggal_surat'] ?></td>
+                      <!-- <td><?= $value['Ringkasan'] ?></td> -->
+                      <td><?= $value['Tanggal_terima'] ?></td>
+                      <td><?php if($value['Status']) { ?><span class="badge badge-success"><?= $value['Tujuan'] ?></span> <span class="badge badge-warning"><?= $value['Department'] ?></span> <?php } else { ?> <span class="badge badge-warning"><?= $value['Tujuan'] ?></span><?php } ?></td>
+                      <td class="text-center">
+                      <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal-lihat<?= $value['Id_masuk']?>"><i class="fas fa-eye"></i></button>
+                          <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-ubah<?= $value['Id_masuk']?>"><i class="fas fa-edit"></i></button>
+                          <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-hapus<?= $value['Id_masuk']?>"><i class="fa fa-trash" ></i></button>
+                      </div>
+                      </td>
+                    </tr>
                   <?php } ?>
-                </tbody>
-</table>
-</div>
-</div>
+                  </tbody>
+                </table>
+              </div>
+            </div>
         
-</div>
-</section>
+    </div>
+  </section>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
-  </div>
+   </div>
      
-
+  <?= $this->include('layout/footer') ?>
 
    <!-- Modal Tambah -->
    <div class="modal fade" id="modal-tambah">
@@ -148,7 +136,7 @@
         </div>
         <!-- /.modal-dialog -->
       </div> 
-
+            
       
 
         <!-- Modal Lihat -->

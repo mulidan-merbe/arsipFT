@@ -15,7 +15,7 @@ class Tendik extends BaseController
     public function index()
     {
         $data = array(
-            'title' => 'Tenaga Pendidikan',
+            'title' => 'Tenaga PNS ',
             'pns' => $this->Model_tendik->tampil_pns(),
         );
 
@@ -29,17 +29,27 @@ class Tendik extends BaseController
     public function honorer()
     {
         $data = array(
-            'title' => 'Tenaga Pendidikan',
+            'title' => 'Tenaga Honorer',
             'honorer' => $this->Model_tendik->tampil_honorer(),
         );
 
         return view('tendik/honorer', $data);
     }
 
+    public function pendukung()
+    {
+        $data = array(
+            'title' => 'Tenaga Pendukung',
+            'pendukung' => $this->Model_tendik->tampil_pendukung(),
+        );
+
+        return view('tendik/pendukung', $data);
+    }
+
     public function tendik_pns()
     {
         $data = array(
-            'title' => 'Tenaga Pendidikan',
+            'title' => 'Tenaga PNS',
             'golongan' => $this->Model_dosen->tampil_gol(),
             'validation' => \Config\Services::validation()
         );
@@ -81,6 +91,20 @@ class Tendik extends BaseController
                     'required' => '{field} wajid di isi',
                 ],
             ],
+            'JK' => [
+                'label'  => 'Jenis Kelamin',
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => '{field} wajid di isi',
+                ],
+            ],
+            'Jnj_pendidikan' => [
+                'label'  => 'Jenjang Pendidikan',
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => '{field} wajid di isi',
+                ],
+            ],
             'Id_gol' => [
                 'label'  => 'Pangkat Gol/Ruang',
                 'rules'  => 'required',
@@ -110,6 +134,8 @@ class Tendik extends BaseController
             $data = array(
                 'NIP'               => $this->request->getPost('NIP'),
                 'Nama'              => $this->request->getPost('Nama'),
+                'JK'                => $this->request->getPost('JK'),
+                'Jnj_pendidikan'    => $this->request->getPost('Jnj_pendidikan'),
                 'Id_gol'            => $this->request->getPost('Id_gol'),
                 'Jabatan'           => $this->request->getPost('Jabatan'),
                 'Keterangan'        => $this->request->getPost('Keterangan'),
@@ -118,7 +144,7 @@ class Tendik extends BaseController
             );
             // dd($data);
             $this->Model_tendik->tambah_tendik_pns($data);
-            session()->setFlashdata('pesan', 'Data Berhasil Disimpan');
+            session()->setFlashdata('success', 'Data Berhasil Disimpan');
             return redirect()->to(base_url('tendik'));
         }
     }
@@ -127,14 +153,33 @@ class Tendik extends BaseController
     {
         $data = array(
             'Nama'              => $this->request->getPost('Nama'),
-            'Penempatan'               => $this->request->getPost('Penempatan'),
+            'JK'                => $this->request->getPost('JK'),
+            'Jnj_pendidikan'    => $this->request->getPost('Jnj_pendidikan'),
+            'Penempatan'        => $this->request->getPost('Penempatan'),
             'Tanggal'           => date('Y-m-d')
 
         );
         // dd($data);
         $this->Model_tendik->tambah_tendik_honorer($data);
-        session()->setFlashdata('pesan', 'Data Berhasil Disimpan');
+        session()->setFlashdata('success', 'Data Berhasil Disimpan');
         return redirect()->to(base_url('tendik/honorer'));
+    }
+
+    public function simpan_tendik_pendukung()
+    {
+        $data = array(
+            'Nama'              => $this->request->getPost('Nama'),
+            'JK'                => $this->request->getPost('JK'),
+            'Jnj_pendidikan'    => $this->request->getPost('Jnj_pendidikan'),
+            'Penempatan'        => $this->request->getPost('Penempatan'),
+            'Tanggal'           => date('Y-m-d')
+
+        );
+        // dd($data);
+        $this->Model_tendik->tambah_tendik_pendukung($data);
+        // session()->setFlashdata('pesan', 'Data Berhasil Disimpan');
+        session()->setFlashdata("success", "Data Berhasil Disimpan");
+        return redirect()->to(base_url('tendik/pendukung'));
     }
 
     public function ubahtendik_pns($Id_pns)
@@ -169,8 +214,22 @@ class Tendik extends BaseController
                     'required' => '{field} wajid di isi',
                 ],
             ],
+            'JK' => [
+                'label'  => 'Jenis Kelamin',
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => '{field} wajid di isi',
+                ],
+            ],
+            'Jnj_pendidikan' => [
+                'label'  => 'Jenjang Pendidikan',
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => '{field} wajid di isi',
+                ],
+            ],
             'Id_gol' => [
-                'label'  => 'Pangkat Gol/Ruang',
+                'label'  => 'Jenjang Pendidikan',
                 'rules'  => 'required',
                 'errors' => [
                     'required' => '{field} wajid di isi',
@@ -199,6 +258,8 @@ class Tendik extends BaseController
                 'Id_pns'            => $this->request->getPost('Id_pns'),
                 'NIP'               => $this->request->getPost('NIP'),
                 'Nama'              => $this->request->getPost('Nama'),
+                'JK'                => $this->request->getPost('JK'),
+                'Jnj_pendidikan'    => $this->request->getPost('Jnj_pendidikan'),
                 'Id_gol'            => $this->request->getPost('Id_gol'),
                 'Jabatan'           => $this->request->getPost('Jabatan'),
                 'Keterangan'        => $this->request->getPost('Keterangan'),
@@ -207,8 +268,72 @@ class Tendik extends BaseController
             );
             // dd($data);
             $this->Model_tendik->ubah_tendik_pns($data);
-            session()->setFlashdata('pesan', 'Data Berhasil Diubah');
+            session()->setFlashdata('info', 'Data Berhasil Diubah');
             return redirect()->to(base_url('tendik'));
         }
+    }
+
+    public function ubah_tendik_honorer()
+    {
+        $data = array(
+            'Id_honorer'        => $this->request->getPost('Id_honorer'),
+            'Nama'              => $this->request->getPost('Nama'),
+            'JK'                => $this->request->getPost('JK'),
+            'Jnj_pendidikan'    => $this->request->getPost('Jnj_pendidikan'),
+            'Penempatan'        => $this->request->getPost('Penempatan'),
+            'Tanggal'           => date('Y-m-d')
+
+        );
+        // dd($data);
+        $this->Model_tendik->ubah_tendik_honorer($data);
+        session()->setFlashdata('info', 'Data Berhasil Diubah');
+        return redirect()->to(base_url('tendik/honorer'));
+    }
+
+    public function ubah_tendik_pendukung()
+    {
+        $data = array(
+            'Id_pendukung'      => $this->request->getPost('Id_pendukung'),
+            'Nama'              => $this->request->getPost('Nama'),
+            'JK'                => $this->request->getPost('JK'),
+            'Jnj_pendidikan'    => $this->request->getPost('Jnj_pendidikan'),
+            'Penempatan'        => $this->request->getPost('Penempatan'),
+            'Tanggal'           => date('Y-m-d')
+
+        );
+        // dd($data);
+        $this->Model_tendik->ubah_tendik_pendukung($data);
+        session()->setFlashdata('info', 'Data Berhasil Diubah');
+        return redirect()->to(base_url('tendik/pendukung'));
+    }
+
+    public function hapusPns($Id_pns)
+    {
+        $data = array(
+            'Id_pns'            => $Id_pns
+         );
+         $this->Model_tendik->hapusPns($data);
+         session()->setFlashdata('error', 'Data Berhasil Dihapus');
+         return redirect()->to(base_url('tendik'));
+    }
+
+    public function hapusHonorer($Id_honorer)
+    {
+        $data = array(
+            'Id_honorer'            => $Id_honorer
+         );
+         $this->Model_tendik->hapusHonorer($data);
+         session()->setFlashdata('error', 'Data Berhasil Dihapus');
+         return redirect()->to(base_url('tendik/honorer'));
+    }
+
+    public function hapusPendukung($Id_pendukung)
+    {
+        $data = array(
+            'Id_pendukung'            => $Id_pendukung
+         );
+         $this->Model_tendik->hapusPendukung($data);
+         session()->setFlashdata('error', 'Data Berhasil Dihapus');
+         return redirect()->to(base_url('tendik/pendukung'));
     }
 }

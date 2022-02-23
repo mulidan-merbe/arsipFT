@@ -39,6 +39,9 @@
                 <!-- <div class="card-tools">
                 
                 </div> -->
+                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modal-tambah">
+                  <i class="fas fa-plus"></i> Tambah
+                </button>
               </div>
               
               <!-- /.card-header -->
@@ -49,19 +52,17 @@
                 echo session()->getFlashdata('pesan');
                 echo '</div>';
             } ?>
-            <div class="mb-4">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
-            <i class="fas fa-plus"></i> Tambah
-                </button>
+            <div class="">
+            
                 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-carisertifikat">
                   Tampilkan Berdasarkan Sertifikat
                 </button> -->
             </div>
-                <table id="example2" class="table table-bordered table-striped mt-2">
-                  <thead>
+                <table id="example2" class="table table-bordered table-hover mt-2">
+                  <thead class="table-primary">
                   <tr>
                   <th class="col-1 text-center">No</th>
-                    <th class="col-5 text-center">Nama</th>
+                    <th class="col-5 text-center">NAMA</th>
                     <th class=" text-center">NIP</th>
                     <!-- <th class=" text-center">JK</th> -->
                     <!-- <th class=" text-center col-md-5">Agama</th> -->
@@ -69,9 +70,9 @@
                     <!-- <th class=" text-center">Jabatan</th> -->
                     <!-- <th class=" text-center">NIDN</th> -->
                     <!-- <th class=" text-center">Jenjang</th> -->
-                    <th class="col-3 text-center">Prodi</th>
-                    <th class=" text-center">Sertifikat</th>
-                    <th class="col-2 text-center">Aksi</th>
+                    <th class="col-3 text-center">PRODI</th>
+                    <!-- <th class=" text-center">Sertifikat</th> -->
+                    <th class="col-2 text-center">AKSI</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -91,11 +92,11 @@
                     <!-- <td><?= $value['NIDN'] ?></td> -->
                     <!-- <td><?= $value['Jnj'] ?></td> -->
                     <td><?= $value['prodi'] ?></td>
-                    <td class="text-center"> <div class="btn-group">
-                        <!-- <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-tambahsertifikat<?= $value['Id_dosen']?>"><i class="fa fa-plus" ></i></button> -->
+                    <!-- <td class="text-center"> <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-tambahsertifikat<?= $value['Id_dosen']?>"><i class="fa fa-plus" ></i></button>
                         <a href="<?= base_url('') ?>/dosen/detailSertifikat/<?= $value['NIP']?>" class="btn btn-sm btn-info" ><i class="fa fa-eye" ></i></a>
                     </div>
-                    </td>
+                    </td> -->
                     <td class="text-center"> 
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal-detail<?= $value['Id_dosen']?>"><i class="fas fa-eye"></i></button>
@@ -264,51 +265,57 @@
             </div>
             <div class="modal-body">
              <div class="row">
-                  <div class="form-group col-md-6">
-                    <label for="">Nama</label>
-                    <input name="Nama" class="form-control" value="<?= $value['Nama'] ?>" readonly>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="">NIP</label>
-                    <input name="NIP" class="form-control" id="" value="<?= $value['NIP'] ?>" readonly>
-                  </div>
-                  </div>
-                  <div class="row">
-                  <div class="form-group col-md-6">
-                    <label for="">Jenis Kelamin</label>
-                    <input name="Jab" class="form-control" id="" value="<?= $value['JK'] ?>" readonly>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="">Agama</label>
-                    <input name="Jnj" class="form-control" id="" value="<?= $value['Agama'] ?>" readonly>
-                  </div>
-                  </div>
-                  <div class="row">
-                  <div class="form-group col-md-6">
-                    <label for="">Golongan</label>
-                    <input name="Jab" class="form-control" id="" value="<?= $value['golongan'] ?>" readonly>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="">Jabatan</label>
-                    <input name="Jab" class="form-control" id="" value="<?= $value['Jab'] ?>" readonly>
-                  </div>
-                  </div>
-                  <div class="row">
-                  <div class="form-group col-md-6">
-                    <label for="">NIDN</label>
-                    <input name="NIDN" class="form-control" id="" value="<?= $value['NIDN'] ?>" readonly>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="">Jenjang</label>
-                    <input name="Jnj" class="form-control" id="" value="<?= $value['Jnj'] ?>" readonly>
-                  </div>
-                  </div>
-                  <div class="row">
-                  <div class="form-group col-md-6">
-                    <label for="">Prodi</label>
-                    <input name="Jnj" class="form-control" id="" value="<?= $value['prodi'] ?>" readonly>
-                  </div>
-                  </div>
+               <table class="table table-bordered">
+                 <tr>
+                   <td class="col-3">Nama</td>
+                   <td><b><?= $value['Nama'] ?></b></td>
+                 </tr>
+                 <tr>
+                   <td>NIP</td>
+                   <td><b><?= $value['NIP'] ?></b></td>
+                 </tr>
+                 <tr>
+                   <td>Jenis Kelamin</td>
+                   <td><b><?= $value['JK'] ?></b></td>
+                 </tr>
+                 <tr>
+                   <td>Tempat Lahir</td>
+                   <td><b><?= $value['Tempat_lahir'] ?></b></td>
+                 </tr>
+                 <tr>
+                   <td>Tanggal Lahir</td>
+                   <td><b><?= $value['Tanggal_lahir'] ?></b></td>
+                 </tr>
+                 <tr>
+                   <td>Agama</td>
+                   <td><b><?= $value['Agama'] ?></b></td>
+                 </tr>
+                 <tr>
+                   <td>Pendidikan</td>
+                   <td><b><?= $value['Jnj'] ?></b></td>
+                 </tr>
+                 <tr>
+                   <td>Golongan</td>
+                   <td><b><?= $value['golongan'] ?></b></td>
+                 </tr>
+                 <tr>
+                   <td>Jabatan</td>
+                   <td><b><?= $value['Jab'] ?></b></td>
+                 </tr>
+                 <tr>
+                   <td>NIDN</td>
+                   <td><b><?= $value['NIDN'] ?></b></td>
+                 </tr>
+                 <tr>
+                   <td>Prodi</td>
+                   <td><b><?= $value['prodi'] ?></b></td>
+                 </tr>
+                 <!-- <tr>
+                   <td>Nama</td>
+                   <td><b><?= $value['Nama'] ?></b></td>
+                 </tr> -->
+               </table>
+             </div>
             </div>
           </div>
           <!-- /.modal-content -->
@@ -490,3 +497,35 @@
         <!-- /.modal-dialog -->
       </div> 
       <?php } ?>     
+
+      <script>
+        $(function(){
+          // $.bootstrapGrowl("This is a test.");
+            <?php if(session()->has("success")) { ?>
+                $.bootstrapGrowl('<?= session("success") ?>',{
+                    type: 'success',
+                    delay: 4000,
+                });
+            <?php } ?>
+            <?php if(session()->has("info")) { ?>
+                $.bootstrapGrowl('<?= session("info") ?>',{
+                    type: 'info',
+                    delay: 4000,
+                });
+            <?php } ?>
+
+            <?php if(session()->has("error")) { ?>
+                $.bootstrapGrowl('<?= session("error") ?>',{
+                    type: 'danger',
+                    delay: 4000,
+                });
+            <?php } ?>
+
+            <?php if(session()->has("warning")) { ?>
+                $.bootstrapGrowl('<?= session("warning") ?>',{
+                    type: 'warning',
+                    delay: 4000,
+                });
+            <?php } ?>
+        });
+      </script>

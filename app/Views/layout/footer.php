@@ -45,6 +45,7 @@
 <script src="<?= base_url() ?>/template/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
 <script src="<?= base_url() ?>/template/plugins/chart.js/Chart.min.js"></script>
+<script src="<?= base_url() ?>/template/plugins/jquery/jquery.bootstrap-growl.min.js"></script>
 <!-- <script src="<?= base_url() ?>/Chart/Chart.bundle.min.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
@@ -86,7 +87,7 @@
  });  
  </script>
 
- <script>
+ <!-- <script>
     $(document).ready(function(){  
       function filter_data()
       {
@@ -109,7 +110,7 @@
         return filter;
       }
     }
- </script>
+ </script> -->
 
 </body>
 </html>
