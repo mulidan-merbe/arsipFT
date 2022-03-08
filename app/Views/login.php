@@ -9,13 +9,13 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?= base_url() ?>/template/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>/public/template/plugins/fontawesome-free/css/all.min.css">
   <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="<?= base_url() ?>/template/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>/public/template/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="<?= base_url() ?>/template/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>/public/template/dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition login-page" style="background-image: url('<?= base_url()?>/bg.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+<body class="hold-transition login-page" style="background-image: url('<?= base_url()?>/public/bg.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat;">
 <div class="login-box">
   
   <!-- /.login-logo -->

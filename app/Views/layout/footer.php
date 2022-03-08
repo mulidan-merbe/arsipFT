@@ -14,37 +14,37 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="<?= base_url() ?>/template/plugins/jquery/jquery.min.js"></script>
+<script src="<?= base_url() ?>/public/template/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="<?= base_url() ?>/template/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="<?= base_url() ?>/public/template/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="<?= base_url() ?>/template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="<?= base_url() ?>/template/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="<?= base_url() ?>/public/template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?= base_url() ?>/public/template/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="<?= base_url() ?>/template/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="<?= base_url() ?>/public/template/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Summernote -->
-<script src="<?= base_url() ?>/template/plugins/summernote/summernote-bs4.min.js"></script>
+<script src="<?= base_url() ?>/public/template/plugins/summernote/summernote-bs4.min.js"></script>
 <!-- overlayScrollbars -->
-<script src="<?= base_url() ?>/template/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="<?= base_url() ?>/public/template/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="<?= base_url() ?>/template/dist/js/adminlte.js"></script>
+<script src="<?= base_url() ?>/public/template/dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
 <!-- <script src="<?= base_url() ?>/template/dist/js/demo.js"></script> -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<?= base_url() ?>/template/dist/js/pages/dashboard.js"></script>
-<script src="<?= base_url() ?>/template/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= base_url() ?>/template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="<?= base_url() ?>/template/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="<?= base_url() ?>/template/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="<?= base_url() ?>/template/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="<?= base_url() ?>/template/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="<?= base_url() ?>/public/template/dist/js/pages/dashboard.js"></script>
+<script src="<?= base_url() ?>/public/template/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url() ?>/public/template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url() ?>/public/template/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?= base_url() ?>/public/template/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="<?= base_url() ?>/public/template/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="<?= base_url() ?>/public/template/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-<script src="<?= base_url() ?>/template/plugins/chart.js/Chart.min.js"></script>
-<script src="<?= base_url() ?>/template/plugins/jquery/jquery.bootstrap-growl.min.js"></script>
+<script src="<?= base_url() ?>/public/template/plugins/chart.js/Chart.min.js"></script>
+<script src="<?= base_url() ?>/public/template/plugins/jquery/jquery.bootstrap-growl.min.js"></script>
 <!-- <script src="<?= base_url() ?>/Chart/Chart.bundle.min.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
