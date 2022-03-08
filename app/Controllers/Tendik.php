@@ -185,7 +185,7 @@ class Tendik extends BaseController
     public function ubahtendik_pns($Id_pns)
     {
         $data = array(
-            'title' => 'Tenaga Pendidikan',
+            'title' => 'Tenaga PNS',
             'pns'   => $this->Model_tendik->tampilbyid_pns($Id_pns),
             'golongan' => $this->Model_dosen->tampil_gol(),
             'validation' => \Config\Services::validation()

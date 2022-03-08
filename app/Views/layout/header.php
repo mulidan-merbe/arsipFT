@@ -7,5 +7,5 @@
     <div class="container">
       <a href="../../index3.html" class="navbar-brand">
        
-        <span class="brand-text font-weight-normal">E-Arsip Fakultas Teknik</span>
+        <span class="brand-text font-weight-bold">E-Arsip Fakultas Teknik</span>
       </a>

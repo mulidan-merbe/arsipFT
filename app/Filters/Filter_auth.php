@@ -10,7 +10,7 @@ class Filter_auth implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (session()->get('log') != true){
+        if (session()->get('Nama') != true){
             session()->setFlashdata('pesan', 'Anda Belum Login');
             return redirect()->to(base_url()); 
         }
@@ -18,7 +18,7 @@ class Filter_auth implements FilterInterface
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        if(session()->get('log') == true){
+        if(session()->get('Nama') == true){
             return redirect()->to(base_url('home')); 
         }
     }

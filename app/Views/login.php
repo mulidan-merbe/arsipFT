@@ -18,12 +18,12 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="<?= base_url() ?>"><b>E-Surat</b></a>
+    <a href="<?= base_url() ?>"><b>E-Arsip</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Silahkan Login testt</p>
+      <p class="login-box-msg">Silahkan Login </p>
         <?php
         $errors = session()->getFlashdata('errors');
         if(!empty($errors)){ ?>

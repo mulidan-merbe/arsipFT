@@ -28,7 +28,7 @@
       <div class="card card-primary card-outline" style="min-height: 650px;">
               <div class="card-header">
                 <h3 class="card-title">Data <?= $title ?></h3>
-                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modal-tambah">
+                <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#modal-tambah">
                 <i class="fas fa-plus"></i> Tambah
                 </button>
               </div>
@@ -276,3 +276,35 @@
         <!-- /.modal-dialog -->
       </div>   
       <?php } ?>   
+
+      <script>
+        $(function(){
+          // $.bootstrapGrowl("This is a test.");
+            <?php if(session()->has("success")) { ?>
+                $.bootstrapGrowl('<?= session("success") ?>',{
+                    type: 'success',
+                    delay: 4000,
+                });
+            <?php } ?>
+            <?php if(session()->has("info")) { ?>
+                $.bootstrapGrowl('<?= session("info") ?>',{
+                    type: 'info',
+                    delay: 4000,
+                });
+            <?php } ?>
+
+            <?php if(session()->has("error")) { ?>
+                $.bootstrapGrowl('<?= session("error") ?>',{
+                    type: 'danger',
+                    delay: 4000,
+                });
+            <?php } ?>
+
+            <?php if(session()->has("warning")) { ?>
+                $.bootstrapGrowl('<?= session("warning") ?>',{
+                    type: 'warning',
+                    delay: 4000,
+                });
+            <?php } ?>
+        });
+      </script>

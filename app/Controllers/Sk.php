@@ -18,7 +18,7 @@ class Sk extends BaseController
             // 'ubah'  => $this->Model_masuk->ubah(),
             'isi'   => 'surat_keputusan'
         );
-        return view('layout/wrapper', $data);
+        return view('surat_keputusan', $data);
     }
 
     public function tambah()

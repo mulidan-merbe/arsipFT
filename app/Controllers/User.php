@@ -20,7 +20,7 @@ class User extends BaseController
             // 'ubah'  => $this->Model_kategori->ubah(),
             'isi'   => 'user/index'
         );
-        return view('layout/wrapper', $data);
+        return view('user/index', $data);
     }
 
     public function tambah()
@@ -32,7 +32,7 @@ class User extends BaseController
             'isi'   => 'user/tambah',
             'validation' => \Config\Services::validation()
         );
-        return view('layout/wrapper', $data);
+        return view('user/tambah', $data);
     }
 
     public function tambah_data()
@@ -82,7 +82,7 @@ class User extends BaseController
             $data = array(
                 'Nama'      => $this->request->getPost('Nama'),
                 'Email'     => $this->request->getPost('Email'),
-                'Password'  => $this->request->getPost('Password'),
+                'Password'  => password_hash($this->request->getPost('Password'), PASSWORD_DEFAULT),
                 'Level'     => $this->request->getPost('Level'),
                 'Id_dep'    => $this->request->getPost('Department'),
 
@@ -107,7 +107,7 @@ class User extends BaseController
             'validation' => \Config\Services::validation()
         );
         // dd($data['user']);
-        return view('layout/wrapper', $data);
+        return view('user/ubah', $data);
     }
 
     public function ubahData($Id)

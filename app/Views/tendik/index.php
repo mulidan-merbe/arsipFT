@@ -9,7 +9,7 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h3 class="m-0"><?= $title ?></h3>
+            <h4 class="m-0">TENAGA PENDIDIKAN</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -30,15 +30,15 @@
         <a type="button2" class="btn btn-primary  <?php $uri = service('uri'); if ($uri->getSegment(1) == "tendik") {
                                                     echo "active";
                                                   } ?>" href="<?= base_url('tendik') ?>">PNS</a>
-        <a type="button2" class="btn btn-primary" href="<?= base_url('tendik/honorer') ?>">Honorer</a>
-        <a type="button2" class="btn btn-primary" href="<?= base_url('tendik/pendukung') ?>">Pendukung</a>
+        <a type="button2" class="btn btn-outline-primary" href="<?= base_url('tendik/honorer') ?>">Honorer</a>
+        <a type="button2" class="btn btn-outline-primary" href="<?= base_url('tendik/pendukung') ?>">Pendukung</a>
      </div>
       <div class="row mt-2">
         <div class="col-md-12">
         <div class="card card-primary card-outline" style="min-height: 650px;">
               <div class="card-header">
                 <h3 class="card-title">Data <?= $title ?> </h3>
-                <a href="<?= base_url() ?>/tendik/tendik_pns" class="btn btn-primary float-right">
+                <a href="<?= base_url() ?>/tendik/tendik_pns" class="btn btn-outline-primary float-right">
                  <i class="fas fa-plus"></i> Tambah
                                                 </a>
               </div>

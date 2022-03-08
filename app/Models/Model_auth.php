@@ -13,4 +13,11 @@ class Model_auth extends Model
             'Password'  => $Password
         ])->get()->getRowArray();
     }
+
+    public function cek_user($post)
+    {
+        return $this->db->table('user')->where([
+            'Email' => $post['Email'],
+        ])->get()->getRowArray();
+    }
 }

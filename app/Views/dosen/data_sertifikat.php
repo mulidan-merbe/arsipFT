@@ -7,7 +7,7 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h3 class="m-0"><?= $title ?></h3>
+            <h4 class="m-0">DOSEN</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -25,7 +25,7 @@
       <section class="content">
       <div class="container-fluid">
       <div class="btn-group">
-        <a type="button2" class="btn btn-primary " href="<?= base_url('dosen') ?>">Data Dosen</a>
+        <a type="button2" class="btn btn-outline-primary " href="<?= base_url('dosen') ?>">Profil</a>
         <a type="button2" class="btn btn-primary <?php $uri = service('uri'); if ($uri->getSegment(2) == "dataSertifikat") {
                                                     echo "active";
                                                   } ?>" href="<?= base_url('dosen/sertifikat') ?>">Sertifikat</a>
@@ -39,7 +39,7 @@
                 <h3 class="card-title">Data Berdasarkan Sertifikat
                 
             </h3>
-            <a href="<?= base_url() ?>/dosen/tambah_sertifikat " class="btn btn-primary float-right">
+            <a href="<?= base_url() ?>/dosen/tambah_sertifikat " class="btn btn-outline-primary float-right">
                  <i class="fas fa-plus"></i> Tambah
                                                 </a>
               </div>

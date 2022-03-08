@@ -20,7 +20,7 @@ class Skrektor extends BaseController
             'isi'   => 'SKRektor/index'
         );
         // dd($data['skrektor']);
-        return view('layout/wrapper', $data);
+        return view('SKRektor/index', $data);
     }
 
     public function detail($Id)
@@ -32,7 +32,7 @@ class Skrektor extends BaseController
             'isi'   => 'SKRektor/detail'
         );
         // dd($data['tugas']);
-        return view('layout/wrapper', $data);
+        return view('SKRektor/index', $data);
     }
 
     public function tambah()
@@ -88,7 +88,7 @@ class Skrektor extends BaseController
             'isi'   => 'SKRektor/tambahAnggota'
         );
         // dd($data['detail']);
-        return view('layout/wrapper', $data);
+        return view('SKRektor/tambahAnggota', $data);
     }
 
     public function ubah($Id)

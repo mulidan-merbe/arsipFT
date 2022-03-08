@@ -11,7 +11,7 @@ class Model_dosen extends Model
         return $this->db->table('dosen d')
         // ->select('d.Id_dosen, d.NIP, d.Nama, d.JK, d.Agama, g.Id_gol, g.golongan, d.Jab, d.Jnj, d.NIDN, p.Id_prodi, p.prodi,  COUNT(s.NIP) AS total')
         ->join('prodi p', 'p.Id_prodi = d.Id_prodi', 'left')
-        ->join('Golongan g', 'g.Id_gol = d.Gol', 'left')
+        ->join('golongan g', 'g.Id_gol = d.Gol', 'left')
         // ->join('sertifikat_dosen s', 's.NIP = d.NIP', 'left')
         ->orderBy('d.Id_dosen', 'ASC')
         ->get()
@@ -40,7 +40,7 @@ class Model_dosen extends Model
         return $this->db->table('dosen d')
         // ->select('d.Id_dosen, d.NIP, d.Nama, d.JK, d.Agama, g.Id_gol, g.golongan, d.Jab, d.Jnj, d.NIDN, p.Id_prodi, p.prodi,  COUNT(s.NIP) AS total')
         ->join('prodi p', 'p.Id_prodi = d.Id_prodi', 'left')
-        ->join('Golongan g', 'g.Id_gol = d.Gol', 'left')
+        ->join('golongan g', 'g.Id_gol = d.Gol', 'left')
         ->where('d.Id_prodi ', $Id_prodi)
         ->orderBy('d.Id_dosen', 'ASC')
         ->get()
@@ -112,12 +112,25 @@ class Model_dosen extends Model
 
     public function tampil_sertifikatDosen()
     {
+        // ini bisa digunakan, tapi saat di hosting ade error
+        // return $this->db->table('sertifikat_dosen s')
+        // ->select(' DISTINCT(s.NIP), COUNT(s.NIP) AS total, d.Nama, p.prodi')
+        // ->join('dosen d', 's.NIP = d.NIP', 'left')
+        // ->join('prodi p', 'p.Id_prodi = d.Id_prodi', 'left')
+        // ->join('sertifikat', 'sertifikat.Id_sertifikat = s.Id_sertifikat', 'left')
+        // ->groupBy('s.NIP')
+        // ->orderBy('p.Id_prodi', 'ASC')
+        // ->get()
+        // ->getResultArray();
+
+        
+        // ini sudah diperbaiki dan jalan saat di hosting
         return $this->db->table('sertifikat_dosen s')
-        ->select(' DISTINCT(s.NIP), COUNT(s.NIP) AS total, d.Nama, p.prodi')
+        ->select(' DISTINCT(s.NIP), COUNT(s.NIP) AS total, d.Nama, p.prodi, p.Id_prodi')
         ->join('dosen d', 's.NIP = d.NIP', 'left')
         ->join('prodi p', 'p.Id_prodi = d.Id_prodi', 'left')
         ->join('sertifikat', 'sertifikat.Id_sertifikat = s.Id_sertifikat', 'left')
-        ->groupBy('s.NIP')
+        ->groupBy('s.NIP, d.Nama, p.prodi, p.Id_prodi')
         ->orderBy('p.Id_prodi', 'ASC')
         ->get()
         ->getResultArray();

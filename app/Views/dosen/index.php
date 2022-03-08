@@ -7,7 +7,7 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h3 class="m-0"><?= $title ?></h3>
+            <h4 class="m-0">DOSEN</h4>
           </div><!-- /.col -->
           
           <div class="col-sm-6">
@@ -29,8 +29,8 @@
       <div class="btn-group">
       <a type="button2" class="btn btn-primary  <?php $uri = service('uri'); if ($uri->getSegment(1) == "dosen") {
                                                     echo "active";
-                                                  } ?>" href="<?= base_url('dosen') ?>">Data Dosen</a>
-        <a type="button2" class="btn btn-primary" href="<?= base_url('dosen/sertifikat') ?>">Sertifikat</a>
+                                                  } ?>" href="<?= base_url('dosen') ?>">Profil</a>
+        <a type="button2" class="btn btn-outline-primary" href="<?= base_url('dosen/sertifikat') ?>">Sertifikat</a>
      </div>
       <div class="row mt-2">
         <div class="col-md-12">

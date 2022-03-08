@@ -36,7 +36,7 @@ class Masuk extends BaseController
            'Id_tujuan'          => $this->request->getPost('Id_tujuan')
         );
         $this->Model_masuk->tambah($data);
-        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkkan');
+        session()->setFlashdata('success', 'Data Berhasil Ditambahkkan');
         return redirect()->to(base_url('masuk'));
     }
 
@@ -54,7 +54,7 @@ class Masuk extends BaseController
 
         //  dd($data[Id_masuk]);
          $this->Model_masuk->ubah($data);
-         session()->setFlashdata('pesan', 'Data Berhasil Diubah');
+         session()->setFlashdata('info', 'Data Berhasil Diubah');
          return redirect()->to(base_url('masuk'));
     }
 
@@ -64,7 +64,7 @@ class Masuk extends BaseController
             'Id_masuk'            => $Id_masuk
          );
          $this->Model_masuk->hapus($data);
-         session()->setFlashdata('pesan', 'Data Berhasil Dihapus');
+         session()->setFlashdata('error', 'Data Berhasil Dihapus');
          return redirect()->to(base_url('masuk'));
     }
 }

@@ -1,3 +1,6 @@
+<?= $this->include('layout/head') ?>
+<?= $this->include('layout/header') ?>
+<?= $this->include('layout/nav') ?>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -85,6 +88,7 @@
     </div>
     <!-- /.content -->
   </div>
+  <?= $this->include('layout/footer') ?> 
       
        <!-- Modal Hapus -->
       <?php foreach($user as $key => $value )  { ?>

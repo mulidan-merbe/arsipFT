@@ -23,7 +23,7 @@ class Tugas extends BaseController
             'isi'   => 'tugas/index'
         );
         // dd($data['tugas']);
-        return view('layout/wrapper', $data);
+        return view('tugas/index', $data);
     }
 
     public function detail($Id_tugas)
@@ -35,6 +35,6 @@ class Tugas extends BaseController
             'isi'   => 'tugas/detail'
         );
         // dd($data['tugas']);
-        return view('layout/wrapper', $data);
+        return view('tugas/detail', $data);
     }
 }

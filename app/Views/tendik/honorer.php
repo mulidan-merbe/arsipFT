@@ -8,7 +8,7 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h3 class="m-0"><?= $title ?></h3>
+            <h4 class="m-0">TENAGA PENDIDIKAN</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -26,11 +26,11 @@
       <section class="content">
       <div class="container-fluid">
       <div class="btn-group">
-        <a type="button2" class="btn btn-primary  " href="<?= base_url('tendik') ?>">PNS</a>
+        <a type="button2" class="btn btn-outline-primary  " href="<?= base_url('tendik') ?>">PNS</a>
         <a type="button2" class="btn btn-primary <?php $uri = service('uri'); if ($uri->getSegment(1) == "tendik") {
                                                     echo "active";
                                                   } ?>" href="<?= base_url('tendik/honorer') ?>">Honorer</a>
-        <a type="button2" class="btn btn-primary" href="<?= base_url('tendik/pendukung') ?>">Pendukung</a>
+        <a type="button2" class="btn btn-outline-primary" href="<?= base_url('tendik/pendukung') ?>">Pendukung</a>
      </div>
       <div class="row mt-2">
         <div class="col-md-12">
@@ -38,19 +38,13 @@
               <div class="card-header">
                 <h3 class="card-title">Data <?= $title ?> </h3>
                 
-                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modal-tambah">
+                <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#modal-tambah">
                     <i class="fas fa-plus"></i> Tambah
                 </button>
               </div>
               
               <!-- /.card-header -->
               <div class="card-body">
-              <?php if (session()->getFlashdata('pesan')){
-                echo '<div class="alert alert-success alert-dismissible">';
-                echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Sukses!</h5>';
-                echo session()->getFlashdata('pesan');
-                echo '</div>';
-              } ?>
               <div class="">
 
             </div>

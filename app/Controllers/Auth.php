@@ -36,16 +36,29 @@ class Auth extends BaseController
                     ],
                 ],
             ])) {
-                $Email = $this->request->getPost('Email');
-                $Password = $this->request->getPost('Password');
-                $Password = $this->request->getPost('Password');
-                $cek =  $this->Model_auth->login($Email, $Password);
-                if($cek) {
-                    session()->set('log', true);
-                    session()->set('Nama', $cek['Nama']);
-                    session()->set('Email', $cek['Email']);
-                    session()->set('Level', $cek['Level']);
-                    return redirect()->to(base_url('home'));
+                $post = $this->request->getPost();
+                $cek_user = $this->Model_auth->cek_user($post);
+
+                // $Email = $this->request->getPost('Email');
+                // $Password = $this->request->getPost('Password');
+                // $Password = $this->request->getPost('Password');
+                // $cek =  $this->Model_auth->login($Email, $Password);
+                if($cek_user) {
+                    if(password_verify($post['Password'], $cek_user['Password']))
+                    {
+                        $params = [
+                            'Nama'      => $cek_user['Nama'],
+                            'Email'     => $cek_user['Email'],
+                            'Level'     => $cek_user['Level'],
+                            'Id_dep'    => $cek_user['Id_dep']
+
+                        ];
+                        session()->set($params);
+                        return redirect()->to(base_url('home'));
+                    } else {
+                        session()->setFlashdata('pesan', 'Password Salah');
+                        return redirect()->to(base_url());
+                    }
                 } else {
                     session()->setFlashdata('pesan', 'Login Gagal, Username dan Password Salah');
                     return redirect()->to(base_url());
