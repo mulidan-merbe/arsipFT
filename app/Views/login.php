@@ -15,15 +15,19 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url() ?>/template/dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-image: url('<?= base_url()?>/bg.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat;">
 <div class="login-box">
-  <div class="login-logo">
-    <a href="<?= base_url() ?>"><b>E-Arsip</b></a>
-  </div>
+  
   <!-- /.login-logo -->
-  <div class="card">
+  <div class="card card-primary card-outline" style="min-height: 400px">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Silahkan Login </p>
+    <div class="login-logo">
+    <img src="<?= base_url()?>/logo-lowres.png" alt="" style="width: 50px">
+    <br>
+    <h6 class="mt-3">LOGIN APLIKASI</h6>
+    <h4><b>E-ARSIP FAKULTAS TEKNIK</b></h4>
+  </div>
+      <!-- <p class="login-box-msg">Silahkan Login </p> -->
         <?php
         $errors = session()->getFlashdata('errors');
         if(!empty($errors)){ ?>
@@ -39,7 +43,7 @@
             echo '</div>';
         } ?>
       <?php echo form_open('Auth/login'); ?>
-        <div class="input-group mb-3">
+        <div class="input-group mb-3 mt-4">
           <input type="email" name="Email" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
@@ -56,8 +60,8 @@
           </div>
         </div>
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          <div class="mt-3">
+            <button type="submit" class="btn btn-primary btn-block w-100">MASUK</button>
           </div>
           <!-- /.col -->
         </div>
