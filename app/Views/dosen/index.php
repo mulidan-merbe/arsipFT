@@ -74,14 +74,14 @@
                       </tr>
                       <?php } ?>
                         </table>
+                        
                   </div>
                   <div class="col-md-7">
                   <div class="row">
                     <div class="col-4">
                         <div class="small-box bg-info">
                         <div class="inner"> 
-                          <h3><?= $countId[0]['total'] ?></h3>
-
+                          <h3><?= $countId[0]['total']?></h3>
                           <p>Total Dosen</p>
                         </div>
                         <div class="icon">
@@ -114,8 +114,8 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
      
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: <?php echo json_encode($nama); ?>,

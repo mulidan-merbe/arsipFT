@@ -9,7 +9,7 @@ class Model_dosen extends Model
     public function tampil()
     {
         return $this->db->table('dosen d')
-        // ->select('d.Id_dosen, d.NIP, d.Nama, d.JK, d.Agama, g.Id_gol, g.golongan, d.Jab, d.Jnj, d.NIDN, p.Id_prodi, p.prodi,  COUNT(s.NIP) AS total')
+        // ->select('d.Id_dosen, d.NIP, d.Nama, d.JK, d.Agama, g.Id_gol, g.golongan, d.Jab, d.Jnj, d.NIDN, p.Id_prodi, p.prodi,  COUNT(d.NIP) AS total')
         ->join('prodi p', 'p.Id_prodi = d.Id_prodi', 'left')
         ->join('golongan g', 'g.Id_gol = d.Gol', 'left')
         // ->join('sertifikat_dosen s', 's.NIP = d.NIP', 'left')

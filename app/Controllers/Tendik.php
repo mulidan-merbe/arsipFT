@@ -15,15 +15,28 @@ class Tendik extends BaseController
     public function index()
     {
         $data = array(
+            'title'     => 'Tenaga Pendidikan ',
+            'pns'       => $this->Model_tendik->count_pns(),
+            'honorer'   => $this->Model_tendik->count_honorer(),
+            'pendukung' => $this->Model_tendik->count_pendukung(),
+        );
+
+        $data['jumlah'] = $data['pns'] + $data['honorer'] + $data['pendukung'];
+        return view('tendik/index', $data);
+
+        
+    }
+
+    public function pns()
+    {
+        $data = array(
             'title' => 'Tenaga PNS ',
             'pns' => $this->Model_tendik->tampil_pns(),
         );
 
        
         // dd($data['prodi']);
-        return view('tendik/index', $data);
-
-        
+        return view('tendik/pns', $data);
     }
 
     public function honorer()

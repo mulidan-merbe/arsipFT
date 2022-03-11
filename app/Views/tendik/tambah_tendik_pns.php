@@ -27,7 +27,7 @@
       <div class="btn-group">
       <a type="button2" class="btn btn-primary  <?php $uri = service('uri'); if ($uri->getSegment(1) == "tendik") {
                                                     echo "active";
-                                                  } ?>" href="<?= base_url('tendik') ?>">PNS</a>
+                                                  } ?>" href="<?= base_url('tendik/pns') ?>">PNS</a>
         <a type="button2" class="btn btn-outline-primary" href="<?= base_url('tendik/honorer') ?>">Honorer</a>
         <a type="button2" class="btn btn-outline-primary" href="<?= base_url('tendik/pendukung') ?>">Pendukung</a>
      </div>

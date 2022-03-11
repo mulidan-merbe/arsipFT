@@ -40,6 +40,24 @@ class Model_tendik extends Model
         ->getResultArray();
     }
 
+    public function count_pns()
+    {
+        return $this->db->table('tendik_pns')
+        ->countAllResults();
+    }
+
+    public function count_honorer()
+    {
+        return $this->db->table('tendik_honorer')
+        ->countAllResults();
+    }
+
+    public function count_pendukung()
+    {
+        return $this->db->table('tendik_pendukung')
+        ->countAllResults();
+    }
+
     public function tambah_tendik_pns($data)
     {
         $this->db->table('tendik_pns')->insert($data);

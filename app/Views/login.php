@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>E - Surat | Log in</title>
+  <title>E-ARSIP | Log in</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -22,7 +22,7 @@
   <div class="card card-primary card-outline" style="min-height: 400px">
     <div class="card-body login-card-body">
     <div class="login-logo">
-    <img src="<?= base_url()?>/logo-lowres.png" alt="" style="width: 50px">
+    <img src="<?= base_url()?>/public/logo-lowres.png" alt="" style="width: 50px">
     <br>
     <h6 class="mt-3">LOGIN APLIKASI</h6>
     <h4><b>E-ARSIP FAKULTAS TEKNIK</b></h4>
