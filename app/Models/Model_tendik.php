@@ -10,6 +10,7 @@ class Model_tendik extends Model
     {
         return $this->db->table('tendik_pns t')
         ->join('golongan g', 'g.Id_gol=t.Id_gol')
+        ->join('status s', 's.Id_status =t.Status')
         ->orderBy('t.Id_pns', 'ASC')
         ->get()
         ->getResultArray();

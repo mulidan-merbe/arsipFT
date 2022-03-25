@@ -36,22 +36,15 @@
         <div class="card card-primary card-outline" style="min-height: 650px;">
               <div class="card-header">
                 <h3 class="card-title">Data <?= $title ?> </h3>
-                <!-- <div class="card-tools">
-                
-                </div> -->
+                <?php if(session()->get('Id_dep') == 1) {?>
                 <button type="button" class="btn btn-outline-primary float-right" data-toggle="modal" data-target="#modal-tambah">
                   <i class="fas fa-plus"></i> Tambah
                 </button>
+                <?php } ?>
               </div>
               
               <!-- /.card-header -->
               <div class="card-body">
-              <?php if (session()->getFlashdata('pesan')){
-                echo '<div class="alert alert-success alert-dismissible">';
-                echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><h5><i class="icon fas fa-check"></i> Sukses!</h5>';
-                echo session()->getFlashdata('pesan');
-                echo '</div>';
-            } ?>
             <div class="">
             
                 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-carisertifikat">
@@ -100,9 +93,11 @@
                     <td class="text-center"> 
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal-detail<?= $value['Id_dosen']?>"><i class="fas fa-eye"></i></button>
+                        <?php if(session()->get('Id_dep') == 1) {?>
                         <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-ubah<?= $value['Id_dosen']?>"><i class="fas fa-edit"></i></button>
                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-hapus<?= $value['Id_dosen']?>"><i class="fa fa-trash" ></i></button>
-                    </div>
+                        <?php } ?>
+                      </div>
                     </td>
                   </tr>
                   <?php } ?>

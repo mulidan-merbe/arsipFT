@@ -47,6 +47,7 @@ class Auth extends BaseController
                     if(password_verify($post['Password'], $cek_user['Password']))
                     {
                         $params = [
+                            'Id_dep'        => $cek_user['Id_dep'],
                             'Nama'      => $cek_user['Nama'],
                             'Email'     => $cek_user['Email'],
                             'Level'     => $cek_user['Level'],

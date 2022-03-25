@@ -421,7 +421,7 @@ class Dosen extends BaseController
             'Id_serdos'            => $Id_serdos
          );
          $this->Model_dosen->hapusSertifikat($data);
-         session()->setFlashdata('pesan', 'Data Berhasil Dihapus');
+         session()->setFlashdata('error', 'Data Berhasil Dihapus');
          return redirect()->to(base_url('dosen/detailSertifikat/'. $file[0]['NIP']));
     }
 }

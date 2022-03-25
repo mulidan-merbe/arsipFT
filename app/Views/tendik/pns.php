@@ -64,7 +64,8 @@
                     <th class=" text-center">JNJ PEND</th>
                     <th class=" text-center">PANGKAT GOL/RUANG</th>
                     <th class=" text-center">JABATAN</th>
-                    <th class=" text-center">KETERANGAN</th>
+                    <!-- <th class=" text-center">KETERANGAN</th> -->
+                    <th class=" text-center">STATUS</th>
                     <th class="text-center">AKSI</th>
                   </tr>
                   </thead>
@@ -80,7 +81,17 @@
                         <td><?= $value['Jnj_pendidikan'] ?></td>
                         <td><?= $value['Pangkat'] ?>/<?= $value['golongan'] ?></td>
                         <td><?= $value['Jabatan'] ?></td>
-                        <td><?= $value['Keterangan'] ?></td>
+                        <!-- <td><?= $value['Keterangan'] ?></td> -->
+                        <td>
+                          <?php if($value['Id_status'] == 1){ ?>
+                            <span class="badge badge-info"><?= $value['Keterangan_status'] ?></span> 
+                          <?php } else if($value['Id_status'] == 2) { ?>
+                            <span class="badge badge-warning"><?= $value['Keterangan_status'] ?></span> </td>
+                          <?php } else if($value['Id_status'] == 3) { ?>
+                            <span class="badge badge-danger"><?= $value['Keterangan_status'] ?></span> </td>
+                          <?php } else if($value['Id_status'] == 4) { ?>
+                            <span class="badge badge-warning"><?= $value['Keterangan_status'] ?></span> </td>
+                          <?php } ?>
                         <td>
                             <div class="btn-group">
                                 <a class="btn btn-sm btn-warning" href="<?= base_url('tendik/ubahtendik_pns/'. $value['Id_pns']) ?>"><i class="fa fa-edit"></i></a>

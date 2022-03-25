@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\Model_masuk;
 use App\Models\Model_tujuan;
 
-class Masuk extends BaseController
+class Masuk2 extends BaseController
 {
     protected $Model_masuk;
 

@@ -8,21 +8,9 @@
           <li class="nav-item">
             <a href="<?= base_url()?>/home" class="nav-link <?php $uri = service('uri'); if ($uri->getSegment(1) == "home") { echo "active"; } ?>">DASHBOARD</a>
           </li>
-          <?php if (session()->get('Level') != 1) { ?>
-              <li class="nav-item"><a href="<?= base_url('masuk')?>" class="nav-link active">Surat Masuk</a></li>
-            <?php } ?>
-          <?php if (session()->get('Level') != 2) { ?>
-          <!-- <li class="nav-item">
-            <a href="<?= base_url('kategori')?>" class="nav-link">Kategori</a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= base_url('department')?>" class="nav-link">Department</a>
-          </li> -->
-          <!-- <li class="nav-item">
-            <a href="<?= base_url('dosen')?>" class="nav-link">MASTER DATA</a>
-          </li> -->
+      
           <li class="nav-item dropdown">
-            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle <?php $uri = service('uri'); if ($uri->getSegment(1) == "dosen" ) {
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle <?php $uri = service('uri'); if ($uri->getSegment(1) == "dosen" || $uri->getSegment(1) == "tendik") {
                                                     echo "active";
                                                   } ?>">MASTER DATA</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
@@ -32,18 +20,21 @@
               <li><a href="<?= base_url('tendik')?>" class="dropdown-item">DATA ALUMNI</a></li>
             </ul>
           </li>
-          <?php } ?>
-          <?php if (session()->get('Level') != 2) { ?>
           <li class="nav-item dropdown">
-            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">MASTER SURAT</a>
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle <?php $uri = service('uri'); if ($uri->getSegment(1) == "masuk" || $uri->getSegment(1) == "sk" || $uri->getSegment(1) == "sk_rektor") {
+                                                    echo "active";
+                                                  } ?>">MASTER SURAT</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <li><a href="<?= base_url('masuk')?>" class="dropdown-item">SURAT MASUK</a></li>
+              <li><a href="<?= base_url('masuk2')?>" class="dropdown-item">SURAT MASUK 2</a></li>
               <li><a href="<?= base_url('masuk')?>" class="dropdown-item">SURAT KELUAR</a></li>
               <li><a href="<?= base_url('tugas')?>" class="dropdown-item">SURAT TUGAS</a></li>
               <li><a href="<?= base_url('sk')?>" class="dropdown-item">SURAT KEPUTUSAN</a></li>
               <li><a href="<?= base_url('skrektor')?>" class="dropdown-item">SURAT KEPUTUSAN REKTOR</a></li>
             </ul>
           </li>
+      
+          <?php if(session()->get('Id_dep') == 1) {?>
           <li class="nav-item">
             <a href="<?= base_url('user')?>" class="nav-link">Pengguna</a>
           </li>

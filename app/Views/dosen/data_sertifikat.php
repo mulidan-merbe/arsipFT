@@ -39,9 +39,11 @@
                 <h3 class="card-title">Data Berdasarkan Sertifikat
                 
             </h3>
+            <?php if(session()->get('Id_dep') == 1) {?>
             <a href="<?= base_url() ?>/dosen/tambah_sertifikat " class="btn btn-outline-primary float-right">
                  <i class="fas fa-plus"></i> Tambah
                                                 </a>
+                <?php } ?>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

@@ -55,6 +55,7 @@ class Filters extends BaseConfig
                 'tendik', 'tendik/*',
                 'user', 'user/*',
                 'masuk', 'masuk/*',
+                'masuk2', 'masuk2/*',
                 'tugas', 'tugas/*',
                 'skrektor', 'skrektor/*',
                 'sk', 'sk/*',

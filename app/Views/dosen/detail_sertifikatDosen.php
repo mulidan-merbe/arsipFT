@@ -90,10 +90,12 @@
                     <!-- <td class=" text-center"><a class="btn btn-sm btn-info" href="<?= base_url('') ?>/file/<?= $value['Berkas'] ?>"><img width="20" src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/000000/external-file-interface-kiranshastry-lineal-kiranshastry-2.png"/></a></td> -->
                     <td class="col-1 text-center"> 
                     <div class="btn-group">
-                        <a class="btn btn-sm btn-info"  onclick=" window.open('<?= base_url('') ?>/public/file/<?= $value['Berkas'] ?>')"><img width="20" src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/000000/external-file-multimedia-kiranshastry-lineal-kiranshastry-2.png"/></a>
+                        <a class="btn btn-sm btn-info"  onclick=" window.open('<?= base_url('') ?>/public/file/<?= $value['Berkas'] ?>')"><i class="fa fa-file" ></i></a>
+                        <?php if(session()->get('Id_dep') == 1) {?>
                         <a class="btn btn-sm btn-warning" href="<?= base_url('dosen/ubahSertifikat/'. $value['Id_serdos']) ?>"><i class="fa fa-edit"></i></a>
                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-hapus<?= $value['Id_serdos']?>"><i class="fa fa-trash" ></i></button>
-                    </div>
+                        <?php } ?>
+                      </div>
                     </td>
                   </tr>
                   <?php } ?>

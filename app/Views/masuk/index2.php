@@ -34,7 +34,17 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+              <div class="col-11">
+                <form action="<?= base_url()?>/masuk" method="post" class="float-right">
+                  <div class="input-group mb-3 justify-content-end">
+                    <input type="text" class="form-control float-right" name="keyword" placeholder="Silahkan Isi Keyword" >
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="submit" name="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+                <table id="" class="table table-bordered table-striped mb-2">
                   <thead class="table-primary">
                     <tr>
                     <th class="col-1 text-center">No</th>
@@ -49,7 +59,9 @@
                   </thead>
                   <tbody>
                   <?php
-                    $no = 1;
+                    $page = isset($_GET['page_masuk']) ? $_GET['page_masuk'] : 1;
+
+                    $no = 1 + (10 * ($page - 1));
                     foreach($masuk as $key => $value )  { ?>
                     <tr>
                       <th scope="row"><?= $no++ ?>.</th>
@@ -58,7 +70,7 @@
                       <td><?= $value['Tanggal_surat'] ?></td>
                       <!-- <td><?= $value['Ringkasan'] ?></td> -->
                       <td><?= $value['Tanggal_terima'] ?></td>
-                      <td><?php if($value['Status']) { ?><span class="badge badge-success"><?= $value['Tujuan'] ?></span> <span class="badge badge-warning"><?= $value['Department'] ?></span> <?php } else { ?> <span class="badge badge-warning"><?= $value['Tujuan'] ?></span><?php } ?></td>
+                      <td><span class="badge badge-success">DEKAN</span></td>
                       <td class="text-center">
                       <div class="btn-group">
                           <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#modal-lihat<?= $value['Id_masuk']?>"><i class="fas fa-eye"></i></button>
@@ -70,6 +82,7 @@
                   <?php } ?>
                   </tbody>
                 </table>
+                <?= $pager->links('masuk', 'masuk_pager') ?>
               </div>
             </div>
         
@@ -176,10 +189,8 @@
                   <div class="form-group">
                     <label for="NomorSK">Kepada</label>
                     <select name="Id_tujuan" id="Department" class="form-control "> 
-                        <option value="<?= $value['Id_tujuan'] ?>" ><?= $value['Tujuan'] ?></option>
-                        <?php foreach($tujuan as $key => $value){ ?>
-                        <option value="<?= $value['Id_tujuan'] ?> " ><?= $value['Tujuan'] ?></option>
-                        <?php } ?>
+                        
+                       
                     </select>
                   </div>
             </div>
@@ -233,8 +244,7 @@
                   <div class="form-group">
                     <label for="NomorSK">Kepada</label>
                     <select name="Id_tujuan" id="Department" class="form-control "> 
-                        <option value="<?= $value['Id_tujuan'] ?>" ><?= $value['Tujuan'] ?></option>
-                        <?php foreach($tujuan as $key => $value){ ?>
+                    <?php foreach($tujuan as $key => $value){ ?>
                         <option value="<?= $value['Id_tujuan'] ?> " ><?= $value['Tujuan'] ?></option>
                         <?php } ?>
                     </select>

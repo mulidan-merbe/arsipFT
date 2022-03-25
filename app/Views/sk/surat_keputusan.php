@@ -8,7 +8,7 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h3 class="m-0"><?= $title ?></h3>
+            <h4 class="m-0">SURAT KEPUTUSAN</h4>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -28,9 +28,9 @@
       <div class="card card-primary card-outline" style="min-height: 650px;">
               <div class="card-header">
                 <h3 class="card-title">Data <?= $title ?></h3>
-                <!-- <div class="card-tools">
-                
-                </div> -->
+                <a href="<?= base_url() ?>/sk/tambah" class="btn btn-outline-primary float-right">
+                 <i class="fas fa-plus"></i> Tambah
+                                                </a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -41,19 +41,16 @@
                 echo '</div>';
             } ?>
             <div class="">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-tambah">
-                  Tambah
-                </button>
             </div>
                 <table id="example1" class="table table-bordered table-striped">
-                  <thead>
+                  <thead class="table-primary">
                   <tr>
                     <th class="col-1 text-center">No</th>
-                    <th class="col-4 text-center">Nomor Sk</th>
-                    <th class="col-1 text-center">Tanggal SK</th>
-                    <th class="col-5 text-center">Tentang</th>
-                    <th class="col-5 text-center">Tanggal</th>
-                    <th class="col-2 text-center">Aksi</th>
+                    <th class="col-4 text-center">NOMOR SK</th>
+                    <th class="col-5 text-center">TENTANG</th>
+                    <th class="col-1 text-center">TANGGAL SK</th>
+                    <!-- <th class="col-5 text-center">BERKAS</th> -->
+                    <th class="col-2 text-center">AKSI</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -65,13 +62,16 @@
                     
                     <td class="text-center"><?= $no++ ?></td>
                     <td><?= $value['Nomor_sk'] ?></td>
-                    <td><?= $value['Tanggal_sk'] ?></td>
                     <td><?= $value['Tentang'] ?></td>
-                    <td><?= $value['Tanggal'] ?></td>
+                    <td><?= $value['Tanggal_sk'] ?></td>
                     <td class="text-center"> 
-                    <button type="button" class="btn btn-outline-primary">Lihat</button>
-                        <a  class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-ubah<?= $value['Id_sk']?>"">Ubah</a>
-                        <button  class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-hapus<?= $value['Id_sk']?>">Hapus</button>
+                      <div class="btn-group">
+                          <!-- <a class="btn btn-sm btn-info"  onclick=" window.open('<?= base_url('') ?>/public/file/<?= $value['Berkas'] ?>')"><img width="20" src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/000000/external-file-multimedia-kiranshastry-lineal-kiranshastry-2.png"/></a> -->
+                          <a class="btn btn-sm btn-info"  onclick=" window.open('<?= base_url('') ?>/public/berkas_sk/<?= $value['Berkas'] ?>')"><i class="fas fa-file"></i></a>
+                          <!-- <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#modal-ubah<?= $value['Id_sk']?>"><i class="fas fa-file"></i></button> -->
+                          <a href="<?= base_url() ?>/sk/ubah/<?= $value['Id_sk']?>"  class="btn btn-sm btn-warning" ><i class="fas fa-edit"></i></a>
+                          <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-hapus<?= $value['Id_sk']?>"><i class="fa fa-trash" ></i></button>
+                      </div>
                     </td>
                    
                   </tr>
@@ -189,4 +189,36 @@
         <!-- /.modal-dialog -->
       </div>   
       <?php } ?>   
-           
+    
+
+      <script>
+        $(function(){
+          // $.bootstrapGrowl("This is a test.");
+            <?php if(session()->has("success")) { ?>
+                $.bootstrapGrowl('<?= session("success") ?>',{
+                    type: 'success',
+                    delay: 4000,
+                });
+            <?php } ?>
+            <?php if(session()->has("info")) { ?>
+                $.bootstrapGrowl('<?= session("info") ?>',{
+                    type: 'info',
+                    delay: 4000,
+                });
+            <?php } ?>
+
+            <?php if(session()->has("error")) { ?>
+                $.bootstrapGrowl('<?= session("error") ?>',{
+                    type: 'danger',
+                    delay: 4000,
+                });
+            <?php } ?>
+
+            <?php if(session()->has("warning")) { ?>
+                $.bootstrapGrowl('<?= session("warning") ?>',{
+                    type: 'warning',
+                    delay: 4000,
+                });
+            <?php } ?>
+        });
+      </script> 

@@ -14,6 +14,14 @@ class Model_sk extends Model
         ->getResultArray();
     }
 
+    public function getbyId($Id_sk)
+    {
+        return $this->db->table('surat_keputusan')
+        ->where('Id_sk', $Id_sk)
+        ->get()
+        ->getResultArray();
+    }
+
     public function tambah($data)
     {
         $this->db->table('surat_keputusan')->insert($data);

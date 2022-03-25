@@ -282,7 +282,7 @@ class Tendik extends BaseController
             // dd($data);
             $this->Model_tendik->ubah_tendik_pns($data);
             session()->setFlashdata('info', 'Data Berhasil Diubah');
-            return redirect()->to(base_url('tendik'));
+            return redirect()->to(base_url('tendik/pns'));
         }
     }
 
@@ -327,7 +327,7 @@ class Tendik extends BaseController
          );
          $this->Model_tendik->hapusPns($data);
          session()->setFlashdata('error', 'Data Berhasil Dihapus');
-         return redirect()->to(base_url('tendik'));
+         return redirect()->to(base_url('tendik/pns'));
     }
 
     public function hapusHonorer($Id_honorer)
